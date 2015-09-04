@@ -3,23 +3,64 @@ package auth
 import (
 	"weasel/app"
 	"weasel/app/session"
-	"weasel/lib/auth"
+	"weasel/app/registry"
+	"encoding/json"
+	"fmt"
 )
 
 type Auth struct {
-	User *auth.User
+	User *User
 	SSID string
+}
+
+type User struct {
+	UserLastName   string `json:"ul" db:"user_lastname"`
+	UserFirstName  string `json:"uf" db:"user_firstname"`
+	UserMiddleName string `json:"um" db:"user_middlename"`
+	UserID         uint   `json:"i" db:"user_id"`
+	IsActive       bool   `json:"a" db:"is_active"`
+	Login          string `json:"l" db:"user_login"`
+	Email          string `json:"e" db:"user_email"`
+	IsAdmin        bool   `json:"adm" db:"is_admin"`
+	SessionID      string `json:"-" db:"-"`
 }
 
 func Check(c *app.Context) {
 
-	var sd interface {}
+	var sd string
 
-	if err := session.Get(c.Request, &sd, &session.Config{}); err != nil {
+	if err := session.Get(c.Request, &sd, &session.Config{Keys : registry.Registry.SessionKeys}); err != nil {
 
-		app.Redirect("/login/", c, 301)
+		fmt.Println(err)
+
+		app.Redirect("/login/", c, 302)
 
 		return
 	}
 
+	v, err := registry.Registry.Session.Get(sd)
+
+	if err != nil {
+
+		fmt.Println(err)
+
+		app.Redirect("/login/", c, 302)
+
+		return
+	}
+
+	u := User{}
+
+	if err := json.Unmarshal(v, &u); err != nil {
+
+		fmt.Println(err)
+
+		app.Redirect("/login/", c, 302)
+
+		return
+	}
+
+	u.SessionID = sd
+
+	c.Set("user", u)
 }

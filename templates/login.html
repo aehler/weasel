@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Weasel login</title>
+    <link href="/static/css/application.min.css" rel="stylesheet">
+    <link href="/static/css/weasel.css" rel="stylesheet">
+    <link rel="shortcut icon" href="/static/img/favicon.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta charset="utf-8">
+    <script src="/static/lib/jquery/jquery-2.0.3.min.js"> </script>
+    <script src="/static/js/settings.js"> </script>
+    <script src="/static/lib/bootstrap/modal.js"></script>
+
+    <script src="/static/js/weasel/form.js"> </script>
+    <script src="/static/js/weasel/weasel.js"> </script>
+    <script src="/static/js/weasel/weasel_app.js"> </script>
+</head>
+
+<body>
+<div class="single-widget-container">
+    <section class="widget login-widget">
+        <header class="text-align-center">
+            <h4>Вход в систему</h4>
+        </header>
+        <div class="body">
+            <form class="no-margin"
+                  action="/login/" method="post">
+                <fieldset>
+                    <div class="form-group no-margin">
+                        <label for="email" >Логин</label>
+
+                        <div class="input-group input-group-lg">
+                                <span class="input-group-addon">
+                                    <i class="eicon-user"></i>
+                                </span>
+                            <input id="email" type="email" class="form-control input-lg"
+                                   placeholder="Логин" name="email">
+                        </div>
+
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password" >Пароль</label>
+
+                        <div class="input-group input-group-lg">
+                                <span class="input-group-addon">
+                                    <i class="fa fa-lock"></i>
+                                </span>
+                            <input id="password" type="password" class="form-control input-lg"
+                                   placeholder="Пароль" name="password">
+                        </div>
+
+                    </div>
+                </fieldset>
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-block btn-lg btn-danger">
+                        <span class="small-circle"><i class="fa fa-caret-right"></i></span>
+                        <small>Войти</small>
+                    </button>
+                    <br>
+                </div>
+            </form>
+            <div class="forgot"><a class="forgot jsForm" href="/login/remember/">Забыли пароль?</a> |
+            <a class="forgot jsForm" href="/login/register/">Регистрация</a></div>
+
+        </div>
+        <footer style="display: none;">
+            <div class="facebook-login">
+                <a href="/login/"><span>Войти через <i class="fa fa-facebook fa-lg"></i> Facebook</span></a>
+            </div>
+            <div class="facebook-login">
+                <a href="/login/"><span>Войти через <i class="fa fa-vk fa-lg"></i> Вконтакте</span></a>
+            </div>
+        </footer>
+    </section>
+</div>
+
+<div id="simpleModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="simpleModalLabel" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-body">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+
+<div id="formModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="formModalLabel" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form class="form-horizontal" method="POST">
+                <div class="modal-body form-horizontal">
+
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-danger">Сохранить</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Отмена</button>
+                </div>
+            </form>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+
+<div id="messageModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="messageModalLabel" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog">
+        <div class="alert">
+
+        </div>
+    </div>
+</div>
+
+<script type="text/template" id="error-template">
+
+    <h4 class="text-danger"><i class="fa fa-ban"></i> <strong>Случилось что-то не то!</strong></h4>
+    <p class="message-container"></p>
+
+</script>
+
+</body>
+</html>

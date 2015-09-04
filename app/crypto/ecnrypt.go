@@ -2,6 +2,7 @@ package crypto
 
 import (
 	"crypto/sha1"
+	"math/rand"
 	"time"
 	"fmt"
 )
@@ -16,6 +17,6 @@ func Encrypt(s, ls string) string {
 
 func GenSessionId(i uint, l_salt string) string {
 
-	return fmt.Sprintf("%x", sha1.Sum([]byte(fmt.Sprintf("%s%d%s%s", salt, i, l_salt, time.Now()))))
+	return fmt.Sprintf("%x", sha1.Sum([]byte(fmt.Sprintf("%s%d%s%s%d", salt, i, l_salt, time.Now(), rand.Int()))))
 
 }

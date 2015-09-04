@@ -8,6 +8,7 @@ func Route(ap *app.App) {
 
 	ap.Get("/", Index)
 	ap.GetPost("/login/", Login)
+	ap.Get("/logout/", Logout)
 
 }
 

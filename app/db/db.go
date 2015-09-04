@@ -7,6 +7,13 @@ import (
 	"log"
 )
 
+type dbcreds struct {
+	Address  string `yaml:"address"`
+	Username string `yaml:"username"`
+	Password string `yaml:"password"`
+	Database string `yaml:"database"`
+}
+
 func New(config string)  *sqlx.DB {
 
 	data, err := ioutil.ReadFile(config)
@@ -16,11 +23,18 @@ func New(config string)  *sqlx.DB {
 		log.Fatal(err.Error())
 	}
 
-	r := MySQL{}
+	rr := map[string]dbcreds{}
 
-	if err := yaml.Unmarshal(data, &r); err != nil {
+	if err := yaml.Unmarshal(data, &rr); err != nil {
 
 		log.Fatal(err.Error())
+	}
+
+	r := &PostgreSQL{
+		Address : rr["postgresql"].Address,
+		Username : rr["postgresql"].Username,
+		Password : rr["postgresql"].Password,
+		Database : rr["postgresql"].Database,
 	}
 
 	s, err := r.Connect()

@@ -1,5 +1,9 @@
 package form
 
+import (
+	"strings"
+)
+
 type Element struct {
 	Name string
 	HashName string `json:"n"`
@@ -10,4 +14,10 @@ type Element struct {
 	Type uint `json:"-"`
 	TypeName string `json:"t"`
 	Order uint
+}
+
+func (e *Element) GetValue() string {
+	
+	return strings.Join(e.Value, ", ")
+	
 }

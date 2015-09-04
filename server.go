@@ -1,6 +1,7 @@
 package main
 
 import (
+	"weasel/controller/settings"
 	"weasel/controller/personal"
 	"weasel/controller/index"
 	"weasel/app"
@@ -38,5 +39,6 @@ func collect(a *app.App) {
 
 	personal.Route(a)
 	index.Route(a)
+	settings.Route(a)
 
 }

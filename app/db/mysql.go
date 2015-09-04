@@ -11,7 +11,6 @@ type MySQL struct {
 	Username string `yaml:"username"`
 	Password string `yaml:"password"`
 	Database string `yaml:"database"`
-	ShardID  int16  `yaml:"shard_id"`
 }
 
 func (p *MySQL) ConnectString() string {

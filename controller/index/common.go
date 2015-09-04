@@ -3,41 +3,94 @@ package index
 import (
 	"weasel/app"
 	"weasel/app/crypto"
-	"weasel/app/form"
+	"weasel/app/registry"
+	"weasel/app/session"
 	"weasel/lib/auth"
 	"fmt"
 )
 
 func Index(c *app.Context) {
 
-	c.RenderHTML("blank.html", map[string]interface {} {
+	c.RenderHTML("/blank.html", map[string]interface {} {
 
 	})
 
 }
 
-func Login(c *app.Context) {
+func Logout(c *app.Context) {
 
-	f := form.New("login", "login", "login_salt")
+	var sd string
 
-	data := auth.LoginForm{}
+	if err := session.Get(c.Request, &sd, &session.Config{Keys : registry.Registry.SessionKeys}); err != nil {
 
-	if err := f.MapStruct(data); err != nil {
+		fmt.Println(err)
 
-		c.RenderError(err.Error())
+		app.Redirect("/login/", c, 302)
+
+		return
 	}
+
+	registry.Registry.Session.Kill(sd)
+
+	app.Redirect("/login/", c, 302)
+
+	return
+}
+
+func Login(c *app.Context) {
 
 	if c.IsPost() {
 
-		u, err := auth.AuthUser("login", crypto.Encrypt("password", "llpass"))
+		c.Request.ParseForm()
 
-		fmt.Println(u)
-		fmt.Println(err)
+		c.Request.PostFormValue("email")
+
+		u, err := auth.AuthUser(c.Request.PostFormValue("email"), crypto.Encrypt(c.Request.PostFormValue("password"), ""))
+		if err != nil {
+
+			if err.Error() == `sql: no rows in result set` {
+
+				c.RenderJSON(map[string]interface {} { "loginError" : "Логин или пароль не верны"})
+
+				return
+
+			} else {
+
+				c.RenderError(err.Error())
+			}
+
+			fmt.Println("couldn't login")
+
+			c.Stop()
+
+			return
+
+		}
+
+		ssid := crypto.GenSessionId(u.UserID, u.UserLastName)
+
+		if err := registry.Registry.Session.Add(ssid, u); err != nil {
+
+			c.RenderError(err.Error())
+		}
+
+		if err := session.Set(c.ResponseWriter, ssid, &session.Config{Keys : registry.Registry.SessionKeys}); err != nil {
+
+			fmt.Println("couldn't set cookie")
+
+			c.RenderError(err.Error())
+
+		}
+
+		c.RenderJSON(map[string]interface {} { "redirect" : "/dashboard/"})
+
+		c.Stop()
+
+		return
 
 	}
 
-	c.RenderHTML("blank.html", map[string]interface {} {
-		"form" : f,
+	c.RenderHTML("/login.html", map[string]interface {} {
 	})
 
 }

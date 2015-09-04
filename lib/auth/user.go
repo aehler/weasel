@@ -2,34 +2,33 @@ package auth
 
 import (
 	"weasel/app/registry"
+	"weasel/app/crypto"
+	"weasel/middleware/auth"
+	"time"
 	"fmt"
 )
 
-type User struct {
-	UserLastName   string `json:"ul" db:"user_lastname"`
-	UserFirstName  string `json:"uf" db:"user_firstname"`
-	UserMiddleName string `json:"um" db:"user_middlename"`
-	UserID         uint   `json:"i" db:"id"`
-	IsActive       bool   `json:"a" db:"is_active"`
-	Login          string `json:"l" db:"login"`
-	Email          string `json:"e" db:"email"`
-}
-
-type LoginForm struct {
-	Login string `weaselform:"login" formLabel:"Логин"`
+type RegisterForm struct {
+	Login string `weaselform:"login" formLabel:"Email"`
+	Email string `weaselform:"login" formLabel:"Email"`
 	Password string `weaselform:"password" formLabel:"Пароль"`
+	Password2 string `weaselform:"password" formLabel:"Повторите пароль"`
+	UserLastName string `weaselform:"text" formLabel:"Фамилия"`
+	UserFirstName  string `weaselform:"text" formLabel:"Имя"`
+	UserMiddleName string `weaselform:"text" formLabel:"Отчество"`
 }
 
-func AuthUser(login, password string) (*User, error) {
+func AuthUser(login, password string) (*auth.User, error) {
 
-	fmt.Println()
+	u := auth.User{}
 
-	u := User{}
-
-	if err := registry.Registry.Connect.Get(&u, `select user_lastname, user_firstname, user_middlename, id, is_active, login, email from users where login=$1 and password=$2`,
+	if err := registry.Registry.Connect.Get(&u, `select user_lastname, user_firstname, user_middlename, user_id, is_active, user_login, user_email, is_admin
+	from weasel_auth.users where user_login=$1 and user_password=$2`,
 		login,
 		password,
 	); err != nil {
+
+		time.Sleep(2000 * time.Millisecond)
 
 		return &u, err
 
@@ -39,3 +38,31 @@ func AuthUser(login, password string) (*User, error) {
 
 }
 
+func AddUser(r RegisterForm) (uint, error) {
+
+	res := 0
+
+	fmt.Println(r)
+
+	password := crypto.Encrypt(r.Password, "")
+
+	if err := registry.Registry.Connect.Get(&res, `select * from weasel_auth.add_user($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)`,
+		1,
+		r.UserFirstName,
+		r.UserLastName,
+		r.UserMiddleName,
+		"job_title",
+		"",
+		r.Login,
+		password,
+		1,
+		1,
+	); err != nil {
+
+		return 0, err
+
+	}
+
+	return uint(res), nil
+
+}

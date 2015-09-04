@@ -1,25 +1,44 @@
 package app
 
 import (
-	"html/template"
+	"github.com/flosch/pongo2"
+	"fmt"
+	"io/ioutil"
 	"log"
 )
 
-var Templates = map[string]*template.Template{}
+var Templates = map[string]*pongo2.Template{}
 
-func InitTemplates(templates ...string) {
+var dir = "/srv/src/weasel/templates/pages"
 
-	for _, t := range templates {
+func InitTemplates() {
 
-		tmpl, err := template.ParseFiles(t)
-		if err != nil {
+	parseDir("")
 
-			log.Fatal(err)
+}
 
-		}
+func parseDir(dirname string) {
 
-		Templates[tmpl.Name()] = tmpl
+	cdir := fmt.Sprintf("%s%s", dir, dirname)
 
+	fi, err := ioutil.ReadDir(fmt.Sprintf("%s%s", dir, dirname))
+	if err != nil {
+		log.Fatal("Cannot access template dir", cdir)
 	}
 
+	for _, file := range fi {
+
+		if file.IsDir() {
+
+			parseDir(fmt.Sprintf("%s/%s", dirname, file.Name()))
+
+		} else {
+
+			tmpl := pongo2.Must(pongo2.FromFile(fmt.Sprintf("%s/%s", cdir, file.Name())))
+
+			Templates[fmt.Sprintf("%s/%s", dirname, file.Name())] = tmpl
+
+			fmt.Println("Added template", fmt.Sprintf("%s/%s", dirname, file.Name()))
+		}
+	}
 }

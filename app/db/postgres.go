@@ -11,8 +11,8 @@ type PostgreSQL struct {
 	Username string `yaml:"username"`
 	Password string `yaml:"password"`
 	Database string `yaml:"database"`
-	ShardID  int16  `yaml:"shard_id"`
 }
+
 
 func (p *PostgreSQL) ConnectString() string {
 
@@ -20,6 +20,8 @@ func (p *PostgreSQL) ConnectString() string {
 }
 
 func (p *PostgreSQL) Connect() (*sqlx.DB, error) {
+
+	fmt.Println(p.ConnectString())
 
 	return sqlx.Open("postgres", p.ConnectString())
 

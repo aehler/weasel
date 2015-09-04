@@ -34,14 +34,14 @@ var JSForm = {
 
                 if (data == null || typeof data !== 'object') {
 
-                    Popup.Error(data);
+                    Weasel.RenderError(data);
 
                     return;
                 }
 
                 if (data.s == false) {
 
-                    Popup.Error(data.e);
+                    Weasel.RenderError(data.e);
 
                     return;
                 }
@@ -54,7 +54,7 @@ var JSForm = {
 
                     } else if (data.r == "close") {
 
-                        $("#overlay").fadeOut(50).find(".dynamic-popup").remove();
+                        $("#formModal").modal("toggle");
 
                     } else {
 
@@ -64,26 +64,10 @@ var JSForm = {
                     return;
                 }
 
-                var f = '<form method="post" action="">';
-                f += '<div class="popup-body">';
-                f += '<h4>' + data['t'] + '</h4>';
+                var f = ParseForm(data);
 
-                f += ParseForm(data);
-
-                f += '</div>';
-
-                f += '<div class="popup-actions">';
-                f += '<span class="cancel">Отменить</span>';
-                f += '<input type="submit" class="command-button-large ajax_submit" value="' + data['b'] + '">';
-                f += '</div>';
-                f += '</form>';
-
-                if (typeof data['sz'] != 'undefined' && data['sz'] == 'large') {
-                    Popup.Show(f, "", "large");
-                } else {
-                    Popup.Show(f, "", "");
-                }
-              
+                $("#formModal").modal("toggle").find(".modal-body").eq(0).html(f);
+                $("#formModal").find("form").eq(0).attr("action", JSForm.Meta.url);
 
                 if (typeof data.url != "undefined") {
 
@@ -94,7 +78,7 @@ var JSForm = {
             })
             .fail(
             function (data) {
-                Popup.Error(data.responseText)
+                Weasel.RenderError(data.responseText)
             })
             .always(function () {
                 // On complete actions!
@@ -111,7 +95,7 @@ var JSForm = {
 
 var ParseForm = function(data) {
 
-    var popup = '<form class="form-horizontal" method="'+data.Method+'"><fieldset><legend class="section">'+data.Title+'</legend>';
+    var popup = '<fieldset><legend class="section">'+data.Title+'</legend>';
 
     for (var i = 0; i < data['e'].length; ++i) {
 
@@ -144,7 +128,7 @@ var ParseForm = function(data) {
             case 'text':
 
                 popup += '<label class="control-label" for="'+data['e'][i]['n']+'">' + data['e'][i]['l'] + ' ' + required + '</label>';
-                popup += '<div class="controls form-group"><div class="input-group col-sm-5"> ';
+                popup += '<div class="controls form-group"><div class="input-group col-sm-11"> ';
                 popup += '<input class="' + error + ' form-control" type="text" name="' + data['e'][i]['n'] + '" id="' + data['e'][i]['n'] + '" value="' + value + '">';
                 popup += '</div></div>';
  
@@ -159,7 +143,7 @@ var ParseForm = function(data) {
             case 'login':
 
                 popup += '<label class="control-label" for="'+data['e'][i]['n']+'">' + data['e'][i]['l'] + ' ' + required + '</label>';
-                popup += '<div class="controls form-group"><div class="input-group col-sm-5"> ';
+                popup += '<div class="controls form-group"><div class="input-group col-sm-11"> ';
                 popup += '<span class="input-group-addon"><i class="fa fa-user"></i></span>';
                 popup += '<input class="' + error + ' form-control" type="text" name="' + data['e'][i]['n'] + '" id="' + data['e'][i]['n'] + '" value="' + value + '">';
                 popup += '</div></div>';
@@ -169,7 +153,7 @@ var ParseForm = function(data) {
             case 'password':
 
                 popup += '<label class="control-label" for="'+data['e'][i]['n']+'">' + data['e'][i]['l'] + ' ' + required + '</label>';
-                popup += '<div class="controls form-group"><div class="input-group col-sm-5"> ';
+                popup += '<div class="controls form-group"><div class="input-group col-sm-11"> ';
                 popup += '<span class="input-group-addon"><i class="fa fa-lock"></i></span>';
                 popup += '<input class="' + error + ' form-control" type="password" name="' + data['e'][i]['n'] + '" id="' + data['e'][i]['n'] + '" value="' + value + '">';
                 popup += '</div></div>';
@@ -550,7 +534,9 @@ var ParseForm = function(data) {
         popup += '</div>';
     }
 
-    popup += '</fieldset></form>';
+    popup += '</fieldset>';
+
+    //popup += '</form>';
 
     return popup;
 };

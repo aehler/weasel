@@ -1,7 +1,11 @@
 mysql:
-
-    common:
         address: "192.168.56.101:3306"
         username: "dev"
         password: "dev"
         database: "weasel"
+
+postgresql:
+        address: "127.0.0.1:5432"
+        username: "weasel"
+        password: "qwr123rrr"
+        database: "postgres"

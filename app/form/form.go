@@ -11,6 +11,8 @@ type Form struct {
 	Title    string
 	Elements []*Element `json:"e"`
 	salt     string
+	Method   string
+	skipFields map[string]interface {}
 }
 
 func New(t, n, s string) *Form {
@@ -20,13 +22,22 @@ func New(t, n, s string) *Form {
 		Name    :  n,
 		Title   :  t,
 		Elements:  []*Element{},
+		Method  :  "POST",
+		skipFields : map[string]interface {}{},
 	}
 }
 
-func (f *Form) ParseForm(reciever *interface {}, req http.Request) error {
+func (f *Form) ParseForm(reciever interface {}, req *http.Request) error {
 
-	return nil
+	req.ParseForm()
 
+	for _, e := range f.Elements {
+
+		e.Value = append(e.Value, req.PostFormValue(e.HashName))
+
+	}
+
+	return f.unmarshal(reciever)
 }
 
 func (f *Form) Json() string {
@@ -39,4 +50,13 @@ func (f *Form) Json() string {
 	}
 
 	return string(m)
+}
+
+func (f *Form) Skip(fields ...string) {
+
+	for _, nm := range fields {
+
+		f.skipFields[nm] = "skip"
+	}
+
 }
