@@ -17,6 +17,7 @@ type User struct {
 	UserLastName   string `json:"ul" db:"user_lastname"`
 	UserFirstName  string `json:"uf" db:"user_firstname"`
 	UserMiddleName string `json:"um" db:"user_middlename"`
+	OrganizationId uint   `json:"oi" db:"organization_id"`
 	UserID         uint   `json:"i" db:"user_id"`
 	IsActive       bool   `json:"a" db:"is_active"`
 	Login          string `json:"l" db:"user_login"`

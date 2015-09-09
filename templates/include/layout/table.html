@@ -9,26 +9,26 @@
         </div>
     </header>
     <div class="body">
-        <blockquote>
-            Editable, validatable, filterable and sortable table made with
-            <a href="http://backgridjs.com/" target="_blank">Backgrid.js</a>
-        </blockquote>
+
         <div id="table-dynamic">
 
         </div>
-        <div>
-            <button class="btn btn-warning">
-                <i class="fa fa-plus"></i>
-                Add new
-            </button>
-            <button class="btn btn-inverse">
-                <i class="fa fa-refresh"></i>
-                Refresh
-            </button>
-            <button class="btn btn-inverse">
-                <i class="fa fa-exchange"></i>
-                Test connection
-            </button>
-        </div>
+
     </div>
 </section>
+
+<script src="/static/lib/backbone/underscore-min.js"></script>
+<script src="/static/lib/backbone/backbone-min.js"></script>
+<script src="/static/lib/backbone/backbone-pageable.js"></script>
+<script src="/static/lib/backgrid/backgrid.js"></script>
+<script src="/static/lib/backgrid/backgrid-paginator.js"></script>
+<script src="/static/js/weasel/data-grid-backgrid.js"></script>
+
+
+
+        <script>
+        $(document).ready(function(){
+            dg = new dataGrid("{{ url }}");
+            dg.DataGrid();
+        });
+        </script>

@@ -22,7 +22,7 @@ func AuthUser(login, password string) (*auth.User, error) {
 
 	u := auth.User{}
 
-	if err := registry.Registry.Connect.Get(&u, `select user_lastname, user_firstname, user_middlename, user_id, is_active, user_login, user_email, is_admin
+	if err := registry.Registry.Connect.Get(&u, `select user_lastname, user_firstname, user_middlename, user_id, is_active, user_login, user_email, is_admin, organization_id
 	from weasel_auth.users where user_login=$1 and user_password=$2`,
 		login,
 		password,

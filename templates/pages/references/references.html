@@ -12,6 +12,20 @@
 
 {% block content %}
 
-        datagrid
+<header>
+    <h4>
+        <i class="fa fa-file-alt"></i>
+    </h4>
+
+    <section class="widget">
+        <div class="btn-group">
+            <a href="/settings/references/add/" class="jsForm btn btn-primary">Добавить справочник</a>
+        </div>
+
+    </section>
+
+</header>
+
+{% include "../../include/layout/table.html" with url="/settings/references/grid/" %}
 
 {% endblock %}
