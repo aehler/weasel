@@ -17,3 +17,21 @@ create table weasel_classifiers.counter(
   reference_id bigint references weasel_classifiers."references" (id) primary key,
   total bigint not null default 0
 ) with(fillfactor=50);
+
+
+create table weasel_classifiers.items(
+    id               bigserial primary key,
+    reference_id     bigint references weasel_classifiers."references" (id),
+    name             varchar(500) not null,
+    alias            varchar(500) not null,
+    ver              integer not null default 0,
+    is_group         boolean not null default false,
+    parents          varchar(500) not null default '0',
+    created_at       timestamp not null default current_timestamp,
+    updated_at       timestamp not null default current_timestamp
+)with(fillfactor = 90);
+
+create index idx_inm on weasel_classifiers.items(LOWER(name));
+create index idx_iparents on weasel_classifiers.items(LOWER(parents));
+create index idx_irefid on weasel_classifiers.items(reference_id);
+create index idx_iver on weasel_classifiers.items(ver, reference_id);

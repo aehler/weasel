@@ -15,6 +15,7 @@ type Reference struct {
 	Alias string `db:"alias"`
 	Total uint `db:"total"`
 	Blocked bool `db:"blocked" weaselform:"blocked" formLabel:"Заблокирован"`
+	Items Items `db:"-"`
 }
 
 type References struct {
@@ -60,7 +61,7 @@ func (r References) GridRows(cols []*grid.Column) []map[string]interface {}{
 		}
 
 		cr["actions"] = []map[string]interface {}{
-			map[string]interface {}{"Редактировать" : fmt.Sprintf("/settings/references/edit_items/%s", crypto.EncryptUrl(row.ID))},
+			map[string]interface {}{"Редактировать" : fmt.Sprintf("/settings/references/items/%s", crypto.EncryptUrl(row.ID))},
 		}
 
 		rows = append(rows, cr)

@@ -47,23 +47,32 @@
                        data-toggle="dropdown">
                         <i class="fa fa-user"></i>
                     </a>
-                    <ul id="account-menu" class="dropdown-menu account" role="menu">
-                        <li role="presentation" class="account-picture">
-                            {{ currentUser.UserFirstName }} {{ currentUser.UserLastName }}
-                        </li>
-                        <li role="presentation">
-                            <a href="/personal/settings/" class="link jsForm">
-                                <i class="fa fa-user"></i>
-                                Профиль
-                            </a>
-                        </li>
-                        <li role="presentation">
-                            <a href="/budget/calendar/" class="link">
-                                <i class="fa fa-calendar"></i>
-                                Календарь
-                            </a>
-                        </li>
-                    </ul>
+                    {% if currentUser.UserID %}
+                        <ul id="account-menu" class="dropdown-menu account" role="menu">
+                            <li role="presentation" class="account-picture">
+                                {{ currentUser.UserFirstName }} {{ currentUser.UserLastName }}
+                            </li>
+                            <li role="presentation">
+                                <a href="/personal/settings/" class="link jsForm">
+                                    <i class="fa fa-user"></i>
+                                    Профиль
+                                </a>
+                            </li>
+                            <li role="presentation">
+                                <a href="/budget/calendar/" class="link">
+                                    <i class="fa fa-calendar"></i>
+                                    Календарь
+                                </a>
+                            </li>
+                        </ul>
+                    {% else %}
+                        <ul id="account-menu" class="dropdown-menu account" role="menu">
+                            <li role="presentation" class="account-picture">
+                                <a href="/login/">Вход в систему</a>
+                            </li>
+                        </ul>
+                    {% endif %}
+
                 </li>
                 <li class="visible-xs">
                     <a href="#"
