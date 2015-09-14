@@ -2,6 +2,7 @@ package references
 
 import (
 	"weasel/app"
+	"weasel/app/crypto"
 	"weasel/app/grid"
 	"weasel/app/form"
 	"weasel/lib/references"
@@ -90,7 +91,7 @@ func itemsGridJSON(c *app.Context) {
 
 	var (
 		user = c.Get("user").(auth.User)
-		refid = crypto.DecryptUrl(c.Params.ByName("refId"))
+		refid, _ = crypto.DecryptUrl(c.Params.ByName("refId"))
 	)
 
 	itemsList, err := references.ItemsList(user.OrganizationId, refid)
@@ -105,7 +106,7 @@ func itemsGridJSON(c *app.Context) {
 		return
 	}
 
-	g := grid.New(refList)
+	g := grid.New(itemsList)
 
 	g.Column(
 		&grid.Column{
