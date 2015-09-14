@@ -21,7 +21,7 @@ func New(config string) *App {
 
 	a.Router.ServeFiles("/static/*filepath", http.Dir("/srv/src/weasel/static/"))
 
-//	a.Router.NotFound = http.FileServer(http.Dir("static/404.html")).ServeHTTP
+	a.Router.NotFound = http.FileServer(http.Dir("static/404.html")).ServeHTTP
 
 	registry.Init(config)
 
