@@ -1,6 +1,7 @@
 package app
 
 import (
+	"weasel/app/crypto"
 	"github.com/flosch/pongo2"
 	"fmt"
 	"io/ioutil"
@@ -12,6 +13,11 @@ var Templates = map[string]*pongo2.Template{}
 var dir = "/srv/src/weasel/templates/pages"
 
 func InitTemplates() {
+
+	pongo2.RegisterFilter("EncryptURL", func(in *pongo2.Value, param *pongo2.Value) (*pongo2.Value, *pongo2.Error) {
+
+		return pongo2.AsValue(crypto.EncryptUrl(uint(in.Integer()))), nil
+	})
 
 	parseDir("")
 

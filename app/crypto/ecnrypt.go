@@ -19,6 +19,10 @@ func Encrypt(s, ls string) string {
 
 }
 
+func Unique() string {
+	return fmt.Sprintf("%x", sha1.Sum([]byte(fmt.Sprintf("%s%s%d", salt, time.Now(), rand.Int()))))
+}
+
 func GenSessionId(i uint, l_salt string) string {
 
 	return fmt.Sprintf("%x", sha1.Sum([]byte(fmt.Sprintf("%s%d%s%s%d", salt, i, l_salt, time.Now(), rand.Int()))))
@@ -73,6 +77,11 @@ func EncryptB64(original, key string) string {
 func DecryptB64(crypt, key string) (string, error) {
 
 	kl := len([]byte(key))
+
+	if fix := 4 - (len(crypt) % 4); fix != 4 {
+
+		crypt = fmt.Sprintf("%s%s", crypt, strings.Repeat("=", fix))
+	}
 
 	if message, err := base64.URLEncoding.DecodeString(crypt); err == nil {
 

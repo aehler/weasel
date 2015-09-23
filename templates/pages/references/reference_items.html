@@ -1,0 +1,31 @@
+{% extends "../blank.html" %}
+
+{% block breadcrumbs %}
+        Настройки > <a href="/settings/references/">Справочники</a> > {{ ref.Name }}
+{% endblock %}
+
+{% block title %}
+
+        Элементы справочника {{ ref.Name }}
+
+{% endblock %}
+
+{% block content %}
+
+<header>
+    <h4>
+        <i class="fa fa-file-alt"></i>
+    </h4>
+
+    <section class="widget">
+        <div class="btn-group">
+            <a href="/settings/references/item_add/{{ ref.ID|EncryptURL }}/{{ 0|EncryptURL }}/" class="jsForm btn btn-primary">Добавить корневой элемент</a>
+        </div>
+
+    </section>
+
+</header>
+
+{% include "../../include/layout/table.html" with url=gridURL %}
+
+{% endblock %}

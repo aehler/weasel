@@ -14,7 +14,7 @@ $(document).ready(function() {
         popstate(location.pathname);
     }, false);
 
-    Weasel.parseContent();
+//    Weasel.parseContent();
 
     $("form").on("submit", function(e){
 
@@ -57,15 +57,18 @@ $(document).ready(function() {
 
             }
 
-            if (result.hasOwnProperty("error") ) {
+            if (result.hasOwnProperty("Error") ) {
 
-                Weasel.RenderError("<h1>ERROR</h1><p>"+result.error+"</p>");
+                $("#formModal").modal("toggle");
+
+                Weasel.RenderError("<h1>ERROR</h1><p>"+result.Error+"</p>");
 
                 return
 
             }
 
-            console.log(result);
+            //В любой непонятной ситуации - рефреш
+            window.location.href = window.location.href;
 
         });
 

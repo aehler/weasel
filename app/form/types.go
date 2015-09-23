@@ -8,6 +8,10 @@ const (
 	CheckboxGroup
 	Date
 	Password
+	Checkbox
+	Uint
+	Number
+	TagList
 )
 
 var elementType = map[string]uint {
@@ -18,4 +22,23 @@ var elementType = map[string]uint {
 	"checkbox" : CheckboxGroup,
 	"date" : Date,
 	"password" : Password,
+	"bool" : Checkbox,
+	"uint" : Uint,
+	"number" : Number,
+	"taglist" : TagList,
+}
+
+func MapType(key string) uint {
+	return elementType[key]
+}
+
+type Options []*Option
+
+type Option struct {
+	Value uint `json:"v"`
+	Label string `json:"n"`
+}
+
+type Selecter interface {
+	Opts() Options
 }

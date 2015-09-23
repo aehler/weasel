@@ -26,12 +26,15 @@ create table weasel_classifiers.items(
     alias            varchar(500) not null,
     ver              integer not null default 0,
     is_group         boolean not null default false,
-    parents          varchar(500) not null default '0',
+    parents          varchar(500) not null default '',
     created_at       timestamp not null default current_timestamp,
-    updated_at       timestamp not null default current_timestamp
+    updated_at       timestamp not null default current_timestamp,
+    pid              bigint not null default 0,
+    fields           jsonb not null default '{}'
 )with(fillfactor = 90);
 
 create index idx_inm on weasel_classifiers.items(LOWER(name));
 create index idx_iparents on weasel_classifiers.items(LOWER(parents));
 create index idx_irefid on weasel_classifiers.items(reference_id);
 create index idx_iver on weasel_classifiers.items(ver, reference_id);
+create index idx_ipid on weasel_classifiers.items(pid);

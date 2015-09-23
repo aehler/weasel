@@ -107,7 +107,7 @@ func (c *Context) RenderHTML(tmplName string, context map[string]interface {}) {
 
 func (c *Context) RenderError(e string) error {
 
-	return json.NewEncoder(c.ResponseWriter).Encode(map[string]string{"error" : e})
+	return json.NewEncoder(c.ResponseWriter).Encode(map[string]string{"Error" : e})
 
 }
 

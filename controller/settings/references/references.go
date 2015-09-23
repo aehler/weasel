@@ -79,10 +79,28 @@ func edit(c *app.Context) {
 
 func itemsList(c *app.Context) {
 
-	c.RenderHTML("/references/references.html", map[string]interface {} {
+	var (
+		user = c.Get("user").(auth.User)
+		refid, _ = crypto.DecryptUrl(c.Params.ByName("refId"))
+	)
+
+	ref, err := references.New(refid, user.OrganizationId)
+	if err != nil {
+
+		c.RenderHTML("/errors/500.html", map[string]interface {}{
+		"Error" : err.Error(),
+	})
+
+		c.Stop()
+
+		return
+	}
+
+	c.RenderHTML("/references/reference_items.html", map[string]interface {} {
 
 		"pageTitle" : "Элементы справочника",
-		"gridURL" : fmt.Sprintf("/settings/references/grid/%s", c.Params.ByName("refId")),
+		"gridURL" : fmt.Sprintf("/settings/references/items_grid/%s/", c.Params.ByName("refId")),
+		"ref" : ref,
 
 	})
 }
@@ -94,12 +112,24 @@ func itemsGridJSON(c *app.Context) {
 		refid, _ = crypto.DecryptUrl(c.Params.ByName("refId"))
 	)
 
-	itemsList, err := references.ItemsList(user.OrganizationId, refid)
+	ref, err := references.New(refid, user.OrganizationId)
 	if err != nil {
 
 		c.RenderJSON(map[string]interface {}{
 		"Error" : err.Error(),
 	})
+
+		c.Stop()
+
+		return
+	}
+
+	itemsList, err := ref.ItemsList()
+	if err != nil {
+
+		c.RenderJSON(map[string]interface {}{
+		"Error" : err.Error(),
+		})
 
 		c.Stop()
 
@@ -116,22 +146,10 @@ func itemsGridJSON(c *app.Context) {
 		Order: 0,
 	},
 		&grid.Column{
-		Name : "Key",
-		Label: "Код",
-		Cell : grid.CellTypeInt,
-		Order: 1,
-	},
-		&grid.Column{
 		Name : "Label",
 		Label: "Значение",
-		Cell : grid.CellTypeString,
+		Cell : grid.CellTypeStringWithOffset,
 		Order: 2,
-	},
-		&grid.Column{
-		Name : "Ord",
-		Label: "Порядок в списке",
-		Cell : grid.CellTypeInt,
-		Order: 3,
 	},
 		&grid.Column{
 		Name : "actions",
@@ -145,10 +163,183 @@ func itemsGridJSON(c *app.Context) {
 
 }
 
-func editItems(c *app.Context) {
+func editItem(c *app.Context) {
 
-	f := form.New("Элементы справочника", "register", "login_salt")
+	var (
+		user = c.Get("user").(auth.User)
+		rid, _ = crypto.DecryptUrl(c.Params.ByName("refId"))
+		id, _ = crypto.DecryptUrl(c.Params.ByName("itemId"))
+	)
 
-	c.RenderJSON(f)
+	f := form.New("Элемент", "register", user.SessionID)
+
+	f.Action = fmt.Sprintf("/settings/references/item_edit/%s/%s/", c.Params.ByName("refId"), c.Params.ByName("itemId"))
+
+	ref, err := references.New(rid, user.OrganizationId)
+	if err != nil {
+
+		c.RenderJSON(map[string]interface {}{
+		"Error" : err.Error(),
+	})
+
+		c.Stop()
+
+		return
+	}
+
+	item, err := references.GetItem(id)
+	if err != nil {
+
+		c.RenderJSON(map[string]interface {}{
+			"Error" : err.Error(),
+		})
+
+		c.Stop()
+
+		return
+	}
+
+	f.Fields(ref.Meta.Fields...)
+
+	if ref.Meta.Type == "tree" {
+		f.Fields(&form.Element{
+			Name : "is_group",
+			Label : "Это группа",
+			Order : 990,
+			TypeName : "bool",
+			Type : form.Checkbox,
+	},
+		)
+	}
+
+	if err := f.UnmarshalValues(item.Fields); err != nil {
+
+		c.RenderJSON(map[string]interface{}{
+			"Error" : err.Error(),
+		})
+
+		c.Stop()
+
+		return
+	}
+
+	if c.IsPost() {
+
+		if err := f.ParseForm(nil, c.Request); err != nil {
+
+		c.RenderJSON(map[string]interface{}{
+			"Error" : err.Error(),
+		})
+
+			c.Stop()
+
+			return
+
+		}
+
+		fv := f.Values()
+
+		if err := ref.SaveItem(item, fv); err != nil {
+
+			c.RenderJSON(map[string]interface{}{
+			"Error" : err.Error(),
+		})
+
+			c.Stop()
+
+			return
+
+		}
+
+		c.RenderJSON(map[string]interface{}{
+		"s" : true,
+	})
+
+		c.Stop()
+
+		return
+	}
+
+	c.RenderJSON(f.Context())
+
+}
+
+func addItem(c *app.Context) {
+
+	var (
+		user = c.Get("user").(auth.User)
+		rid, _ = crypto.DecryptUrl(c.Params.ByName("refId"))
+		pid, _ = crypto.DecryptUrl(c.Params.ByName("itemId"))
+	)
+
+	ref, err := references.New(rid, user.OrganizationId)
+	if err != nil {
+
+		c.RenderJSON(map[string]interface {}{
+			"Error" : err.Error(),
+		})
+
+		c.Stop()
+
+		return
+	}
+
+	f := form.New("Новый элемент", "ref_element", user.SessionID)
+
+	f.Action = fmt.Sprintf("/settings/references/item_add/%s/%s/", c.Params.ByName("refId"), c.Params.ByName("itemId"))
+
+	f.Fields(ref.Meta.Fields...)
+
+	if ref.Meta.Type == "tree" {
+			f.Fields(&form.Element{
+				Name : "is_group",
+				Label : "Это группа",
+				Order : 990,
+				TypeName : "bool",
+				Type : form.Checkbox,
+			},
+		)
+	}
+
+	if c.IsPost() {
+
+		if err := f.ParseForm(nil, c.Request); err != nil {
+
+		c.RenderJSON(map[string]interface{}{
+			"Error" : err.Error(),
+		})
+
+			c.Stop()
+
+			return
+
+		}
+
+		fv := f.Values()
+
+		fv["pid"] = fmt.Sprintf("%d",pid)
+
+		if err := ref.SaveItem(&references.Item{ID : 0}, fv); err != nil {
+
+			c.RenderJSON(map[string]interface{}{
+				"Error" : err.Error(),
+			})
+
+			c.Stop()
+
+			return
+
+		}
+
+		c.RenderJSON(map[string]interface{}{
+			"s" : true,
+		})
+
+		c.Stop()
+
+		return
+	}
+
+	c.RenderJSON(f.Context())
 
 }

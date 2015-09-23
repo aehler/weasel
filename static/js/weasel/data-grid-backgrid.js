@@ -5,10 +5,35 @@ var dataGrid = function(url) {
     var columns = [];
     var rows = [];
 
+    var StringOffsetFormatter = _.extend({}, Backgrid.CellFormatter.prototype, {
+        fromRaw: function (rawValue, model) {
+            if (typeof model.attributes.depth != 'undefined') {
+
+                rawValue = '<span style="padding-left: '+model.attributes.depth*10+'px;">'+rawValue+'</span>';
+            }
+            return rawValue;
+        }
+    });
+
     var ActionsFormatter = _.extend({}, Backgrid.CellFormatter.prototype, {
         fromRaw: function (rawValue, model) {
 
             return rawValue;
+        }
+    });
+
+    Backgrid.StringWithOffsetCell = Backgrid.Cell.extend({
+        className: "actions-cell",
+        formatter: StringOffsetFormatter,
+        render: function () {
+
+            var formattedValue = this.formatter.fromRaw(this.model.get(this.column.get("name")), this.model);
+
+            this.$el.empty();
+
+            this.$el.append(formattedValue);
+
+            return this;
         }
     });
 
@@ -24,19 +49,25 @@ var dataGrid = function(url) {
                 for (var property in formattedValue[i]) {
                     if (formattedValue[i].hasOwnProperty(property)) {
                         this.$el.append($("<a>", {
-                            href: formattedValue[i][property],
+                            href: formattedValue[i][property]["href"],
                             title: property,
+                            "data-target": formattedValue[i][property]["target"],
                             class: "jsForm"
+
+                        }).on("click",function(event){
+
+                            if ($(event.currentTarget).attr("data-target") == "jsForm") {
+
+                                event.preventDefault();
+                                event.stopPropagation();
+
+                                linkClickHandler($(event.currentTarget).attr("href"));
+
+                                return false;
+                            }
                         }).text(property));
-                        //    .on("click",function(event){
-                        //
-                        //    event.preventDefault();
-                        //    event.stopPropagation();
-                        //
-                        //    linkClickHandler($(event.currentTarget).attr("href"));
-                        //
-                        //    return false;
-                        //});
+
+                        this.$el.append(" ");
                     }
                 }
 

@@ -1,8 +1,11 @@
 package form
 
 import (
-	"net/http"
 	"encoding/json"
+	"weasel/app/crypto"
+	"net/http"
+	"sort"
+	"fmt"
 )
 
 type Form struct {
@@ -24,7 +27,20 @@ func New(t, n, s string) *Form {
 		Elements:  []*Element{},
 		Method  :  "POST",
 		skipFields : map[string]interface {}{},
+		salt    : s,
 	}
+}
+
+func (f *Form) Fields(els ...*Element) {
+
+	for _, el := range els {
+
+		el.HashName = crypto.Encrypt(el.Name, f.salt)
+
+		f.Elements = append(f.Elements, el)
+
+	}
+
 }
 
 func (f *Form) ParseForm(reciever interface {}, req *http.Request) error {
@@ -33,23 +49,63 @@ func (f *Form) ParseForm(reciever interface {}, req *http.Request) error {
 
 	for _, e := range f.Elements {
 
-		e.Value = append(e.Value, req.PostFormValue(e.HashName))
+		switch e.Type {
 
+		case Checkbox:
+
+			e.Value = append(e.Value, fmt.Sprintf("%v",req.Form[e.HashName] != nil))
+
+		default:
+
+			e.Value = append(e.Value, req.PostFormValue(e.HashName))
+
+		}
+
+	}
+
+	if reciever == nil {
+
+		return nil
 	}
 
 	return f.unmarshal(reciever)
 }
 
-func (f *Form) Json() string {
+func (f *Form) Values() map[string]string {
 
-	m, err := json.Marshal(f)
+	res := map[string]string{}
 
-	if err != nil {
+	for _, el := range f.Elements {
 
-		return "{}"
+		res[el.Name] = el.GetValue()
+
 	}
 
-	return string(m)
+	return res
+}
+
+func (f *Form) UnmarshalValues(src string) error {
+
+	vals := map[string]interface {}{}
+
+	if err := json.Unmarshal([]byte(src), &vals); err != nil {
+		return err
+	}
+
+	for _, e := range f.Elements {
+
+		e.Value = append(e.Value, fmt.Sprintf("%v", vals[e.Name]))
+
+	}
+
+	return nil
+}
+
+func (f *Form) Context() *Form {
+
+	sort.Sort(f)
+
+	return f
 }
 
 func (f *Form) Skip(fields ...string) {
@@ -59,4 +115,16 @@ func (f *Form) Skip(fields ...string) {
 		f.skipFields[nm] = "skip"
 	}
 
+}
+
+func (f *Form) Len() int {
+	return len(f.Elements)
+}
+
+func (f *Form) Swap(i, j int) {
+	f.Elements[i], f.Elements[j] = f.Elements[j], f.Elements[i]
+}
+
+func (f *Form) Less(i, j int) bool {
+	return f.Elements[i].Order < f.Elements[j].Order
 }

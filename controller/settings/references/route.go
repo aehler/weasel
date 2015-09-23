@@ -12,6 +12,7 @@ func Route(ap *app.App) {
 	ap.GetPost("/settings/references/edit/:refId/", edit)
 	ap.Get("/settings/references/items/:refId/", auth.Check, itemsList)
 	ap.Get("/settings/references/items_grid/:refId/", auth.Check, itemsGridJSON)
-	ap.GetPost("/settings/references/edit_items/:refId/", auth.Check, editItems)
+	ap.GetPost("/settings/references/item_edit/:refId/:itemId/", auth.Check, editItem)
+	ap.GetPost("/settings/references/item_add/:refId/:itemId/", auth.Check, addItem)
 
 }

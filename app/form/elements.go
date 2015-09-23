@@ -14,6 +14,7 @@ type Element struct {
 	Type uint `json:"-"`
 	TypeName string `json:"t"`
 	Order uint
+	Options Options `json:"o"`
 }
 
 func (e *Element) GetValue() string {

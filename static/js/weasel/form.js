@@ -39,9 +39,9 @@ var JSForm = {
                     return;
                 }
 
-                if (data.s == false) {
+                if (typeof data.Error != 'undefined') {
 
-                    Weasel.RenderError(data.e);
+                    Weasel.RenderError(data.Error);
 
                     return;
                 }
@@ -68,6 +68,10 @@ var JSForm = {
 
                 $("#formModal").modal("toggle").find(".modal-body").eq(0).html(f);
                 $("#formModal").find("form").eq(0).attr("action", JSForm.Meta.url);
+
+                $('#formModal').find(".date-picker").datepicker({
+                    autoclose: true
+                });
 
                 if (typeof data.url != "undefined") {
 
@@ -134,6 +138,24 @@ var ParseForm = function(data) {
  
                 break;
 
+            case 'uint':
+
+                popup += '<label class="control-label" for="'+data['e'][i]['n']+'">' + data['e'][i]['l'] + ' ' + required + '</label>';
+                popup += '<div class="controls form-group"><div class="input-group col-sm-11"> ';
+                popup += '<input class="' + error + ' form-control parsley-validated" type="number" name="' + data['e'][i]['n'] + '" id="' + data['e'][i]['n'] + '" value="' + value + '">';
+                popup += '</div></div>';
+
+                break;
+
+            case 'number':
+
+                popup += '<label class="control-label" for="'+data['e'][i]['n']+'">' + data['e'][i]['l'] + ' ' + required + '</label>';
+                popup += '<div class="controls form-group"><div class="input-group col-sm-11"> ';
+                popup += '<input class="' + error + ' form-control parsley-validated" type="number" name="' + data['e'][i]['n'] + '" id="' + data['e'][i]['n'] + '" value="' + value + '">';
+                popup += '</div></div>';
+
+                break;
+
             case 'hidden':
 
                 popup += '<input class="' + error + '" type="hidden" name="' + data['e'][i]['n'] + '" value="' + value + '">';
@@ -169,16 +191,31 @@ var ParseForm = function(data) {
                 popup += '<input class="' + error + '" type="password" name="' + data['e'][i]['n'] + 'c">';
                 break;
 
-            case 'textarea':
+            case 'taglist':
 
-                popup += '<h5>' + data['e'][i]['l'] + required + '</h5>';
-                popup += '<textarea class="' + error + '" name="' + data['e'][i]['n'] + '" rows="4">' + value +  '</textarea>';
+                popup += '<label class="control-label" for="'+data['e'][i]['n']+'">' + data['e'][i]['l'] + ' ' + required + '</label>';
+                popup += '<div class="controls form-group"><div class="input-group col-sm-11"> ';
+                popup += '<textarea class="' + error + ' form-control" name="' + data['e'][i]['n'] + '" id="' + data['e'][i]['n'] + '">' + value + '</textarea>';
+                popup += '</div></div>';
 
                 break;
 
-            case 'datepicker':
-                popup += '<h5>' + data['e'][i]['l'] + '</h5>';
-                popup += '<input class="datepicker ' + error + '" type="text" name="' + data['e'][i]['n'] + '" value="' + value + '">';
+            case 'textarea':
+
+                popup += '<label class="control-label" for="'+data['e'][i]['n']+'">' + data['e'][i]['l'] + ' ' + required + '</label>';
+                popup += '<div class="controls form-group"><div class="input-group col-sm-11"> ';
+                popup += '<textarea class="' + error + ' form-control" name="' + data['e'][i]['n'] + '" id="' + data['e'][i]['n'] + '">' + value + '"</textarea>';
+                popup += '</div></div>';
+
+                break;
+
+            case 'date':
+
+
+                popup += '<label for="' + data['e'][i]['n'] + '" class="control-label">' + data['e'][i]['l'] + '</label>';
+                popup += '<div class="controls form-group"><div class="input-group col-sm-11"> ';
+                popup += '<input id="' + data['e'][i]['n'] + '" class="form-control date-picker" name="' + data['e'][i]['n'] + '" value="' + value + '" type="text">';
+                popup += '</div></div>';
 
                 break;
             case 'datetimepicker':
@@ -202,15 +239,20 @@ var ParseForm = function(data) {
                
                 break;
 
-            case 'checkbox':
+            case 'bool':
 
                 var checked = "";
 
-                if (data['e'][i]['v'] == true) {
+                console.log(data['e'][i]['v']);
+
+                if (value == "true") {
                     checked = "checked";
                 }
 
-                popup += '<label><input ' + checked + ' type="checkbox" name="' + data['e'][i]['n'] + '"> <span>' + data['e'][i]['l'] + '</span></label>';
+                popup += '<label class="control-label" for="'+data['e'][i]['n']+'">' + data['e'][i]['l'] + ' ' + required + '</label>';
+                popup += '<div class="controls form-group"><div class="input-group col-sm-11"> ';
+                popup += '<input class="' + error + ' form-control" type="checkbox" '+checked+' name="' + data['e'][i]['n'] + '" id="' + data['e'][i]['n'] + '" value="' + value + '">';
+                popup += '</div></div>';
                 
                 break;
 
@@ -221,7 +263,11 @@ var ParseForm = function(data) {
                 break;
 
             case 'select':
-                popup += '<h5>' + data['e'][i]['l'] + '</h5>';
+
+                popup += '<label class="control-label" for="'+data['e'][i]['n']+'">' + data['e'][i]['l'] + ' ' + required + '</label>';
+                popup += '<div class="controls form-group"><div class="input-group col-sm-11"> ';
+
+                //popup += '<h5>' + data['e'][i]['l'] + '</h5>';
 
                 popup += '<select class="selectpicker ' + error + '"  name="' + data['e'][i]['n'] + '">';
                 var j;
@@ -234,6 +280,8 @@ var ParseForm = function(data) {
                     popup += '<option value="' + data['e'][i]['o'][j]['v'] + '" ' + selected + '>' + data['e'][i]['o'][j]['n'] + '</option>';
                 }
                 popup += '</select>';
+
+                popup += '</div></div>';
 
                 break;
 

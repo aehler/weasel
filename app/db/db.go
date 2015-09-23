@@ -5,6 +5,7 @@ import (
 	"gopkg.in/yaml.v2"
 	"io/ioutil"
 	"log"
+	"fmt"
 )
 
 type dbcreds struct {
@@ -16,7 +17,7 @@ type dbcreds struct {
 
 func New(config string)  *sqlx.DB {
 
-	data, err := ioutil.ReadFile(config)
+	data, err := ioutil.ReadFile(fmt.Sprintf("%s/config.yml", config))
 
 	if err != nil {
 

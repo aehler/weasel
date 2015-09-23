@@ -114,7 +114,7 @@ $(function(){
 
         $('.date-picker').datepicker({
             autoclose: true
-        });
+        }).setDefaults( $.datepicker.regional[ "ru" ] );
         var $btnCalendar = $('#btn-select-calendar');
         $btnCalendar.datepicker({
             autoclose: true

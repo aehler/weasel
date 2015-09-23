@@ -1,6 +1,7 @@
 package main
 
 import (
+	"weasel/controller/budget"
 	"weasel/controller/settings"
 	"weasel/controller/personal"
 	"weasel/controller/index"
@@ -18,7 +19,7 @@ type Router interface {
 
 var (
 	port   = flag.Uint("port", 80, "the port to listen on")
-	config = flag.String("config", "./config.yml", "config file")
+	config = flag.String("config", "conf.d", "config directory")
 )
 
 func main() {
@@ -40,5 +41,6 @@ func collect(a *app.App) {
 	personal.Route(a)
 	index.Route(a)
 	settings.Route(a)
+	budget.Route(a)
 
 }

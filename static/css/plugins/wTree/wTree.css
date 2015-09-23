@@ -1,0 +1,25 @@
+.offset-wtree-1 {
+    padding-left: 20px;
+}
+
+.wtree-toggle {
+    position: relative;
+    left: -24px;
+    top: -14px;
+    display: inline;
+    z-index: 1;
+    width: 15px;
+    height: 12px;
+    background: transparent url("/static/visual/img/icons.png") repeat scroll -296px -214px;
+    cursor: pointer;
+    -moz-user-select: none;
+    float: left;
+}
+
+.wtree-toggle.open {
+    background: transparent url("/static/visual/img/icons.png") repeat scroll -274px -214px;
+}
+
+.wtree-selected {
+    font-weight: bold;
+}

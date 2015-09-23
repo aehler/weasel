@@ -4,6 +4,7 @@ type CellType string
 
 const (
 	CellTypeString CellType = "string"
+	CellTypeStringWithOffset CellType = "stringWithOffset"
 	CellTypeInt CellType = "integer"
 	CellTypeFloat CellType = "number"
 	CellTypeDate CellType = "date"
