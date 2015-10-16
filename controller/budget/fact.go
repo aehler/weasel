@@ -26,9 +26,19 @@ func fact(c *app.Context) {
 
 func factGrid(c *app.Context) {
 
-	fact := &budget.FactRows{}
+	user := c.Get("user").(auth.User)
 
-	g := grid.New(fact)
+	rows, err := budget.GetFactRows(user.OrganizationId)
+
+	if err != nil {
+		c.RenderJSON(map[string]interface {}{
+			"Error" : err.Error(),
+		})
+
+		return
+	}
+
+	g := grid.New(rows)
 
 	g.Column(
 		&grid.Column{
@@ -44,14 +54,14 @@ func factGrid(c *app.Context) {
 		Order: 1,
 	},
 		&grid.Column{
-		Name : "cost_item",
+		Name : "cost_items",
 		Label: "Статья бюджета",
 		Cell : grid.CellTypeString,
 		Order: 2,
 	},
 		&grid.Column{
-		Name : "user",
-		Label: "Владелец",
+		Name : "importance",
+		Label: "Приоритет платежа",
 		Cell : grid.CellTypeString,
 		Order: 3,
 	},

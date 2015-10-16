@@ -2,7 +2,9 @@ package references
 
 import (
 	"weasel/app/form"
+	"encoding/json"
 	"strconv"
+	"errors"
 )
 
 type Dimensions []*Dimension
@@ -81,4 +83,31 @@ func (d *Dimensions) MapValues(vals map[string]string) {
 
 	}
 
+}
+
+func (d *Dimensions) Scan(src interface {}) error {
+
+	var source []byte
+
+	switch src.(type) {
+
+	case string:
+
+		source = []byte(src.(string))
+
+	case []byte:
+
+		source = src.([]byte)
+
+	default:
+
+		return errors.New("Incompatible type for Dimensions")
+	}
+
+	if err := json.Unmarshal(source, &d); err != nil {
+
+		return err
+	}
+
+	return nil
 }

@@ -5,6 +5,7 @@ import (
 	"weasel/app/session"
 	"weasel/app/registry"
 	"encoding/json"
+	"errors"
 	"fmt"
 )
 
@@ -64,4 +65,31 @@ func Check(c *app.Context) {
 	u.SessionID = sd
 
 	c.Set("user", u)
+}
+
+func (u *User) Scan(src interface {}) error {
+
+	var source []byte
+
+	switch src.(type) {
+
+	case string:
+
+		source = []byte(src.(string))
+
+	case []byte:
+
+		source = src.([]byte)
+
+	default:
+
+		return errors.New("Incompatible type for auth.User")
+	}
+
+	if err := json.Unmarshal(source, &u); err != nil {
+
+		return err
+	}
+
+	return nil
 }

@@ -4,16 +4,10 @@ import (
 	"weasel/lib/references"
 	"weasel/middleware/auth"
 	"weasel/app/registry"
-	"weasel/app/grid"
 	"encoding/json"
 	"time"
 )
 
-
-func (f *FactRows)GridRows(c []*grid.Column) []map[string]interface {} {
-
-	return []map[string]interface {}{}
-}
 
 func NewFact(user *auth.User) *Fact {
 
@@ -21,7 +15,7 @@ func NewFact(user *auth.User) *Fact {
 		FactID : 0,
 		Sum : 0,
 		Tags : []string{},
-		Date : "",
+		Date : time.Now(),
 		User : user,
 		Dimensions : &references.Dimensions{
 			&references.Dimension{
@@ -54,7 +48,6 @@ func (f *Fact) Save() error {
 	var (
 		fd, fu []byte
 		r uint
-		t time.Time
 	)
 
 
@@ -74,18 +67,12 @@ func (f *Fact) Save() error {
 
 	}
 
-	if t, err = time.Parse("02.01.2006", f.Date); err != nil {
-
-		t = time.Time{}
-
-	}
-
 	if err := registry.Registry.Connect.Get(&r, `select * from weasel_main.save_budget_operation($1, $2, $3, $4, $5, $6, $7)`,
 		f.FactID,
 		f.User.UserID,
 		f.User.OrganizationId,
 		f.Sum,
-		t.Format("2006-01-02"),
+		f.Date.Format("2006-01-02"),
 		string(fu),
 		string(fd),
 	); err != nil {
