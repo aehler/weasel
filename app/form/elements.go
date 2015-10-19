@@ -1,13 +1,13 @@
 package form
 
 import (
-	"strings"
+	"fmt"
 )
 
 type Element struct {
 	Name string
 	HashName string `json:"n"`
-	Value []string `json:"v"`
+	Value interface {} `json:"v"`
 	Label string `json:"l"`
 	PlaceHolder string
 	Description string
@@ -19,6 +19,6 @@ type Element struct {
 
 func (e *Element) GetValue() string {
 	
-	return strings.Join(e.Value, ", ")
+	return fmt.Sprintf("%v", e.Value)
 	
 }

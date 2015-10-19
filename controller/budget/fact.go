@@ -133,9 +133,6 @@ func factForm(c *app.Context) {
 	}
 
 	for i, dim := range *fact.Dimensions {
-
-		fmt.Println(dim)
-
 		post.Fields(
 			&form.Element{
 				Name : dim.ReferenceAlias,
@@ -147,6 +144,15 @@ func factForm(c *app.Context) {
 			},
 		)
 
+	}
+
+	if err := post.SetValues(fact); err != nil {
+
+		c.RenderJSON(map[string]interface {}{
+			"Error" : err.Error(),
+		})
+
+		return
 	}
 
 	if c.IsPost() {

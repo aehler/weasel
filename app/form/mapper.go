@@ -49,6 +49,7 @@ func (f *Form) MapStruct(s interface {}) error {
 	return nil
 }
 
+//Set values to struct
 func (f *Form) unmarshal(s interface {}) error {
 
 	v := reflect.ValueOf(s)
@@ -134,7 +135,56 @@ func (f *Form) unmarshal(s interface {}) error {
 	return nil
 }
 
+//Caller for unmarshal
 func (f *Form) MapValues(r interface {}) error {
 
 	return f.unmarshal(r)
+}
+
+//Set values from struct to elements
+func (f *Form) SetValues(s interface {}) error {
+
+	st := reflect.TypeOf(s)
+
+	sv := reflect.ValueOf(s)
+
+	if st.Kind() == reflect.Ptr {
+
+		st = st.Elem()
+		sv = sv.Elem()
+
+	}
+
+	if st.Kind() != reflect.Struct {
+
+		return errors.New(fmt.Sprintf("Form SetValues recieved %s, but needs Struct", st.Kind().String()))
+	}
+
+	for i := 0; i < st.NumField(); i++ {
+
+		field := st.Field(i)
+
+		if field.Tag.Get("weaselform") == "" {
+
+			continue
+		}
+
+		if f.skipFields[field.Name] != nil {
+
+			continue
+		}
+
+		for _, e := range f.Elements {
+
+			if e.Name == field.Name {
+
+				e.Value = sv.FieldByName(field.Name).Interface()
+
+			}
+
+		}
+
+	}
+
+	return nil
 }

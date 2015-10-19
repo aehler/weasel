@@ -53,11 +53,11 @@ func (f *Form) ParseForm(reciever interface {}, req *http.Request) error {
 
 		case Checkbox:
 
-			e.Value = append(e.Value, fmt.Sprintf("%v",req.Form[e.HashName] != nil))
+			e.Value = fmt.Sprintf("%v",req.Form[e.HashName] != nil)
 
 		default:
 
-			e.Value = append(e.Value, req.PostFormValue(e.HashName))
+			e.Value = req.PostFormValue(e.HashName)
 
 		}
 
@@ -94,7 +94,7 @@ func (f *Form) UnmarshalValues(src string) error {
 
 	for _, e := range f.Elements {
 
-		e.Value = append(e.Value, fmt.Sprintf("%v", vals[e.Name]))
+		e.Value = vals[e.Name]
 
 	}
 
