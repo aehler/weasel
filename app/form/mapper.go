@@ -110,7 +110,7 @@ func (f *Form) unmarshal(s interface {}) error {
 
 	}
 
-	//@todo Try to map dimensions...failed
+	//@todo Try to map dimensions
 
 //	for n := 0; n < v.Elem().NumField(); n++ {
 //

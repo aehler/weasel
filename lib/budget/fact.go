@@ -38,6 +38,13 @@ func NewFact(user *auth.User) *Fact {
 
 }
 
+func (f *Fact) FactById(id uint) error {
+
+	return registry.Registry.Connect.Get(f, `select id, sum, date_op, dims_meta, user_meta
+		from weasel_main.budget_operations where id = $1
+		order by date_op desc`, id)
+}
+
 func (f *Fact) DimensionOptions() error {
 
 	return references.DimOptions(f.Dimensions, f.User.OrganizationId)

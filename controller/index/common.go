@@ -59,7 +59,7 @@ func Login(c *app.Context) {
 				c.RenderError(err.Error())
 			}
 
-			fmt.Println("couldn't login")
+			fmt.Println("couldn't login", err)
 
 			c.Stop()
 

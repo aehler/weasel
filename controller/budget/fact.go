@@ -4,6 +4,7 @@ import (
 	"weasel/app"
 	"weasel/app/form"
 	"weasel/app/grid"
+	"weasel/app/crypto"
 	"weasel/lib/budget"
 	"weasel/middleware/auth"
 	"fmt"
@@ -80,7 +81,18 @@ func factGrid(c *app.Context) {
 func factForm(c *app.Context) {
 
 	user := c.Get("user").(auth.User)
-	//id, _ = crypto.DecryptUrl(c.Params.ByName("rowId"))
+	id, _ := crypto.DecryptUrl(c.Params.ByName("rowId"))
+
+	fact := budget.NewFact(&user)
+
+	if err := fact.FactById(id); err != nil {
+
+		c.RenderJSON(map[string]interface {}{
+		"Error" : err.Error(),
+	})
+
+		return
+	}
 
 	post := form.New("Операция", "", user.SessionID)
 
@@ -110,8 +122,6 @@ func factForm(c *app.Context) {
 		},
 	)
 
-	fact := budget.NewFact(&user)
-
 	if err := fact.DimensionOptions(); err != nil {
 
 		c.RenderJSON(map[string]interface {}{
@@ -123,6 +133,8 @@ func factForm(c *app.Context) {
 	}
 
 	for i, dim := range *fact.Dimensions {
+
+		fmt.Println(dim)
 
 		post.Fields(
 			&form.Element{

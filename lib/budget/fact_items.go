@@ -43,8 +43,9 @@ func (r FactRows) GridRows(cols []*grid.Column) []map[string]interface {}{
 
 		cr["actions"] = []map[string]interface {}{
 			map[string]interface {}{"Редактировать" : map[string]interface{}{
-				"href" : fmt.Sprintf("/budget/fact/edit/%s", crypto.EncryptUrl(row.FactID))},
-
+				"href" : fmt.Sprintf("/budget/fact/edit/%s", crypto.EncryptUrl(row.FactID)),
+				"target" : "jsForm",
+			},
 			}}
 
 		rows = append(rows, cr)
