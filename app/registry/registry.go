@@ -6,12 +6,15 @@ import (
 	"weasel/app/db"
 )
 
-var Registry struct {
-		Connect *sqlx.DB
-		Session *session.SessionStorage
-		SessionKeys []*[32]byte
-		ReferenceConf map[string]*refConf
-	}
+type registry struct {
+	Connect *sqlx.DB
+	Session *session.SessionStorage
+	SessionKeys []*[32]byte
+	ReferenceConf map[string]*refConf
+	storage map[string]*storage
+}
+
+var Registry registry
 
 func Init(config string) {
 
@@ -24,4 +27,13 @@ func Init(config string) {
 		} )
 
 	readRefConf(config)
+
+	readStorageConf(config)
+
+}
+
+func (r *registry) Storage(key string) *storage {
+
+	return Registry.storage[key]
+
 }

@@ -71,3 +71,22 @@ currency:
       name: code
       label: Код валюты
       ord: 2
+
+periods:
+  type: tree
+  fields:
+    title:
+      type: text
+      name: title
+      label: Наименование периода
+      ord: 1
+    date_from:
+      type: date
+      name: date_from
+      label: Дата начала периода
+      ord: 2
+    date_to:
+      type: date
+      name: date_to
+      label: Дата окончания периода
+      ord: 3

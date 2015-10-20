@@ -5,6 +5,7 @@ import (
 	"weasel/controller/settings"
 	"weasel/controller/personal"
 	"weasel/controller/index"
+	"weasel/controller/storage"
 	"weasel/app"
 	"log"
 	"flag"
@@ -42,5 +43,5 @@ func collect(a *app.App) {
 	index.Route(a)
 	settings.Route(a)
 	budget.Route(a)
-
+	storage.Route(a)
 }
