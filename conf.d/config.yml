@@ -9,3 +9,7 @@ postgresql:
         username: "weasel"
         password: "qwr123rrr"
         database: "postgres"
+
+path:
+        templates: "/srv/src/weasel/templates/pages"
+        static: "/srv/src/weasel/static/"

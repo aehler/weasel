@@ -1,0 +1,24 @@
+{% for c in gridControls.controls %}
+
+        {% if c|lower == "grid_control_period" %}
+            <select data-placeholder="Выбор периода планирования" data-style="btn-default"
+                    class="selectpicker" tabindex="-1"
+                    id="multiple-period-grid" onchange="getDataGrid('{{ url }}?p='+$('#multiple-period-grid').val());">
+
+                {% for gcc in gridControls.context %}
+
+                    {% if gcc.ReferenceAlias == "periods" %}
+                        {% for o in gcc.Options %}
+
+                            <option value="{{ o.Value }}">{{ o.Label }}</option>
+
+                        {% endfor %}
+                    {% endif %}
+
+                {% endfor %}
+
+            </select>
+        {% endif %}
+
+
+{% endfor %}

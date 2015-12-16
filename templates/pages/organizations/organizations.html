@@ -1,12 +1,12 @@
 {% extends "../blank.html" %}
 
 {% block breadcrumbs %}
-        Бюджет > Планирование
+        Настройки > Организации
 {% endblock %}
 
 {% block title %}
 
-        Планирование
+        Организации
 
 {% endblock %}
 
@@ -19,7 +19,7 @@
 
     <section class="widget">
         <div class="btn-group">
-            <a href="/budget/plan/edit/{{ 0|EncryptURL }}/" class="jsForm btn btn-primary">Запланировать операцию</a>
+            <a href="/settings/organizations/edit/{{ 0|EncryptURL }}/" class="btn btn-primary">Добавить организацию</a>
         </div>
 
     </section>

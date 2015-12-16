@@ -33,6 +33,9 @@ func NewFact(user *auth.User) *Fact {
 			&references.Dimension{
 				ReferenceAlias : "project",
 			},
+			&references.Dimension{
+				ReferenceAlias : "period",
+			},
 		},
 	}
 

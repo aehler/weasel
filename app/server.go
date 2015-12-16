@@ -17,9 +17,11 @@ func New(config string) *App {
 		Router: httprouter.New(),
 	}
 
-	InitTemplates()
+	pathes := registry.ReadPathConf(config)
 
-	a.Router.ServeFiles("/static/*filepath", http.Dir("/srv/src/weasel/static/"))
+	InitTemplates(pathes.Templates)
+
+	a.Router.ServeFiles("/static/*filepath", http.Dir(pathes.Static))
 
 	//a.Router.NotFound = http.FileServer(http.Dir("static/404.html")).ServeHTTP
 

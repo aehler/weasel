@@ -14,6 +14,12 @@ func (f *Form) MapStruct(s interface {}) error {
 
 	st := reflect.TypeOf(s)
 
+	if st.Kind() == reflect.Ptr {
+
+		st = st.Elem()
+
+	}
+
 	if st.Kind() != reflect.Struct {
 
 		return errors.New(fmt.Sprintf("Form MapStruct recieved %s, but needs Struct", st.Kind().String()))
@@ -31,6 +37,12 @@ func (f *Form) MapStruct(s interface {}) error {
 		if f.skipFields[field.Name] != nil {
 
 			continue
+		}
+
+		if elementType[field.Tag.Get("weaselform")] == 0 {
+
+			return errors.New(fmt.Sprintf("Inappropriate element type %s", field.Tag.Get("weaselform")))
+
 		}
 
 		e := Element{

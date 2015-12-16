@@ -6,6 +6,7 @@ import (
 	"weasel/app/grid"
 	"weasel/app/crypto"
 	"weasel/lib/budget"
+	"weasel/lib/references"
 	"weasel/middleware/auth"
 	"fmt"
 )
@@ -14,15 +15,27 @@ import (
 func fact(c *app.Context) {
 
 	var (
-		//user = c.Get("user").(auth.User)
+		user = c.Get("user").(auth.User)
 	)
+
+	dims := references.Dimensions{
+		&references.Dimension{
+			ReferenceAlias : "periods",
+		},
+	}
+
+	references.DimOptions(&dims, user.OrganizationId)
 
 	c.RenderHTML("/budget/grid.html", map[string]interface {} {
 
 		"pageTitle" : "Бюджет",
 		"gridURL" : "/budget/fact/grid/",
-
+		"gridControls" : map[string]interface {}{
+			"controls" : []grid.GridControl{grid.ControlPeriod},
+			"context" : dims,
+		},
 	})
+
 }
 
 func factGrid(c *app.Context) {

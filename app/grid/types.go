@@ -1,6 +1,7 @@
 package grid
 
 type CellType string
+type GridControl string
 
 const (
 	CellTypeString CellType = "string"
@@ -10,6 +11,8 @@ const (
 	CellTypeDate CellType = "date"
 	CellTypeUri CellType = "uri"
 	CellTypeActions CellType = "actions"
+
+	ControlPeriod GridControl = "grid_control_period"
 )
 
 type Column struct {

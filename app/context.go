@@ -6,6 +6,7 @@ import (
 	"net/http"
 	"encoding/json"
 	"sync"
+	"time"
 )
 
 type Context struct {
@@ -97,6 +98,7 @@ func (c *Context) RenderHTML(tmplName string, context map[string]interface {}) {
 	c.ResponseWriter.Header().Set("Expires", "0")
 
 	context["currentUser"] = c.Get("user")
+	context["currentTime"] = time.Now()
 
 	if err := Templates[tmplName].ExecuteWriter(pongo2.Context(context), c.ResponseWriter); err != nil {
 

@@ -12,7 +12,9 @@ var Templates = map[string]*pongo2.Template{}
 
 var dir = "/srv/src/weasel/templates/pages"
 
-func InitTemplates() {
+func InitTemplates(d string) {
+
+	dir = d
 
 	pongo2.RegisterFilter("EncryptURL", func(in *pongo2.Value, param *pongo2.Value) (*pongo2.Value, *pongo2.Error) {
 

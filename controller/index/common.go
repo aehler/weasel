@@ -11,7 +11,17 @@ import (
 
 func Index(c *app.Context) {
 
-	c.RenderHTML("/blank.html", map[string]interface {} {
+	user := c.Get("user")
+
+	if user != nil {
+
+		app.Redirect("/dashboard/", c, 302)
+
+		return
+
+	}
+
+	c.RenderHTML("/public.html", map[string]interface {} {
 
 	})
 
@@ -82,9 +92,11 @@ func Login(c *app.Context) {
 
 		}
 
-		c.RenderJSON(map[string]interface {} { "redirect" : "/dashboard/"})
+		app.Redirect("/dashboard/", c, 302)
 
-		c.Stop()
+//		c.RenderJSON(map[string]interface {} { "redirect" : "/dashboard/"})
+//
+//		c.Stop()
 
 		return
 

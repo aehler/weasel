@@ -2,7 +2,7 @@ package budget
 
 import (
 	"weasel/lib/references"
-	"weasel/middleware/auth"
+	"weasel/app/registry"
 )
 
 type Plan struct {
@@ -11,9 +11,18 @@ type Plan struct {
 	Dimensions *references.Dimensions
 }
 
-func MonthlyPlan(user *auth.User) ([]*Plan, error) {
+func GetPlanRows(oid, periodId uint) (FactRows, error) {
 
-	res := []*Plan{}
+	r := FactRows{
+		Items : []*Fact{},
+	}
 
-	return res, nil
+	if err := registry.Registry.Connect.Select(&r.Items, `select * from weasel_operations.get_plan_items($1, $2)`,
+		oid,
+		periodId,
+	); err != nil {
+		return r, err
+	}
+
+	return r, nil
 }

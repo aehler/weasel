@@ -12,6 +12,7 @@ const (
 	Uint
 	Number
 	TagList
+	Hidden
 )
 
 var elementType = map[string]uint {
@@ -26,6 +27,7 @@ var elementType = map[string]uint {
 	"uint" : Uint,
 	"number" : Number,
 	"taglist" : TagList,
+	"hidden" : Hidden,
 }
 
 func MapType(key string) uint {

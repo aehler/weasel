@@ -5,7 +5,9 @@
 
         </h4>
         <div class="actions hidden-xs-portrait">
-            <input id="search" type="search" placeholder="Enter country">
+
+            {% include "gridControlsForeach.html" %}
+
         </div>
     </header>
     <div class="body">
@@ -24,11 +26,18 @@
 <script src="/static/lib/backgrid/backgrid-paginator.js"></script>
 <script src="/static/js/weasel/data-grid-backgrid.js"></script>
 
-
-
         <script>
         $(document).ready(function(){
-            dg = new dataGrid("{{ url }}");
-            dg.DataGrid();
+
+            getDataGrid('{{ url }}');
+
         });
+
+            function getDataGrid(url) {
+
+                $("#table-dynamic").html("");
+
+                dg = new dataGrid(url);
+                dg.DataGrid();
+            }
         </script>
