@@ -17,15 +17,6 @@ COMMENT ON DATABASE postgres IS 'default administrative connection database';
 
 
 --
--- Name: w_muscles; Type: SCHEMA; Schema: -; Owner: postgres
---
-
-CREATE SCHEMA w_muscles;
-
-
-ALTER SCHEMA w_muscles OWNER TO postgres;
-
---
 -- Name: weasel_auth; Type: SCHEMA; Schema: -; Owner: postgres
 --
 
@@ -1224,17 +1215,6 @@ REVOKE ALL ON SCHEMA public FROM PUBLIC;
 REVOKE ALL ON SCHEMA public FROM postgres;
 GRANT ALL ON SCHEMA public TO postgres;
 GRANT ALL ON SCHEMA public TO PUBLIC;
-
-
---
--- Name: w_muscles; Type: ACL; Schema: -; Owner: postgres
---
-
-REVOKE ALL ON SCHEMA w_muscles FROM PUBLIC;
-REVOKE ALL ON SCHEMA w_muscles FROM postgres;
-GRANT ALL ON SCHEMA w_muscles TO postgres;
-GRANT ALL ON SCHEMA w_muscles TO weasel;
-
 
 --
 -- Name: weasel_auth; Type: ACL; Schema: -; Owner: postgres

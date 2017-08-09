@@ -33,7 +33,6 @@ func (s *SessionStorage) Add(ssid string, user interface {}) error {
 	err = s.mcClient.Add(&memcache.Item{
 		Key : ssid,
 		Value : b,
-		Object : user,
 		Flags : 0,
 		Expiration : 3600,
 	})

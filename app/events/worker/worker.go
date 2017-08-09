@@ -1,7 +1,7 @@
 package worker
 
 import (
-	"github.com/akdcode/srm-lib/business_events/event"
+	"app/events/event"
 	"github.com/adjust/redismq"
 	"log"
 	"fmt"

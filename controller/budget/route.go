@@ -14,5 +14,3 @@ func Route(ap *app.App) {
 	ap.Get("/budget/plan/grid/", auth.Check, planGrid)
 	ap.GetPost("/budget/plan/edit/:rowId/", auth.Check, planForm)
 }
-
-
