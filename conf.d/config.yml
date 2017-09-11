@@ -11,5 +11,5 @@ postgresql:
         database: "postgres"
 
 path:
-        templates: "/srv/src/weasel/templates/pages"
+        templates: "/srv/src/weasel/templates/hg-templates"
         static: "/srv/src/weasel/static/"

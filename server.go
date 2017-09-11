@@ -29,19 +29,14 @@ func main() {
 
 	a := app.New(*config)
 
-	collect(a)
-
-	fmt.Println("Starting server on port", *port)
-
-	log.Fatal(http.ListenAndServe(fmt.Sprintf(":%d", *port), a.Router))
-
-}
-
-func collect(a *app.App) {
-
 	personal.Route(a)
 	index.Route(a)
 	settings.Route(a)
 	budget.Route(a)
 	storage.Route(a)
+
+	fmt.Println("Starting server on port", *port)
+
+	log.Fatal(http.ListenAndServe(fmt.Sprintf(":%d", *port), a.Router))
+
 }

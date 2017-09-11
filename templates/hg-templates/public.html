@@ -1,0 +1,146 @@
+{% extends "index.html" %}
+
+{% block breadcrumbs %}
+
+{% endblock %}
+
+{% block title %}
+
+О программе
+
+{% endblock %}
+
+{% block content %}
+
+<div class="main">
+    <div class="content_white">
+        <h2>Lorem ipsum dolor sit amet</h2>
+        <p>diam nonummy nibh euismod tincidunt ut laoreet dolore magna</p>
+    </div>
+    <div class="featured_content" id="feature">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-md-3 feature_grid1">
+                    <i class="icon1"> </i>
+                    <h3 class="m_1"><a href="#">aliquam volu</a></h3>
+                    <p class="m_2">hendrerit in vulputate velit esse molestie consequat, illum dolore feugiat nulla</p>
+                    <a href="#" class="feature_btn">More</a>
+                </div>
+                <div class="col-md-3 feature_grid1">
+                    <i class="icon2"> </i>
+                    <h3 class="m_1"><a href="#">augue duis</a></h3>
+                    <p class="m_2">Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposue</p>
+                    <a href="#" class="feature_btn">More</a>
+                </div>
+                <div class="col-md-3 feature_grid1">
+                    <i class="icon3"> </i>
+                    <h3 class="m_1"><a href="#">soluta nobis</a></h3>
+                    <p class="m_2">claritatem insitam; est usus legentis in iis qui facit eorum claritatem. Investiga</p>
+                    <a href="#" class="feature_btn">More</a>
+                </div>
+                <div class="col-md-3 feature_grid2">
+                    <i class="icon4"> </i>
+                    <h3 class="m_1"><a href="#">quod mazim</a></h3>
+                    <p class="m_2">parum claram, anteposuerit litterarum formas humanitatis per seacula quarta decima</p>
+                    <a href="#" class="feature_btn">More</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="content_white">
+        <h2>hendrerit in vulputate velit</h2>
+        <p>iusto odio dignissim qui blandit praesent luptatum zzril delenit</p>
+    </div>
+    <div class="m_3"><span class="left_line"> </span> <span class="right_line"> </span></div>
+    <div class="container">
+        <ul id="flexiselDemo3">
+            <li><img src="/static/images/p1.jpg" class="img-responsive" alt=""/></li>
+            <li><img src="/static/images/p2.jpg" class="img-responsive" alt=""/></li>
+            <li><img src="/static/images/p3.jpg" class="img-responsive" alt=""/></li>
+            <li><img src="/static/images/p4.jpg" class="img-responsive" alt=""/></li>
+        </ul>
+
+        <div class="portfolio-btn">
+            <a href="#" class="portfolio_btn">View Portfolio</a>
+        </div>
+        <div class="testmonial">
+            <div class="row testmonial_top">
+                <div class="col-md-6">
+                    <ul class="test_box">
+                        <li class="test_img"><img src="/static/images/pic1.jpg" class="img-responsive" alt=""/> </li>
+                        <li class="test_desc">
+                            <h4><a href="#">diam nonummy nibh</a></h4>
+                            <p>hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit luptatum. <a href="#" class="test_btn"> + more</a></p>
+                        </li>
+                        <div class="clearfix">	</div>
+                    </ul>
+                </div>
+                <div class="col-md-6">
+                    <ul class="test_box">
+                        <li class="test_img"><img src="/static/images/pic2.jpg" class="img-responsive" alt=""/> </li>
+                        <li class="test_desc">
+                            <h4><a href="#">consuetudium lector</a></h4>
+                            <p>Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum formas humanitatis per seacula quarta decima et quinta decima. <a href="#" class="test_btn"> + more</a></p>
+                        </li>
+                        <div class="clearfix">	</div>
+                    </ul>
+                </div>
+            </div>
+            <div class="row testmonial_bottom">
+                <div class="col-md-6">
+                    <ul class="test_box">
+                        <li class="test_img"><img src="/static/images/pic3.jpg" class="img-responsive" alt=""/> </li>
+                        <li class="test_desc">
+                            <h4><a href="#">Nam liber tempor</a></h4>
+                            <p>augue duis dolore te feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer pos. <a href="#" class="test_btn"> + more</a></p>
+                        </li>
+                        <div class="clearfix">	</div>
+                    </ul>
+                </div>
+                <div class="col-md-6">
+                    <ul class="test_box">
+                        <li class="test_img"><img src="/static/images/pic4.jpg" class="img-responsive" alt=""/> </li>
+                        <li class="test_desc">
+                            <h4><a href="#">formas humanitatis</a></h4>
+                            <p>claritatem insitam; est usus legentis in iis qui facit eorum claritatem. Investigationes demonstraverunt lectores legere me lius quod ii legunt saepius.. <a href="#" class="test_btn"> + more</a></p>
+                        </li>
+                        <div class="clearfix">	</div>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% verbatim %}
+    <script type="text/javascript">
+        $(window).load(function() {
+
+            $("#flexiselDemo3").flexisel({
+                visibleItems: 4,
+                animationSpeed: 1000,
+                autoPlay: true,
+                autoPlaySpeed: 3000,
+                pauseOnHover: true,
+                enableResponsiveBreakpoints: true,
+                responsiveBreakpoints: {
+                    portrait: {
+                        changePoint:480,
+                        visibleItems: 1
+                    },
+                    landscape: {
+                        changePoint:640,
+                        visibleItems: 2
+                    },
+                    tablet: {
+                        changePoint:768,
+                        visibleItems: 3
+                    }
+                }
+            });
+
+        });
+    </script>
+
+    {% endverbatim %}
+
+{% endblock %}

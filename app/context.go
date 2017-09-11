@@ -99,6 +99,7 @@ func (c *Context) RenderHTML(tmplName string, context map[string]interface {}) {
 
 	context["currentUser"] = c.Get("user")
 	context["currentTime"] = time.Now()
+	context["lang"] = c.Get("lang")
 
 	if err := Templates[tmplName].ExecuteWriter(pongo2.Context(context), c.ResponseWriter); err != nil {
 
@@ -122,5 +123,16 @@ func (c *Context) RenderLayout() {
 	c.ResponseWriter.Header().Set("Expires", "0")
 
 	http.ServeFile(c.ResponseWriter, c.Request, "/srv/src/weasel/static/main.html")
+
+}
+
+func (c *Context) Redirect(url string) {
+
+	c.Header().Set("Cache-Control", "no-cache, no-store, must-revalidate")
+	c.Header().Set("Expires", "0")
+
+	http.Redirect(c.ResponseWriter, c.Request, url, 302)
+
+	c.Stop()
 
 }
