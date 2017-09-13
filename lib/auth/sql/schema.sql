@@ -1,3 +1,5 @@
+create schema weasel_auth;
+
 create sequence weasel_auth.user_id start 1024;
 create sequence weasel_auth.organization_id start 1024;
 

@@ -1,3 +1,5 @@
+create schema weasel_articles;
+
 create table weasel_articles.articles(
 	id bigserial not null primary key,
 	title varchar(255) not null default '',
