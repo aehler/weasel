@@ -75,6 +75,7 @@ func Get(r *http.Request, v interface{}, config *Config) error {
 	if err != nil {
 		return err
 	}
+
 	t, err := base64.URLEncoding.DecodeString(cookie.Value)
 	if err != nil {
 		return err

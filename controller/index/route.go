@@ -4,11 +4,12 @@ import (
 	"weasel/app"
 	"weasel/middleware/guest"
 	"fmt"
+	"weasel/middleware/auth"
 )
 
 func Route(ap *app.App) {
 
-	ap.Get("/", guest.GuestSettings, Index)
+	ap.Get("/", auth.GetAuthUser, Index)
 	ap.GetPost("/login/", Login)
 	ap.Get("/logout/", Logout)
 
@@ -18,10 +19,12 @@ func Route(ap *app.App) {
 
 	})
 
-	ap.Get("/about/", guest.GuestSettings, func(c *app.Context){
+	ap.Get("/about/", auth.GetAuthUser, func(c *app.Context){
 
 		c.RenderHTML(fmt.Sprintf("/%s/about.html", c.Get("lang")), map[string]interface {} {	})
 
 	})
+
+	ap.Get("/topics/", auth.GetAuthUser, Topics)
 
 }

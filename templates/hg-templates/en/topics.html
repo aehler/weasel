@@ -1,0 +1,73 @@
+{% extends "../main.html" %}
+
+{% block menu %}
+{% include "../top-nav.html" with menu="topics" %}
+{% endblock %}
+
+{% block breadcrumbs %}
+<li><a href="/">Home</a></li><li class="active">Topics</li>
+{% endblock %}
+
+{% block title %}
+
+Our topics
+
+{% endblock %}
+
+{% block pageHeader %}
+
+Topics
+
+{% endblock %}
+
+{% block content %}
+
+		<div class="main">
+
+		   <div class="content_white">
+			<h2>We organize guide into variety of topics</h2>
+			<p>For better navigation, comfort use and easy search</p>
+		  </div>
+		  <div class="container">
+		   <div class="testmonial">
+		    <div class="row testmonial_top">
+				{% for t in topics %}
+		    	<div class="col-md-6">
+		    		<ul class="test_box">
+						<li class="test_img"><img src="{{ t.Image }}" class="img-thumbnail img-responsive" alt="transport"></li>
+						<li class="test_desc">
+							<h4><a href="#">{{ t.Title }}</a></h4>
+							<p>{{ t.Description }} <a href="/" class="test_btn"> {{ t.ArticlesCount }}+ articles</a></p>
+					    </li>
+					    <div class="clearfix"> </div>		    				
+		    		</ul>
+		    	</div>
+				{% endfor %}
+		    </div>
+			   <!--
+		    <div class="row testmonial_bottom">
+		    	<div class="col-md-6">
+		    		<ul class="test_box">
+		    			<li class="test_img"><img src="images/pic3.jpg" class="img-responsive" alt=""/> </li>
+						<li class="test_desc">
+							<h4><a href="#">Promo topic 1</a></h4>
+							<p>augue duis dolore te feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer pos. <a href="#" class="test_btn"> + more</a></p>
+					    </li>	
+					    <div class="clearfix"> </div>		    				
+		    		</ul>
+		    	</div>
+		    	<div class="col-md-6">
+		    		<ul class="test_box">
+		    			<li class="test_img"><img src="images/pic4.jpg" class="img-responsive" alt=""/> </li>
+						<li class="test_desc">
+							<h4><a href="#">Promo topic 2</a></h4>
+							<p>claritatem insitam; est usus legentis in iis qui facit eorum claritatem. Investigationes demonstraverunt lectores legere me lius quod ii legunt saepius.. <a href="#" class="test_btn"> + more</a></p>
+					    </li>	
+					    <div class="clearfix"> </div>		    				
+		    		</ul>
+		    	</div>
+		    </div>	-->
+		  </div>    
+		</div>
+
+{% endblock %}

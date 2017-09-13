@@ -11,16 +11,6 @@ import (
 
 func Index(c *app.Context) {
 
-	user := c.Get("user")
-
-	if user != nil {
-
-		app.Redirect("/dashboard/", c, 302)
-
-		return
-
-	}
-
 	c.RenderHTML("/public.html", map[string]interface {} {
 
 	})
@@ -92,7 +82,7 @@ func Login(c *app.Context) {
 
 		}
 
-		app.Redirect("/dashboard/", c, 302)
+		app.Redirect("/", c, 302)
 
 //		c.RenderJSON(map[string]interface {} { "redirect" : "/dashboard/"})
 //

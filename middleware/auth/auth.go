@@ -7,6 +7,7 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
+	"weasel/middleware/guest"
 )
 
 type Auth struct {
@@ -25,6 +26,47 @@ type User struct {
 	Email          string `json:"e" db:"user_email"`
 	IsAdmin        bool   `json:"adm" db:"is_admin"`
 	SessionID      string `json:"-" db:"-"`
+}
+
+func GetAuthUser(c *app.Context) {
+
+	var sd string
+
+	if err := session.Get(c.Request, &sd, &session.Config{Keys : registry.Registry.SessionKeys}); err != nil {
+
+		fmt.Println(err)
+
+		guest.GuestSettings(c)
+
+		return
+	}
+
+	v, err := registry.Registry.Session.Get(sd)
+
+	if err != nil {
+
+		fmt.Println(err)
+
+		guest.GuestSettings(c)
+
+		return
+	}
+
+	u := User{}
+
+	if err := json.Unmarshal(v, &u); err != nil {
+
+		fmt.Println(err)
+
+		guest.GuestSettings(c)
+
+		return
+	}
+
+	u.SessionID = sd
+
+	c.Set("user", u)
+
 }
 
 func Check(c *app.Context) {
