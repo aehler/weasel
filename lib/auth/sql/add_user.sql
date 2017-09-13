@@ -1,5 +1,3 @@
-delimiter //
-
 create or replace function weasel_auth.add_user(
     _organization_id bigint,
     _user_firstname  varchar,
