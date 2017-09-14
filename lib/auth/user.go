@@ -3,10 +3,17 @@ package auth
 import (
 	"weasel/app/registry"
 	"weasel/app/crypto"
-	"weasel/middleware/auth"
 	"time"
 	"fmt"
+	//"encoding/json"
+	//"errors"
 )
+
+type Auth struct {
+	User *User
+	SSID string
+	Lang string
+}
 
 type RegisterForm struct {
 	Login string `weaselform:"login" formLabel:"Email"`
@@ -18,7 +25,7 @@ type RegisterForm struct {
 	UserMiddleName string `weaselform:"text" formLabel:"Отчество"`
 }
 
-type user struct {
+type User struct {
 	UserLastName   string `json:"ul" db:"user_lastname"`
 	UserFirstName  string `json:"uf" db:"user_firstname"`
 	UserMiddleName string `json:"um" db:"user_middlename"`
@@ -30,9 +37,9 @@ type user struct {
 	IsAdmin        bool   `json:"adm" db:"is_admin"`
 }
 
-func AuthUser(login, password string) (*auth.User, error) {
+func AuthUser(login, password string) (*User, error) {
 
-	u := user{}
+	u := User{}
 
 	if err := registry.Registry.Connect.Get(&u, `select user_lastname, user_firstname, user_middlename, user_id, is_active, user_login, user_email, is_admin, organization_id
 	from weasel_auth.users where user_login=$1 and user_password=$2 and is_active = true`,
@@ -42,11 +49,11 @@ func AuthUser(login, password string) (*auth.User, error) {
 
 		time.Sleep(2000 * time.Millisecond)
 
-		return &auth.User{}, err
+		return &User{}, err
 
 	}
 
-	return &auth.User{
+	return &User{
 		UserLastName : u.UserLastName,
 		UserFirstName : u.UserFirstName,
 		UserMiddleName : u.UserMiddleName,
@@ -90,3 +97,30 @@ func AddUser(r RegisterForm) (uint, error) {
 	return uint(res), nil
 
 }
+
+//func (u *User) Scan(src interface {}) error {
+//
+//	var source []byte
+//
+//	switch src.(type) {
+//
+//	case string:
+//
+//		source = []byte(src.(string))
+//
+//	case []byte:
+//
+//		source = src.([]byte)
+//
+//	default:
+//
+//		return errors.New("Incompatible type for auth.User")
+//	}
+//
+//	if err := json.Unmarshal(source, &u); err != nil {
+//
+//		return err
+//	}
+//
+//	return nil
+//}

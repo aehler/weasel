@@ -6,7 +6,7 @@ import (
 	"weasel/app/grid"
 	"weasel/app/form"
 	"weasel/lib/references"
-	"weasel/middleware/auth"
+	"weasel/lib/auth"
 	"fmt"
 )
 
@@ -167,11 +167,12 @@ func editItem(c *app.Context) {
 
 	var (
 		user = c.Get("user").(auth.User)
+		ssid = c.Get("ssid").(string)
 		rid, _ = crypto.DecryptUrl(c.Params.ByName("refId"))
 		id, _ = crypto.DecryptUrl(c.Params.ByName("itemId"))
 	)
 
-	f := form.New("Элемент", "register", user.SessionID)
+	f := form.New("Элемент", "register", ssid)
 
 	f.Action = fmt.Sprintf("/settings/references/item_edit/%s/%s/", c.Params.ByName("refId"), c.Params.ByName("itemId"))
 
@@ -268,6 +269,7 @@ func addItem(c *app.Context) {
 
 	var (
 		user = c.Get("user").(auth.User)
+		ssid = c.Get("ssid").(string)
 		rid, _ = crypto.DecryptUrl(c.Params.ByName("refId"))
 		pid, _ = crypto.DecryptUrl(c.Params.ByName("itemId"))
 	)
@@ -284,7 +286,7 @@ func addItem(c *app.Context) {
 		return
 	}
 
-	f := form.New("Новый элемент", "ref_element", user.SessionID)
+	f := form.New("Новый элемент", "ref_element", ssid)
 
 	f.Action = fmt.Sprintf("/settings/references/item_add/%s/%s/", c.Params.ByName("refId"), c.Params.ByName("itemId"))
 

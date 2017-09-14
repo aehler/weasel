@@ -17,11 +17,15 @@ func Topics(c *app.Context) {
 			"Error" : err.Error(),
 		})
 
+		c.Stop()
+
 		return
 	}
 
 	c.RenderHTML(fmt.Sprintf("/%s/topics.html", lng), map[string]interface {} {
 		"topics" : t,
 	})
+
+	return
 
 }

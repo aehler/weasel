@@ -7,7 +7,7 @@ import (
 	"weasel/app/crypto"
 	"weasel/lib/budget"
 	"weasel/lib/references"
-	"weasel/middleware/auth"
+	"weasel/lib/auth"
 	"fmt"
 )
 
@@ -94,6 +94,7 @@ func factGrid(c *app.Context) {
 func factForm(c *app.Context) {
 
 	user := c.Get("user").(auth.User)
+	ssid := c.Get("ssid").(string)
 	id, _ := crypto.DecryptUrl(c.Params.ByName("rowId"))
 
 	fact := budget.NewFact(&user)
@@ -107,7 +108,7 @@ func factForm(c *app.Context) {
 		return
 	}
 
-	post := form.New("Операция", "", user.SessionID)
+	post := form.New("Операция", "", ssid)
 
 	post.Action = fmt.Sprintf("/budget/fact/edit/%s/", c.Params.ByName("rowId"))
 

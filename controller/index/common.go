@@ -69,7 +69,13 @@ func Login(c *app.Context) {
 
 		ssid := crypto.GenSessionId(u.UserID, u.UserLastName)
 
-		if err := registry.Registry.Session.Add(ssid, u); err != nil {
+		sd := auth.Auth{
+			SSID: ssid,
+			User: u,
+			Lang: "ru",
+		}
+
+		if err := registry.Registry.Session.Add(ssid, sd); err != nil {
 
 			c.RenderError(err.Error())
 		}

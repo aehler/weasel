@@ -4,14 +4,14 @@ import (
 	"weasel/app"
 	"weasel/app/form"
 	"weasel/lib/auth"
-	u "weasel/middleware/auth"
 )
 
 func PersonalEdit(c *app.Context) {
 
-	user := c.Get("user").(u.User)
+	user := c.Get("user").(auth.User)
+	ssid := c.Get("user").(string)
 
-	f := form.New("Мои данные", "register", user.SessionID)
+	f := form.New("Мои данные", "register", ssid)
 
 	data := auth.RegisterForm{
 		UserLastName : user.UserLastName,

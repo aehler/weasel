@@ -2,12 +2,12 @@ package organizations
 
 import (
 	"weasel/app/form"
-	"weasel/middleware/auth"
+	"weasel/lib/auth"
 )
 
 func (o *Organization) Form(u auth.User) (*form.Form, error) {
 
-	f := form.New("organizations", "Организации", u.SessionID)
+	f := form.New("organizations", "Организации", u.Login)
 
 	if err := f.MapStruct(o); err != nil {
 

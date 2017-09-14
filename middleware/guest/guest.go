@@ -6,20 +6,16 @@ import (
 	"weasel/app"
 	"weasel/app/session"
 	"weasel/app/registry"
+	"weasel/lib/auth"
 )
-
-type GuestSession struct {
-	ID string
-	Lang string
-}
 
 func GuestSettings(c *app.Context) {
 
-	gc := GuestSession{}
+	gc := auth.Auth{}
 
 	if err := session.Get(c.Request, &gc, &session.Config{Keys : registry.Registry.SessionKeys}); err == nil {
 
-		c.Set("ssid", gc.ID)
+		c.Set("ssid", gc.SSID)
 		c.Set("lang", gc.Lang)
 
 		return
@@ -28,7 +24,7 @@ func GuestSettings(c *app.Context) {
 
 	ssid := crypto.GenSessionId(0, "guest")
 
-	gc.ID = ssid
+	gc.SSID = ssid
 	gc.Lang = "en"
 
 	if err := session.Set(c.ResponseWriter, gc, &session.Config{Keys : registry.Registry.SessionKeys}); err != nil {
@@ -43,14 +39,14 @@ func GuestSettings(c *app.Context) {
 
 	}
 
-	c.Set("ssid", gc.ID)
+	c.Set("ssid", gc.SSID)
 	c.Set("lang", gc.Lang)
 
 }
 
 func ResetLanguage(c *app.Context) {
 
-	gc := GuestSession{}
+	gc := auth.Auth{}
 
 	lang := c.Params.ByName("lang")
 
@@ -71,6 +67,10 @@ func ResetLanguage(c *app.Context) {
 		}
 
 		c.Set("lang", gc.Lang)
+
+	} else {
+
+		fmt.Println(err)
 
 	}
 

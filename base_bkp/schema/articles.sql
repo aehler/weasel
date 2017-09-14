@@ -13,7 +13,7 @@ create table weasel_articles.articles(
 	created_at timestamp not null default current_timestamp,
 	updated_at timestamp not null default current_timestamp,
 	viewed_count bigint not null default 0,
-	hashtags tsvector not null default '{}',
+	hashtags tsvector not null default '',
 	lang_links jsonb not null
 );
 
@@ -26,8 +26,18 @@ create table weasel_articles.topics(
 	is_deleted boolean not null default false
 );
 
+alter table weasel_articles.topics add column description text not null default '';
+alter table weasel_articles.topics add column image text not null default '';
+
 create index idx_weasel_articles_articles_topics on weasel_articles.articles (topics);
 create index idx_weasel_articles_articles_hashtags on weasel_articles.articles using gin (hashtags);
 create index idx_weasel_articles_articles_active on weasel_articles.articles (is_deleted, is_moderated);
 create index idx_weasel_articles_topics_active on weasel_articles.topics (is_deleted);
 create index idx_weasel_articles_topics_lang on weasel_articles.topics (lang);
+
+create table weasel_articles.hashtags(
+  tag_name varchar(50) not null DEFAULT '',
+  tag_group varchar(255) not null DEFAULT '',
+  tag_icon varchar(255) not null DEFAULT '',
+  articles_count bigint not null default 0
+)

@@ -2,7 +2,7 @@ package budget
 
 import (
 	"weasel/lib/references"
-	"weasel/middleware/auth"
+	"weasel/lib/auth"
 	"weasel/app/registry"
 	"encoding/json"
 	"time"

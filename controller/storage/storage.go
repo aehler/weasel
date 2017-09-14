@@ -4,7 +4,7 @@ import (
 	"weasel/app"
 	"weasel/app/crypto"
 	"weasel/lib/storage"
-	"weasel/middleware/auth"
+	"weasel/lib/auth"
 	"fmt"
 )
 

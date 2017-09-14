@@ -3,7 +3,7 @@ package personal
 import (
 	"weasel/app"
 	"weasel/app/grid"
-	"weasel/middleware/auth"
+	"weasel/lib/auth"
 	"weasel/lib/organizations"
 	"fmt"
 )

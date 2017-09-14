@@ -4,12 +4,17 @@ import (
 	"weasel/app/registry"
 	"github.com/julienschmidt/httprouter"
 	"net/http"
+	"runtime/debug"
+	"log"
+	"github.com/flosch/pongo2"
 )
 
 type App struct {
 	Router *httprouter.Router
 	handlers []Handler
 }
+
+type Handler404 struct {}
 
 func New(config string) *App {
 
@@ -23,13 +28,30 @@ func New(config string) *App {
 
 	a.Router.ServeFiles("/static/*filepath", http.Dir(pathes.Static))
 
-	//a.Router.NotFound = http.FileServer(http.Dir("static/404.html")).ServeHTTP
+	a.Router.NotFound = Handler404{}.ServeHTTP
+
+	a.Router.PanicHandler = func(rw http.ResponseWriter, _ *http.Request, err interface{}) {
+
+		rw.Header().Set("Content-Type", "text/html")
+
+		rw.WriteHeader(http.StatusInternalServerError)
+
+		Templates["/errors/500.html"].ExecuteWriter(pongo2.Context{"Error" : "DON'T PANIC"}, rw)
+
+		log.Printf("PANIC: %s\n", debug.Stack())
+	}
 
 	registry.Init(config)
 
-	//a.Handler( func (c *Context) { c.RenderLayout() })
+	a.Get("/metrics/", metricsHandler)
 
 	return &a
+}
+
+func (e Handler404) ServeHTTP(rw http.ResponseWriter, _ *http.Request) {
+
+	Templates["/errors/404.html"].ExecuteWriter(pongo2.Context{}, rw)
+
 }
 
 func (a *App) Get(route string, handlers ...Handler) {

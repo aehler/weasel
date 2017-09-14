@@ -87,8 +87,12 @@ func (c *Context) RenderJSON(value interface {}) error {
 func (c *Context) RenderHTML(tmplName string, context map[string]interface {}) {
 
 	if Templates[tmplName] == nil {
+		c.RenderHTML("/errors/404.html", map[string]interface {} {})
 
-		c.RenderError("Template not found")
+		c.Stop()
+
+		return
+
 	}
 
 	c.ResponseWriter.Header().Set("Content-Type", "text/html; charset=utf-8")
@@ -103,7 +107,15 @@ func (c *Context) RenderHTML(tmplName string, context map[string]interface {}) {
 
 	if err := Templates[tmplName].ExecuteWriter(pongo2.Context(context), c.ResponseWriter); err != nil {
 
-		c.RenderError(err.Error())
+		//c.RenderError(err.Error())
+
+		c.RenderHTML("/errors/500.html", map[string]interface {} {
+			"Error" : err.Error(),
+		})
+
+		c.Stop()
+
+		return
 	}
 
 }

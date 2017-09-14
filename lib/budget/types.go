@@ -2,7 +2,7 @@ package budget
 
 import (
 	"weasel/app/grid"
-	"weasel/middleware/auth"
+	"weasel/lib/auth"
 	"weasel/lib/references"
 	"time"
 )

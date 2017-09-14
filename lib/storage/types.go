@@ -1,7 +1,7 @@
 package storage
 
 import (
-	"weasel/middleware/auth"
+	"weasel/lib/auth"
 )
 
 type File struct {
