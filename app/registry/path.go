@@ -10,6 +10,7 @@ import (
 type Path struct {
 	Templates string
 	Static string
+	HTTPStatic string `yaml:"HTTPStatic"`
 }
 
 func ReadPathConf(config string) *Path {

@@ -11,7 +11,7 @@ import (
 
 func Index(c *app.Context) {
 
-	c.RenderHTML("/public.html", map[string]interface {} {
+	c.RenderHTML("/index.html", map[string]interface {} {
 
 	})
 
@@ -21,7 +21,7 @@ func Logout(c *app.Context) {
 
 	var sd string
 
-	if err := session.Get(c.Request, &sd, &session.Config{Keys : registry.Registry.SessionKeys}); err != nil {
+	if err := session.Get(c.Request, &sd, &session.Config{Keys : registry.Registry.SessionKeys, Name:"auth"}); err != nil {
 
 		fmt.Println(err)
 
@@ -80,7 +80,7 @@ func Login(c *app.Context) {
 			c.RenderError(err.Error())
 		}
 
-		if err := session.Set(c.ResponseWriter, ssid, &session.Config{Keys : registry.Registry.SessionKeys}); err != nil {
+		if err := session.Set(c.ResponseWriter, ssid, &session.Config{Keys : registry.Registry.SessionKeys, Name:"auth"}); err != nil {
 
 			fmt.Println("couldn't set cookie")
 

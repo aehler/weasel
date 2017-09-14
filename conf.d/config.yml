@@ -11,5 +11,6 @@ postgresql:
         database: "postgres"
 
 path:
-        templates: "/srv/src/weasel/templates/hg-templates"
-        static: "/srv/src/weasel/static/"
+        templates: "/srv/src/weasel/templates/bright" #Path to templates
+        static: "/srv/src/weasel/templates/assets/" #Path to static
+        HTTPStatic: "assets" #Static will be served on this http path

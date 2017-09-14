@@ -16,9 +16,7 @@ func GetAuthUser(c *app.Context) {
 
 	u := auth.Auth{}
 
-	if err := session.Get(c.Request, &sd, &session.Config{Keys : registry.Registry.SessionKeys}); err != nil {
-
-		guest.GuestSettings(c)
+	if err := session.Get(c.Request, &sd, &session.Config{Keys : registry.Registry.SessionKeys, Name:"auth"}); err != nil {
 
 		fmt.Println(err)
 
@@ -28,8 +26,6 @@ func GetAuthUser(c *app.Context) {
 	v, err := registry.Registry.Session.Get(sd)
 
 	if err != nil {
-
-		guest.GuestSettings(c)
 
 		fmt.Println(err)
 
@@ -47,17 +43,13 @@ func GetAuthUser(c *app.Context) {
 
 	u.SSID = sd
 
-	c.Set("ssid", u.SSID)
-	c.Set("user", u.User)
-	c.Set("lang", u.Lang)
-
 }
 
 func Check(c *app.Context) {
 
 	var sd string
 
-	if err := session.Get(c.Request, &sd, &session.Config{Keys : registry.Registry.SessionKeys}); err != nil {
+	if err := session.Get(c.Request, &sd, &session.Config{Keys : registry.Registry.SessionKeys, Name:"auth"}); err != nil {
 
 		fmt.Println(err)
 

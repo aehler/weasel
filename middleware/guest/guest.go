@@ -13,12 +13,10 @@ func GuestSettings(c *app.Context) {
 
 	gc := auth.Auth{}
 
-	if err := session.Get(c.Request, &gc, &session.Config{Keys : registry.Registry.SessionKeys}); err == nil {
+	if err := session.Get(c.Request, &gc, &session.Config{Keys : registry.Registry.SessionKeys, Name:"guest"}); err == nil {
 
 		c.Set("ssid", gc.SSID)
 		c.Set("lang", gc.Lang)
-
-		return
 
 	}
 
@@ -27,7 +25,7 @@ func GuestSettings(c *app.Context) {
 	gc.SSID = ssid
 	gc.Lang = "en"
 
-	if err := session.Set(c.ResponseWriter, gc, &session.Config{Keys : registry.Registry.SessionKeys}); err != nil {
+	if err := session.Set(c.ResponseWriter, gc, &session.Config{Keys : registry.Registry.SessionKeys, Name:"guest"}); err != nil {
 
 		fmt.Println("couldn't set cookie")
 

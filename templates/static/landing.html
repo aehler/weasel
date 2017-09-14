@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>HorseLock</title>
+    <link href="/templates/statictes/static/css/application.min.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta charset="utf-8">
+    <script src="/templates/static/lib/jquery/jquery-2.0.3.min.js"> </script>
+    <script src="/templates/static/js/weasel.js"> </script>
+</head>
+<body class="background landing">
+<div class="container">
+    <header class="page-header">
+        <div class="navbar">
+            <div class="logo pull-left">
+                <h4><a href="/"><strong>HorseLock</strong></a> <small>База данных лошадей</small></h4>
+            </div>
+            <ul class="nav navbar-nav pull-right navbar-menu hidden-xs">
+                <li class="active">
+                    <a href="/searchdb/">
+                        Найти лошадь
+                    </a>
+                </li>
+                <li class="active">
+                    <a href="/myhorses/">
+                        Мои лошади
+                    </a>
+                </li>
+                <li>
+                    <a href="#about">
+                        О сервисе
+                    </a>
+                </li>
+                <li>
+                    <a href="#crew">
+                        Команда
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+    </header>
+    <div class="content">
+        <div id="carousel-landing" class="carousel slide carousel-landing carousel-fade">
+
+            <div class="carousel-inner">
+
+                <div class="item active">
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <div class="animated fadeInLeftBig">
+                                <h1 class="slide-one-header"><strong>HorseLock</strong></h1>
+                                <p class="lead hidden-xs">
+                                    База данных
+                                </p>
+                                <p>
+                                    <a href="/searchdb/" class="btn btn-lg btn-white">
+                                        Найти лошадь &nbsp; <i class="fa fa-angle-right"></i>
+                                    </a>
+                                    <a href="/login/register/"
+                                       class="btn btn-lg btn-transparent">
+                                        Регистрация &nbsp; <i class="fa fa-reply"></i>
+                                    </a>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-xs-6">
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+<div id="about" class="widget widget-white widget-about">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-offset-1 col-sm-10">
+                <h2><strong>О сервисе</strong></h2>
+                <p>
+                    <strong>HorseLock</strong> - база данных по лошадям и их владельцам, для помощи в идентификации животных.
+                </p>
+                <div class="row features">
+                    <div class="col-sm-4">
+                        <section class="feature">
+                            <div class="row">
+                                <div class="col-xs-4">
+                                    <p>
+                                        <span class="icon background-danger">
+                                            <i class="fa fa-bold"></i>
+                                        </span>
+                                    </p>
+                                </div>
+                                <div class="col-xs-8">
+                                    <h4>Bootstrap 3</h4>
+                                    <p>
+                                        Light Blue comes with built-in Twitter Bootstrap 3 support.
+                                        Easy to design your next web app.
+                                    </p>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                    <div class="col-sm-4">
+                        <section class="feature">
+                            <div class="row">
+                                <div class="col-xs-4">
+                                    <p>
+                                        <span class="icon background-warning">
+                                            <i class="fa fa-magic"></i>
+                                        </span>
+                                    </p>
+                                </div>
+                                <div class="col-xs-8">
+                                    <h4>Unique design</h4>
+                                    <p>
+                                        Transparent widgets and gradient background - have you seen something like this
+                                        before?
+                                    </p>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                    <div class="col-sm-4">
+                        <section class="feature">
+                            <div class="row">
+                                <div class="col-xs-4">
+                                    <p>
+                                        <span class="icon background-success">
+                                            <i class="fa fa-wrench"></i>
+                                        </span>
+                                    </p>
+                                </div>
+                                <div class="col-xs-8">
+                                    <h4>Developer-friendly</h4>
+                                    <p>
+                                        Simple, intuitive and easily maintainable code.
+                                    </p>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+                <div class="row features">
+                    <div class="col-sm-4">
+                        <section class="feature">
+                            <div class="row">
+                                <div class="col-xs-4">
+                                    <p>
+                                        <span class="icon background-primary">
+                                            <i class="fa fa-superscript"></i>
+                                        </span>
+                                    </p>
+                                </div>
+                                <div class="col-xs-8">
+                                    <h4>White & Transparent</h4>
+                                    <p>
+                                        Two styles each having two background options.
+                                    </p>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                    <div class="col-sm-4">
+                        <section class="feature">
+                            <div class="row">
+                                <div class="col-xs-4">
+                                    <p>
+                                        <span class="icon background-lime">
+                                            <i class="fa fa-check"></i>
+                                        </span>
+                                    </p>
+                                </div>
+                                <div class="col-xs-8">
+                                    <h4>Web applications</h4>
+                                    <p>
+                                        LB itself is a web app. Plus there is an Email -
+                                        ready-to-use Backbone application.
+                                    </p>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                    <div class="col-sm-4">
+                        <section class="feature">
+                            <div class="row">
+                                <div class="col-xs-4">
+                                    <p>
+                                        <span class="icon background-info">
+                                            <i class="fa fa-css3"></i>
+                                        </span>
+                                    </p>
+                                </div>
+                                <div class="col-xs-8">
+                                    <h4>Sass-powered</h4>
+                                    <p>
+                                        Variables, mixins, includes - things that
+                                        make Light Blue really easy to customize.
+                                    </p>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <p class="preview text-align-center">
+            <a href="white/index.html" class="btn btn-lg btn-danger">
+                &nbsp; Preview the White Version &nbsp;
+            </a>
+        </p>
+    </div>
+</div>
+<h2 class="thanks text-align-center">Поддержите проект - разместите Вашу информацию</h2>
+<p class="lead text-align-center"><a class="back-to-top" href="#"> вверх <i class="fa fa-angle-up"></i></a></p>
+
+<!-- jquery and friends -->
+<script src="lib/jquery/jquery-2.0.3.min.js"> </script>
+<script src="lib/jquery-pjax/jquery.pjax.js"></script>
+
+<!-- bootstrap default plugins -->
+<script src="lib/bootstrap/transition.js"></script>
+<script src="lib/bootstrap/carousel.js"></script>
+
+<!-- page specific -->
+<script src="js/landing.js"></script>
+</body>
+</html>

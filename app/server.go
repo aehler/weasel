@@ -7,6 +7,7 @@ import (
 	"runtime/debug"
 	"log"
 	"github.com/flosch/pongo2"
+	"fmt"
 )
 
 type App struct {
@@ -26,7 +27,9 @@ func New(config string) *App {
 
 	InitTemplates(pathes.Templates)
 
-	a.Router.ServeFiles("/static/*filepath", http.Dir(pathes.Static))
+	fmt.Printf("Serve static on /%s/*filepath\n", pathes.HTTPStatic)
+
+	a.Router.ServeFiles(fmt.Sprintf("/%s/*filepath", pathes.HTTPStatic), http.Dir(pathes.Static))
 
 	a.Router.NotFound = Handler404{}.ServeHTTP
 
