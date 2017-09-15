@@ -4,11 +4,12 @@ import (
 	"weasel/app"
 	"weasel/middleware/guest"
 	"fmt"
+	"weasel/middleware/auth"
 )
 
 func Route(ap *app.App) {
 
-	ap.Get("/", guest.GuestSettings, Index)
+	ap.Get("/", guest.GuestSettings, auth.GetAuthUser, Index)
 	ap.GetPost("/login/", Login)
 	ap.Get("/logout/", Logout)
 

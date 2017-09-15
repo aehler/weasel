@@ -7,7 +7,6 @@ import (
 	"weasel/lib/auth"
 	"encoding/json"
 	"fmt"
-	"weasel/middleware/guest"
 )
 
 func GetAuthUser(c *app.Context) {
@@ -34,14 +33,14 @@ func GetAuthUser(c *app.Context) {
 
 	if err := json.Unmarshal(v, &u); err != nil {
 
-		guest.GuestSettings(c)
-
 		fmt.Println(err)
 
 		return
 	}
 
 	u.SSID = sd
+
+	c.Set("user", u.User)
 
 }
 

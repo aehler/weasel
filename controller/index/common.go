@@ -72,7 +72,6 @@ func Login(c *app.Context) {
 		sd := auth.Auth{
 			SSID: ssid,
 			User: u,
-			Lang: "ru",
 		}
 
 		if err := registry.Registry.Session.Add(ssid, sd); err != nil {
