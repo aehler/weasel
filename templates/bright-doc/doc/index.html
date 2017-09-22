@@ -1,0 +1,1192 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Bright – Bootstrap HTML5 Education Template</title>
+    <meta name="description" content="">
+    <!-- Mobile Specific Meta -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400" rel="stylesheet">
+
+    <!-- Syntax Highlighter -->
+    <link rel="stylesheet" type="text/css" href="syntax-highlighter/styles/shCore.css" media="all">
+    <link rel="stylesheet" type="text/css" href="syntax-highlighter/styles/shThemeDefault.css" media="all">
+
+    <!-- Font Awesome CSS-->
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <!-- Normalize/Reset CSS-->
+    <link rel="stylesheet" href="css/normalize.min.css">
+    <!-- Main CSS-->
+    <link rel="stylesheet" href="css/main.css">
+
+    <!-- Modernizr Script for Old Browser Support-->
+    <script src="js/modernizr-2.6.2.min.js"></script>
+
+</head>
+
+<body id="welcome">
+
+    <aside class="left-sidebar">
+        <div class="logo">
+            <h1 style="font-size: 30px;">
+                <a href="#welcome" style="color: #fff;">
+                        Bright
+                    </a>
+            </h1>
+        </div>
+        <nav class="left-nav">
+            <ul id="nav">
+                <li class="current"><a href="#welcome">Welcome</a></li>
+                <li><a href="#installation">Installation</a></li>
+                <li><a href="#navigation">Roof, Navigation, Logo and Slider</a></li>
+                <li><a href="#other-sections">Other Sections</a></li>
+                <li><a href="#css-structure">CSS Files</a></li>
+                <li><a href="#javascript">JavaScript Libraries</a></li>
+                <li><a href="#color-presets">Changing Color Presets</a></li>
+                <li><a href="#contact-form">Contact Form Configuration</a></li>
+                <li><a href="#google-map">Google Map</a></li>
+                <li><a href="#credit">Source and Credit</a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <div id="main-wrapper">
+        <div class="main-content">
+            <section id="welcome">
+                <div class="content-header">
+                    <h1>Bright - Bootstrap HTML5 Education Template</h1>
+                </div>
+                <div class="welcome">
+
+                    <h2 class="twenty">Welcome To Bright Template Documentation.</h2>
+
+                    <p>Firstly, a huge thanks for purchasing this theme, your support is truly appreciated!</p>
+
+                    <p>This document covers the installation and use of this theme and often reveals answers to common problems and issues - read this document thoroughly if you are experiencing any difficulties. If you have any questions that are beyond the scope of this document, feel free to post your issue in our <a href="http://graygrids.com/support/">Support Forum</a></p>
+                    <img style="max-width:100%" src="img/banner.png">
+
+                </div>
+
+            </section>
+
+            <section id="installation">
+                <div class="content-header">
+                    <h1>Bright - Education Multi-purpose Bootstrap 3 & HTML5 Template</h1>
+                </div>
+                <h2 class="title">Installing Template.</h2>
+
+                <div class="section-content">
+                    <ol>
+                        <li>After unzip the download pack, you'll found a Template Folder with all the files.</li>
+                        <li>You can view this Template in any browser, you can display or edit the Template without an internet connection.</li>
+                        <li>Now go to your cpanel or open your FTP Client (like <a target="_blank" href="http://sourceforge.net/projects/filezilla/files/FileZilla_Client/3.9.0.2/FileZilla_3.9.0.2_win32-setup.exe/download?accel_key=57%3A1407264553%3Ahttps%253A//filezilla-project.org/download.php%253Ftype%253Dclient%3A59f6c662%2460e732e1e76bd06acbe3bb9c56ae06e7b09c3e6a&click_id=31d5cc44-1cd1-11e4-a846-0200ac1d1d9f&source=accel">Filezilla</a>) and upload the content of the Template on your server root.</li>
+                        <li>Once the files are done uploading go to www.yourdomainname.com/index.html</li>
+                    </ol>
+                </div>
+
+                <div class="section-content">
+                    <h2 class="title">Homepage View</h2>
+                    <img style="max-width:100%" src="img/home.png">
+                </div>
+
+            </section>
+
+
+
+            <section id="navigation">
+                <h2 class="title">Roof, Navigation, Logo and Slider</h2>
+                <pre class="brush:html">
+              				<!-- Header area wrapper Starts -->
+						    <header id="header-wrap">
+						      <!-- Roof area Starts -->
+						      <div id="roof" class="hidden-xs">
+						          <div class="container">
+						              <!-- Wellcome Starts -->
+						              <div class="pull-left">
+						                <i class="fa fa-map-o" aria-hidden="true"></i> Sydney NSW 2052, Australia
+						              </div>
+						              <!-- Wellcome End -->
+
+						              <!-- Quick Contacts Starts -->
+						              <div class="quick-contacts pull-right">
+						                  <span><i class="fa fa-phone"></i> +61 2 9385 1000</span>
+						                  <span><i class="fa fa-envelope"></i><a href="#">hello@brightuniversity.edu</a></span>
+						                  <span><a href="login.html"><i class="fa fa-user"></i> Login</a> / <a href="login.html">Register</a></span>
+						              </div>
+						              <!-- Quick Contacts End -->
+						          </div>
+						      </div>
+						      <!-- Roof area End -->
+
+						      <!-- Navbar Start -->
+						      <nav class="navbar navbar-default main-navigation" role="navigation" data-spy="affix" data-offset-top="50">
+						        <div class="container">
+						            <!-- Brand and toggle get grouped for better mobile display -->
+						            <div class="navbar-header">
+						              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
+						                <span class="sr-only">Toggle navigation</span>
+						                <span class="icon-bar"></span>
+						                <span class="icon-bar"></span>
+						                <span class="icon-bar"></span>
+						              </button>
+						              <a class="navbar-brand" href="index.html"><img src="assets/img/logo.png" alt=""></a>
+						            </div>
+						            <!-- Brand End -->
+
+						            <!-- Search Icon -->
+						            <div class="header-search pull-right">
+						                <a class="open-search">
+						                    <i class="fa fa-search"></i>
+						                </a>
+						            </div>  
+						            <!-- Collapse Navbar -->
+						            <div class="collapse navbar-collapse" id="navbar">
+						              <ul class="nav navbar-nav navbar-right">
+						                <li class="dropdown dropdown-toggle">
+						                  <a class="active" href="index.html" data-toggle="dropdown">Home <i class="fa fa-angle-down"></i></a>
+						                  <ul class="dropdown-menu">
+						                    <li><a class="active" href="index.html">Home Page 1</a></li>    
+						                    <li><a href="index-1.html">Home Page 2</a></li>     
+						                  </ul>                        
+						                </li>
+						                <li class="dropdown dropdown-toggle">
+						                  <a href="#" data-toggle="dropdown">Courses <i class="fa fa-angle-down"></i></a>
+						                  <ul class="dropdown-menu">
+						                    <li><a href="courses-list.html">Courses List</a></li>    
+						                    <li><a href="courses-grid.html">Courses Grid</a></li>  
+						                    <li><a href="courses-single.html">Single Course</a></li>   
+						                  </ul>                        
+						                </li>
+						                <li class="dropdown dropdown-toggle">
+						                  <a href="#" data-toggle="dropdown">Pages <i class="fa fa-angle-down"></i></a>
+						                  <ul class="dropdown-menu">
+						                    <li><a href="about.html">About Page</a></li>                     
+						                    <li><a href="gallery.html">Image Gallery</a></li>
+						                    <li><a href="faq.html">FAQ</a></li>    
+						                    <li><a href="login.html">Login Page</a></li> 
+						                    <li><a href="single-teacher.html">Single Teacher</a></li> 
+						                    <li><a href="registration.html">Registration Form</a></li> 
+						                    <li><a href="contact.html">Contacts</a></li> 
+						                    <li><a href="404.html">404</a></li> 
+						                  </ul>                        
+						                </li>
+						                <li class="dropdown dropdown-toggle">
+						                  <a href="#" data-toggle="dropdown">Events <i class="fa fa-angle-down"></i></a>
+						                  <ul class="dropdown-menu">
+						                    <li><a href="event-grid.html">Events Grid</a></li>                     
+						                    <li><a href="event.html">Single Event</a></li>
+						                  </ul>                        
+						                </li> 
+						                <li class="dropdown dropdown-toggle">
+						                  <a href="#" data-toggle="dropdown">Blog <i class="fa fa-angle-down"></i></a>
+						                  <ul class="dropdown-menu">
+						                    <li><a href="blog.html">Blog - Right Sidebar</a></li>                     
+						                    <li><a href="blog-left-sidebar.html">Blog - Left Sidebar</a></li>
+						                    <li><a href="blog-full-width.html">Blog - Full Width</a></li>   
+						                    <li><a href="single-post.html">Blog Single Post</a></li>   
+						                  </ul>                        
+						                </li>              
+						                <li><a href="contact.html">Contact</a></li>
+						              </ul>
+						            </div>  
+						             <!-- Form for navbar search area -->
+						            <form class="full-search">
+						              <div class="container">
+						                <div class="row">
+						                  <input class="form-control" type="text" placeholder="Search">
+						                  <a class="close-search">
+						                  <span class="fa fa-times">
+						                  </span>
+						                  </a>
+						                </div>
+						              </div>
+						            </form>
+						            <!-- Search form ends -->   
+
+						            <!-- Mobile Menu Start -->
+						            <ul class="wpb-mobile-menu">
+						              <li>
+						                <a class="active" href="index.html">Home</a>
+						                <ul>
+						                  <li><a class="active" href="index.html">Home Page 1</a></li>    
+						                  <li><a href="index-1.html">Home Page 2</a></li>     
+						                </ul>                        
+						              </li>
+						              <li>
+						                <a href="#">Courses</a>
+						                <ul>
+						                  <li><a href="courses-list.html">Courses List</a></li>    
+						                  <li><a href="courses-grid.html">Courses Grid</a></li>  
+						                  <li><a href="courses-single.html">Single Course</a></li>   
+						                </ul>                        
+						              </li>
+						              <li>
+						                <a href="#">Pages</a>
+						                <ul>
+						                  <li><a href="about.html">About Page</a></li>                     
+						                  <li><a href="gallery.html">Image Gallery</a></li>
+						                  <li><a href="faq.html">FAQ</a></li>    
+						                  <li><a href="login.html">Login Page</a></li> 
+						                  <li><a href="single-teacher.html">Single Teacher</a></li> 
+						                  <li><a href="registration.html">Registration Form</a></li> 
+						                  <li><a href="contact.html">Contacts</a></li> 
+						                  <li><a href="404.html">404</a></li> 
+						                </ul>                        
+						              </li>
+						              <li>
+						                <a href="#">Events</a>
+						                <ul>
+						                  <li><a href="event-grid.html">Events Grid</a></li>                     
+						                  <li><a href="event.html">Single Event</a></li>
+						                </ul>                        
+						              </li> 
+						              <li>
+						                <a href="#">Blog</a>
+						                <ul>
+						                  <li><a href="blog.html">Blog - Right Sidebar</a></li>                     
+						                  <li><a href="blog-left-sidebar.html">Blog - Left Sidebar</a></li>
+						                  <li><a href="blog-full-width.html">Blog - Full Width</a></li>   
+						                  <li><a href="single-post.html">Blog Single Post</a></li>   
+						                </ul>                        
+						              </li>              
+						              <li><a href="contact.html">Contact</a></li>
+						            </ul>
+						            <!-- Mobile Menu End -->
+
+						          </div>
+						      </nav>
+						      <!-- Navbar End -->
+
+						    </header>
+						    <!-- Header area wrapper End -->
+
+						    <!-- Main Carousel Section Start -->
+						    <div id="carousel-area">
+						      <div id="carousel-slider" class="carousel slide" data-interval="3000">
+						        <!-- Indicators -->
+						        <ol class="carousel-indicators">
+						          <li data-target="#carousel-slider" data-slide-to="0" class="active">
+						          </li>
+						          <li data-target="#carousel-slider" data-slide-to="1">
+						          </li>
+						          <li data-target="#carousel-slider" data-slide-to="2">
+						          </li>
+						        </ol>
+						        <div class="carousel-inner">
+						          <div class="item active" style="background-image: url(assets/img/slider/bg-1.jpg);">
+						            <div class="carousel-caption">
+						                <p>Bright - Bootstrap HTML5 Education Template</p>
+						                <h1>Great Faculties with Excellent Backgrounds</h1>
+						                <a class="btn btn-lg btn-common" href="single-teacher.html">
+						                  <i class="fa fa-arrow-circle-right">
+						                  </i>
+						                  Learn More
+						                </a>
+						            </div> 
+						          </div>  
+						          <div class="item" style="background-image: url(assets/img/slider/bg-2.jpg);">
+						            <div class="carousel-caption">
+						                <p>Ready to Launch - School, College, University or Course Website</p>
+						                <h1>Innovation paradise for Students</h1>
+						                <a class="btn btn-lg btn-common" href="contact.html">
+						                  <i class="fa fa-check">
+						                  </i>
+						                  Apply Now
+						                </a>
+						                <a class="btn btn-lg btn-border" href="courses-grid.html">
+						                  <i class="fa fa-envelope-open">
+						                  </i>
+						                  Contact Us
+						                </a>
+						            </div> 
+						          </div>
+						          <div class="item" style="background-image: url(assets/img/slider/bg-3.jpg);">
+						            <div class="carousel-caption">
+						                <p>50+ Built-in Pages to Create any Kind of Education Site</p>
+						                <h1>Your ideas will be heard, supported & tested</h1>
+						                <a class="btn btn-lg btn-border" href="event-grid.html">
+						                  <i class="fa fa-calendar">
+						                  </i>
+						                  Upcoming Events
+						                </a>
+						            </div> 
+						          </div>     
+						        </div>
+						        <a class="left carousel-control" href="#carousel-slider" role="button" data-slide="prev">          
+						        </a>
+						        <a class="right carousel-control" href="#carousel-slider" role="button" data-slide="next">          
+						        </a>
+						      </div>
+						    </div>
+						    <!-- Main Carousel Section End -->
+              </pre>
+            </section>
+
+            <section id="other-sections">
+                <h2 class="title">All other homepage section and Elements. Such as: Activity, Features, Courses, Coaching, Why Choose, counter, Members, Testimonial and Blog.</h2>
+                <pre class="brush:html">
+						<!-- Activity Area Start -->
+					    <section class="activity-area section">
+					        <div class="container">
+					            <div class="row">
+					                <div class="col-md-12">
+					                  <h2 class="section-title">A powerhouse of cutting-edge <br>education, research & teaching in The World</h2>
+					                </div>                
+					                <div class="col-md-4 col-sm-6 col-xs-12">
+					                    <div class="activity-item">
+					                        <div class="icon fast-color">
+					                            <i class="fa fa-flash"></i>
+					                        </div>
+					                        <h3>Short Courses</h3>
+					                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus, quaerat beatae nulla debitis vitae temporibus enim sed.</p>
+					                        <a class="btn btn-rm btn-common" href="courses-grid.html">Explore</a>
+					                    </div>
+					                </div>
+					                <div class="col-md-4 col-sm-6 col-xs-12">
+					                    <div class="activity-item active-item">
+					                        <div class="icon secend-color">
+					                            <i class="fa fa-graduation-cap"></i>
+					                        </div>
+					                        <h3>Bachelor's Programs</h3>
+					                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus, quaerat beatae nulla debitis vitae temporibus enim sed.</p>
+					                        <a class="btn btn-rm btn-common" href="courses-grid.html">Explore</a>
+					                    </div>
+					                </div>
+					                <div class="col-md-4 col-sm-6 col-xs-12">
+					                    <div class="activity-item">
+					                        <div class="icon thred-color">
+					                            <i class="fa fa-flask"></i>
+					                        </div>
+					                        <h3>Masters and PHD Programs</h3>
+					                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus, quaerat beatae nulla debitis vitae temporibus enim sed.</p>
+					                        <a class="btn btn-rm btn-common" href="courses-grid.html">Explore</a>
+					                    </div>
+					                </div>
+					            </div>
+					        </div>
+					    </section>
+					    <!-- Activity Area End -->
+
+					    <!-- Features Area Star -->
+					    <section class="features">
+					        <div class="container">
+					            <div class="row">
+					                <div class="col-md-12">
+					                    <div class="features-wrapper">
+					                        <div class="col-md-7 col-sm-12 col-xs-12">
+					                            <div class="features-main">
+					                                <div class="features-header">
+					                                    <h2>Welecome To Bright University</h2>
+					                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+					                                </div>
+					                                <div class="row info">
+					                                    <div class="col-sm-6">
+					                                        <div class="icon">
+					                                            <i class="fa fa-group"></i>
+					                                        </div>
+					                                        <div class="content">
+					                                            <h3>Skilled Professors</h3>
+					                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus, quaerat beatae.</p>
+					                                        </div>
+					                                    </div>
+					                                    <div class="col-sm-6">
+					                                        <div class="icon">
+					                                            <i class="fa fa-university"></i>
+					                                        </div>
+					                                        <div class="content">
+					                                            <h3>Best Infrastructure</h3>
+					                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus, quaerat beatae.</p>
+					                                        </div>
+					                                    </div>
+					                                    <div class="col-sm-6">
+					                                        <div class="icon">
+					                                            <i class="fa fa-cogs"></i>
+					                                        </div>
+					                                        <div class="content">
+					                                            <h3>Well Equiped Labs</h3>
+					                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus, quaerat beatae.</p>
+					                                        </div>
+					                                    </div>
+					                                    <div class="col-sm-6">
+					                                        <div class="icon">
+					                                            <i class="fa fa-book"></i>
+					                                        </div>
+					                                        <div class="content">
+					                                            <h3>Big Library</h3>
+					                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus, quaerat beatae.</p>
+					                                        </div>
+					                                    </div>
+					                                </div>
+					                            </div>
+					                        </div>
+					                        <div class="col-md-5 col-sm-12 col-xs-12">
+					                            <div class="img-thumb">
+					                                <img src="assets/img/features/img1.png" alt="">
+					                            </div>
+					                        </div>
+					                    </div>
+					                </div>
+					            </div>
+					        </div>
+					    </section>
+					    <!-- Features Area End -->
+
+					    <!-- Courses Section Start -->
+					    <section class="courses section">
+					        <div class="container">
+					            <div class="row">
+					                <h2 class="section-title">Featured Courses</h2>
+					                <div class="col-md-4 col-sm-6 col-xs-12">
+					                    <div class="courses-wrap">
+					                        <div class="thumb">
+					                            <img src="assets/img/courses/img-1.jpg" alt="">
+					                            <div class="courses-price">
+					                                <p class="years">Duration: 3 Years</p>
+					                                <span class="price">$20000</span>
+					                            </div>
+					                        </div>
+					                        <div class="course-detail-wrap">
+					                            <div class="teacher-wrap">
+					                                <span class="course-instructor">by <a href="#">Maria Bella</a>, <a href="#">Jana Smith</a></span>
+					                                <img src="assets/img/courses/thumb-teacher-1.jpg" alt="">
+					                            </div>
+					                            <div class="course-content">
+					                                <h3><a href="courses-single.html">Computer Science</a></h3>
+					                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus, quaerat beatae nulla debitis vitae temporibus enim sed. Optio, reprehenderit, ex.Repellendus,…</p>
+					                                <a href="#" class="btn btn-common btn-sm">Apply Now</a>
+					                            </div>
+					                        </div>
+					                    </div>
+					                </div>
+					                <div class="col-md-4 col-sm-6 col-xs-12">
+					                    <div class="courses-wrap">
+					                        <div class="thumb">
+					                            <img src="assets/img/courses/img-2.jpg" alt="">
+					                            <div class="courses-price">
+					                                <p class="years">Duration: 4 Years</p>
+					                                <span class="price">$30000</span>
+					                            </div>
+					                        </div>
+					                        <div class="course-detail-wrap">
+					                            <div class="teacher-wrap">
+					                                <span class="course-instructor">by <a href="#">Jana Smith</a>, <a href="#">Kiwhi Leonard</a></span>
+					                                <img src="assets/img/courses/thumb-teacher-2.jpg" alt="">
+					                            </div>
+					                            <div class="course-content">
+					                                <h3><a href="courses-single.html">Micro Biology</a></h3>
+					                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus, quaerat beatae nulla debitis vitae temporibus enim sed. Optio, reprehenderit, ex.Repellendus,…</p>
+					                                <a href="#" class="btn btn-common btn-sm">Apply Now</a>
+					                            </div>
+					                        </div>
+					                    </div>
+					                </div>
+					                <div class="col-md-4 col-sm-6 col-xs-12">
+					                    <div class="courses-wrap">
+					                        <div class="thumb">
+					                            <img src="assets/img/courses/img-3.jpg" alt="">
+					                            <div class="courses-price">
+					                                <p class="years">Duration: 3 Years</p>
+					                                <span class="price">$20000</span>
+					                            </div>
+					                        </div>
+					                        <div class="course-detail-wrap">
+					                            <div class="teacher-wrap">
+					                                <span class="course-instructor">by <a href="#">jana Smith</a>, <a href="#">Maria Bella</a></span>
+					                                <img src="assets/img/courses/thumb-teacher-3.jpg" alt="">
+					                            </div>
+					                            <div class="course-content">
+					                                <h3><a href="courses-single.html">Gobal Economic</a></h3>
+					                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus, quaerat beatae nulla debitis vitae temporibus enim sed. Optio, reprehenderit, ex.Repellendus,…</p>
+					                                <a href="#" class="btn btn-common btn-sm">Apply Now</a>
+					                            </div>
+					                        </div>
+					                    </div>
+					                </div>
+					                <div class="col-md-4 col-sm-6 col-xs-12">
+					                    <div class="courses-wrap">
+					                        <div class="thumb">
+					                            <img src="assets/img/courses/img-4.jpg" alt="">
+					                            <div class="courses-price">
+					                                <p class="years">Duration: 3 Years</p>
+					                                <span class="price">$2900</span>
+					                            </div>
+					                        </div>
+					                        <div class="course-detail-wrap">
+					                            <div class="teacher-wrap">
+					                                <span class="course-instructor">by <a href="#">Maria Bella</a>, <a href="#">Jana Smith</a></span>
+					                                <img src="assets/img/courses/thumb-teacher-1.jpg" alt="">
+					                            </div>
+					                            <div class="course-content">
+					                                <h3><a href="courses-single.html">Crash Course on Android/iOS</a></h3>
+					                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus, quaerat beatae nulla debitis vitae temporibus enim sed. Optio, reprehenderit, ex.Repellendus,…</p>
+					                                <a href="#" class="btn btn-common btn-sm">Apply Now</a>
+					                            </div>
+					                        </div>
+					                    </div>
+					                </div>
+					                <div class="col-md-4 col-sm-6 col-xs-12">
+					                    <div class="courses-wrap">
+					                        <div class="thumb">
+					                            <img src="assets/img/courses/img-5.jpg" alt="">
+					                            <div class="courses-price">
+					                                <p class="years">Duration: 4 months</p>
+					                                <span class="price">$3000</span>
+					                            </div>
+					                        </div>
+					                        <div class="course-detail-wrap">
+					                            <div class="teacher-wrap">
+					                                <span class="course-instructor">by <a href="#">Jana Smith</a>, <a href="#">Kiwhi Leonard</a></span>
+					                                <img src="assets/img/courses/thumb-teacher-2.jpg" alt="">
+					                            </div>
+					                            <div class="course-content">
+					                                <h3><a href="courses-single.html">Diving into Big Data</a></h3>
+					                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus, quaerat beatae nulla debitis vitae temporibus enim sed. Optio, reprehenderit, ex.Repellendus,…</p>
+					                                <a href="#" class="btn btn-common btn-sm">Apply Now</a>
+					                            </div>
+					                        </div>
+					                    </div>
+					                </div>
+					                <div class="col-md-4 col-sm-6 col-xs-12">
+					                    <div class="courses-wrap">
+					                        <div class="thumb">
+					                            <img src="assets/img/courses/img-6.jpg" alt="">
+					                            <div class="courses-price">
+					                                <p class="years">Duration: 6 Months</p>
+					                                <span class="price">$6090</span>
+					                            </div>
+					                        </div>
+					                        <div class="course-detail-wrap">
+					                            <div class="teacher-wrap">
+					                                <span class="course-instructor">by <a href="#">jana Smith</a>, <a href="#">Maria Bella</a></span>
+					                                <img src="assets/img/courses/thumb-teacher-3.jpg" alt="">
+					                            </div>
+					                            <div class="course-content">
+					                                <h3><a href="courses-single.html">Getting Started with Java</a></h3>
+					                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus, quaerat beatae nulla debitis vitae temporibus enim sed. Optio, reprehenderit, ex.Repellendus,…</p>
+					                                <a href="#" class="btn btn-common btn-sm">Apply Now</a>
+					                            </div>
+					                        </div>
+					                    </div>
+					                </div>
+					            </div>
+					            <a href="courses-list.html">More Courses <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+					        </div>
+					    </section>
+					    <!-- Courses Section End -->
+
+					    <!-- Coaching Area Start -->
+					    <section class="coaching-courses section">
+					        <div class="container">
+					            <div class="row">
+					                <div class="col-md-7 col-sm-6 col-xs-12 col-offset-2">              
+					                    <div class="coaching-wrapper">
+					                        <h3>Get <span>Free</span> Training on Business Development<br> By John Smith</h3>
+					                        <p>It's limited seating! Hurry Up</p>
+					                        <div class="timer">
+					                            <div id="clock" class="time-count">
+					                                <div class="time-entry days"><span>00</span> Days</div>
+					                                <div class="time-entry hours"><span>00</span> Hours</div>
+					                                <div class="time-entry minutes"><span>00</span> Minutes</div>
+					                                <div class="time-entry seconds"><span>00</span> Seconds</div>
+					                            </div>
+					                        </div>
+					                        
+					                    </div>
+					                </div>
+					                <div class="col-md-5 col-sm-6 col-xs-12">
+					                    <div class="sign-up box">
+					                        <div class="heading">
+					                            <h2 class="heading-title">Sing Up Now</h2>
+					                            <p class="desc">Get Free Courses</p>
+					                        </div>
+					                        <form role="form" class="login-form">
+					                            <div class="form-group">
+					                                <input type="text" id="sender-name" class="form-control" name="name" placeholder="Enter your Name">
+					                            </div> 
+					                            <div class="form-group">
+					                                <input type="text" id="sender-email" class="form-control" name="email" placeholder="Enter your Email">
+					                            </div> 
+					                            <div class="form-group">
+					                                <input type="text" id="sender-phone" class="form-control" placeholder="Enter your Phone">
+					                            </div>   
+					                            <button class="btn btn-common">Enroll Now</button>
+					                          </form>
+					                    </div>
+					                </div>
+					            </div>
+					        </div>
+					    </section>
+					    <!-- Coaching Area End -->
+
+					    <!-- Why Choose section Start -->
+					    <div class="why-choose">
+					        <div class="container">
+					          <div class="row"> 
+					            <h2 class="section-title">Why Choose Our University</h2>           
+					            <div class="col-md-7 col-sm-7 col-xl-12">
+					              <div class="row">
+					                <div class="col-md-6">
+					                  <div class="why-wrap">
+					                    <div class="icon">
+					                        <i class="fa fa-line-chart"></i>
+					                    </div>
+					                    <div class="why-text">
+					                      <h4><a href="#">Modern Courses</a></h4>
+					                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus, quaerat beatae nulla.</p>
+					                    </div>
+					                  </div>                
+					                </div>
+					                <div class="col-md-6">
+					                  <div class="why-wrap">
+					                    <div class="icon">
+					                        <i class="fa fa-trophy"></i>
+					                    </div>
+					                    <div class="why-text">
+					                      <h4><a href="#">High-profile Faculties</a></h4>
+					                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus, quaerat beatae nulla.</p>
+					                    </div>
+					                  </div> 
+					                </div>
+					                <div class="col-md-6">
+					                  <div class="why-wrap">
+					                    <div class="icon">
+					                        <i class="fa fa-briefcase"></i>
+					                    </div>
+					                    <div class="why-text">
+					                      <h4><a href="#">Guaranteed Career</a></h4>
+					                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus, quaerat beatae nulla.</p>
+					                    </div>
+					                  </div> 
+					                </div>
+					                <div class="col-md-6">
+					                  <div class="why-wrap">
+					                    <div class="icon">
+					                        <i class="fa fa-magic"></i>
+					                    </div>
+					                    <div class="why-text">
+					                      <h4><a href="#">Research Programs</a></h4>
+					                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus, quaerat beatae nulla.</p>
+					                    </div>
+					                  </div> 
+					                </div>
+					                <div class="col-md-6">
+					                  <div class="why-wrap">
+					                    <div class="icon">
+					                        <i class="fa fa-money"></i>
+					                    </div>
+					                    <div class="why-text">
+					                      <h4><a href="#">Affordable Costs</a></h4>
+					                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus, quaerat beatae nulla.</p>
+					                    </div>
+					                  </div> 
+					                </div>
+					                <div class="col-md-6">
+					                  <div class="why-wrap">
+					                    <div class="icon">
+					                        <i class="fa fa-film"></i>
+					                    </div>
+					                    <div class="why-text">
+					                      <h4><a href="#">Cultural Events</a></h4>
+					                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus, quaerat beatae nulla.</p>
+					                    </div>
+					                  </div> 
+					                </div>
+					              </div>
+					            </div>
+
+					            <div class="col-md-5 col-sm-5 col-xl-12">
+					              <div class="featured-thumb">
+					                <img src="assets/img/features/why.png" alt="">
+					              </div>
+					            </div>
+
+					          </div>
+					        </div>
+					    </div>
+					    <!-- Why Choose section End -->  
+
+					    <!-- Counter Section Start -->
+					    <section id="counter">
+					      <div class="container">
+					        <div class="row">
+					          <div class="col-md-3 col-sm-6 col-xs-12">
+					            <div class="counting">              
+					                <div class="icon-left">  
+					                    <i class="fa fa-users"></i>                
+					                </div> 
+					                <div class="desc media-body">
+					                    <h3>Enrolled Students</h3>
+					                    <div class="counter" data-count="8565">0</div> 
+					                </div>
+					            </div>
+					          </div>
+					          <div class="col-md-3 col-sm-6 col-xs-12">
+					            <div class="counting">              
+					                <div class="icon-left">  
+					                    <i class="fa fa-graduation-cap"></i>                
+					                </div> 
+					                <div class="desc media-body">
+					                    <h3>Education Awards</h3>
+					                    <div class="counter" data-count="120">0</div>
+					                </div>
+					            </div>
+					          </div>
+					          <div class="col-md-3 col-sm-6 col-xs-12">
+					            <div class="counting">              
+					                <div class="icon-left">  
+					                    <i class="fa fa-diamond"></i>                
+					                </div> 
+					                <div class="desc media-body">
+					                    <h3>Certified Teachers </h3>
+					                    <div class="counter" data-count="193">0</div>
+					                </div>
+					            </div>
+					          </div>
+					          <div class="col-md-3 col-sm-6 col-xs-12">
+					            <div class="counting">              
+					                <div class="icon-left">  
+					                    <i class="fa fa-flask"></i>                
+					                </div> 
+					                <div class="desc media-body">
+					                    <h3>Library and Labs </h3>
+					                    <div class="counter" data-count="150">0</div>
+					                </div>
+					            </div>
+					          </div>
+					        </div>
+					      </div>
+					    </section>
+					    <!-- Counter Section End --> 
+
+					    <!-- Teacher Section Start -->
+					    <section class="teacher section">
+					      <div class="container">
+					        <div class="row">
+					          <div class="col-md-12">
+					            <h2 class="section-title" data-wow-delay="0s">Featured Faculty Members</h2>
+					          </div> 
+					          <div class="col-md-4 col-sm-6 col-xs-12">
+					            <div class="teacher-item wow fadeIn" data-wow-delay="0.1s">
+					              <div class="thumb-teacher">
+					                <img src="assets/img/teacher/img-1.png" alt="">
+					              </div>
+					              <div class="teacher-desc">
+					                <h3><a href="single-teacher.html">Julia Benjama</a></h3>
+					                <span>Head of Computer Science Dept.</span>
+					                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex ea qui, voluptas vitae pariatur nihil odit.</p>
+					                <div class="social-icon">
+					                  <a class="social" href="#"><i class="fa fa-twitter"></i></a>
+					                  <a class="social" href="#"><i class="fa fa-facebook"></i></a>                  
+					                  <a class="social" href="#"><i class="fa fa-google-plus"></i></a>
+					                  <a class="social" href="#"><i class="fa fa-pinterest"></i></a>
+					                </div>
+					              </div>              
+					            </div>
+					          </div>
+					          <div class="col-md-4 col-sm-6 col-xs-12">
+					            <div class="teacher-item wow fadeIn" data-wow-delay="0.3s">
+					              <div class="thumb-teacher">
+					                <img src="assets/img/teacher/img-2.png" alt="">
+					              </div>
+					              <div class="teacher-desc">
+					                <h3><a href="single-teacher.html">Jen Maroney</a></h3>
+					                <span>Head of Business Dept.</span>
+					                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex ea qui, voluptas vitae pariatur nihil odit.</p>
+					                <div class="social-icon">
+					                  <a class="social" href="#"><i class="fa fa-twitter"></i></a>
+					                  <a class="social" href="#"><i class="fa fa-facebook"></i></a>                  
+					                  <a class="social" href="#"><i class="fa fa-google-plus"></i></a>
+					                  <a class="social" href="#"><i class="fa fa-pinterest"></i></a>
+					                </div>
+					              </div>              
+					            </div>
+					          </div>
+					          <div class="col-md-4 col-sm-6 col-xs-12">
+					            <div class="teacher-item wow fadeIn" data-wow-delay="0.5s">
+					              <div class="thumb-teacher">
+					                <img src="assets/img/teacher/img-3.png" alt="">
+					              </div>
+					              <div class="teacher-desc">
+					                <h3><a href="single-teacher.html">Sarah Robert</a></h3>
+					                <span>Student Advisor</span>
+					                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex ea qui, voluptas vitae pariatur nihil odit.</p>
+					                <div class="social-icon">
+					                  <a class="social" href="#"><i class="fa fa-twitter"></i></a>
+					                  <a class="social" href="#"><i class="fa fa-facebook"></i></a>                  
+					                  <a class="social" href="#"><i class="fa fa-google-plus"></i></a>
+					                  <a class="social" href="#"><i class="fa fa-pinterest"></i></a>
+					                </div>
+					              </div>              
+					            </div>
+					          </div>  
+					        </div>
+					      </div>
+					    </section>
+					    <!-- Teacher Section End -->
+
+					    <!-- Start Testimonial Section  -->        
+					    <div class="testimonial section">
+					      <div class="container">
+					        <div class="row">
+					          <!-- Testimonial section  -->
+					          <div class="testimonials-carousel owl-carousel">
+					            <div class="item">
+					              <div class="testimonial-item">
+					                <div class="testimonial-inner">
+					                  <p>When I commenced the programme. I gave myself one year to challenge my thinking. change my outlook and choose my next step. This could not have been achierved without the remarkable opportunities to me.</p>
+					                </div>                
+					                <div class="quote-author">
+					                  <a href="#"><img src="assets/img/testimonial/avatar1.jpg" alt=""></a>
+					                  <div class="quote-footer">
+					                    <h5 class="name">John Mathew</h5>
+					                    <span> / Alumini</span>
+					                  </div>
+					                </div>                
+					              </div>
+					            </div>                
+					            <div class="item">
+					              <div class="testimonial-item">
+					                <div class="testimonial-inner">
+					                  <p>When I commenced the programme. I gave myself one year to challenge my thinking. change my outlook and choose my next step. This could not have been achierved without the remarkable opportunities to me.</p>
+					                </div>                
+					                <div class="quote-author">
+					                  <a href="#"><img src="assets/img/testimonial/avatar2.jpg" alt=""></a>
+					                  <div class="quote-footer">
+					                    <h5 class="name">Maria Ashe</h5>
+					                    <span> / Parent</span>
+					                  </div>
+					                </div>                
+					              </div>
+					            </div>
+					            <div class="item">
+					              <div class="testimonial-item">
+					                <div class="testimonial-inner">
+					                  <p>When I commenced the programme. I gave myself one year to challenge my thinking. change my outlook and choose my next step. This could not have been achierved without the remarkable opportunities to me.</p>
+					                </div>                
+					                <div class="quote-author">
+					                  <a href="#"><img src="assets/img/testimonial/avatar3.jpg" alt=""></a>
+					                  <div class="quote-footer">
+					                    <h5 class="name">John Mathew</h5>
+					                    <span> / Student</span>
+					                  </div>
+					                </div>                
+					              </div>
+					            </div>
+					            <div class="item">
+					              <div class="testimonial-item">
+					                <div class="testimonial-inner">
+					                  <p>When I commenced the programme. I gave myself one year to challenge my thinking. change my outlook and choose my next step. This could not have been achierved without the remarkable opportunities to me.</p>
+					                </div>                
+					                <div class="quote-author">
+					                  <a href="#"><img src="assets/img/testimonial/avatar4.jpg" alt=""></a>
+					                  <div class="quote-footer">
+					                    <h5 class="name">Julia Swales</h5>
+					                    <span> / Parent</span>
+					                  </div>
+					                </div>                
+					              </div>
+					            </div>
+					          </div>
+					        </div>
+					      </div>
+					    </div>
+					    <!-- End Testimonial Section  -->
+
+					    <!-- Latest New Section Start -->
+					    <section class="latest-news section">
+					        <div class="container">
+					            <div class="row">
+					                <h2 class="section-title">From The Blog</h2>  
+					                <div class="col-md-6 col-sm-6 col-xs-12">
+					                    <div class="news-grid-item">
+					                        <div class="row">
+					                            <div class="col-md-6 col-sm-12 col-xs-12">
+					                                <img src="assets/img/news/img-1.jpg" alt="">
+					                            </div>
+					                            <div class="col-md-6 col-sm-12 col-xs-12">
+					                                <div class="news-content">
+					                                    <h3 class="news-title"><a href="blog.html">How to Improve Your Communication Skill</a></h3>
+					                                    <div class="meta">                                      
+					                                      <span class="meta-part"><a href="#"><i class="fa fa-calendar-o"></i> 29 Dec, 2016</a></span>
+					                                      <span class="meta-part"><a href="#"><i class="fa fa-eye"></i> 59</a></span>
+					                                      <span class="meta-part"><a href="#"><i class="fa fa-commenting-o"></i> 27</a></span>
+					                                    </div>
+					                                    <p class="desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
+					                                    <a href="blog.html" class="btn btn-common btn-sm">Learn Now</a>
+					                                </div>
+					                            </div>
+					                        </div>
+					                    </div> 
+					                </div>
+					                <div class="col-md-6 col-sm-6 col-xs-12">
+					                    <div class="news-grid-item">
+					                        <div class="row">
+					                            <div class="col-md-6 col-sm-12 col-xs-12">
+					                                <img src="assets/img/news/img-2.jpg" alt="">
+					                            </div>
+					                            <div class="col-md-6 col-sm-12 col-xs-12">
+					                                <div class="news-content">
+					                                    <h3 class="news-title"><a href="blog.html">Is Big Data is New Big Career Path?</a></h3>
+					                                    <div class="meta">                                      
+					                                      <span class="meta-part"><a href="#"><i class="fa fa-calendar-o"></i> 29 Dec, 2016</a></span>
+					                                      <span class="meta-part"><a href="#"><i class="fa fa-eye"></i> 59</a></span>
+					                                      <span class="meta-part"><a href="#"><i class="fa fa-commenting-o"></i> 27</a></span>
+					                                    </div>
+					                                    <p class="desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
+					                                    <a href="blog.html" class="btn btn-common btn-sm">Learn Now</a>
+					                                </div>
+					                            </div>
+					                        </div>
+					                    </div> 
+					                </div>
+					                <div class="col-md-6 col-sm-6 col-xs-12">
+					                    <div class="news-grid-item">
+					                        <div class="row">
+					                            <div class="col-md-6 col-sm-12 col-xs-12">
+					                                <img src="assets/img/news/img-3.jpg" alt="">
+					                            </div>
+					                            <div class="col-md-6 col-sm-12 col-xs-12">
+					                                <div class="news-content">
+					                                    <h3 class="news-title"><a href="blog.html">Top 10 Books You Must Read in 2017</a></h3>
+					                                    <div class="meta">                                      
+					                                      <span class="meta-part"><a href="#"><i class="fa fa-calendar-o"></i> 29 Dec, 2016</a></span>
+					                                      <span class="meta-part"><a href="#"><i class="fa fa-eye"></i> 59</a></span>
+					                                      <span class="meta-part"><a href="#"><i class="fa fa-commenting-o"></i> 27</a></span>
+					                                    </div>
+					                                    <p class="desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+					                                    <a href="blog.html" class="btn btn-common btn-sm">Learn Now</a>
+					                                </div>
+					                            </div>
+					                        </div>
+					                    </div> 
+					                </div>
+					                <div class="col-md-6 col-sm-6 col-xs-12">
+					                    <div class="news-grid-item">
+					                        <div class="row">
+					                            <div class="col-md-6 col-sm-12 col-xs-12">
+					                                <img src="assets/img/news/img-4.jpg" alt="">
+					                            </div>
+					                            <div class="col-md-6 col-sm-12 col-xs-12">
+					                                <div class="news-content">
+					                                    <h3 class="news-title"><a href="blog.html">How to Learn a Foreign Language in 3 Steps</a></h3>
+					                                    <div class="meta">                                      
+					                                      <span class="meta-part"><a href="#"><i class="fa fa-calendar-o"></i> 29 Dec, 2016</a></span>
+					                                      <span class="meta-part"><a href="#"><i class="fa fa-eye"></i> 59</a></span>
+					                                      <span class="meta-part"><a href="#"><i class="fa fa-commenting-o"></i> 27</a></span>
+					                                    </div>
+					                                    <p class="desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
+					                                    <a href="blog.html" class="btn btn-common btn-sm">Learn Now</a>
+					                                </div>
+					                            </div>
+					                        </div>
+					                    </div> 
+					                </div>
+					            </div>
+					        </div>
+					    </section>
+					    <!-- Latest New Section End -->
+                    </pre>
+
+            </section>
+
+            <section id="css-structure">
+                <h2 class="title">CSS Files and Structure</h2>
+                <p class="fifteen">These are the css files that are loaded into templates in <strong>Head Section</strong>.</p>
+                <pre class="brush: html">
+                        <!-- Bootstrap CSS -->    
+					    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+					    <!-- Main Style -->
+					    <link rel="stylesheet" href="assets/css/main.css">
+					    <!-- Normalize Style -->
+					    <link rel="stylesheet" href="assets/css/normalize.css">
+					    <!-- Fonts Awesome -->
+					    <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
+					    <!-- Color Switcher -->
+					    <link rel="stylesheet" href="assets/css/color-switcher.css" type="text/css">
+					    <!-- Animate CSS -->
+					    <link rel="stylesheet" href="assets/extras/animate.css" type="text/css">
+					    <!-- Owl Carousel -->
+					    <link rel="stylesheet" href="assets/extras/owl.carousel.css" type="text/css">
+					    <link rel="stylesheet" href="assets/extras/owl.theme.css" type="text/css">
+					    <!-- Rev Slider Css -->
+					    <link rel="stylesheet" href="assets/extras/settings.css" type="text/css">
+					    <!-- Nivo Lightbox Css -->
+					    <link rel="stylesheet" href="assets/extras/nivo-lightbox.css" type="text/css">
+					    <!-- Slicknav Css -->
+					    <link rel="stylesheet" href="assets/css/slicknav.css" type="text/css">
+					    <!-- Responsive Style -->
+					    <link rel="stylesheet" href="assets/css/responsive.css">
+
+					    <!-- Color CSS Styles  -->
+					    <link rel="stylesheet" type="text/css" href="assets/css/colors/sky.css" media="screen" />
+		            </pre>
+
+                <h2 class="title">Google Web Fonts</h2>
+
+                <p>By default, the template loads this font from Google Web Font Services, you can change the font with the one that suits you best.</p>
+
+                <pre class="brush:html">		                
+						<!-- Google Font
+						=========================== -->
+						@import url('https://fonts.googleapis.com/css?family=Montserrat:700|Roboto:400,700');
+		            </pre>
+
+
+                <h2 class="title">Fontface Fonts</h2>
+
+                <p>By default, the template loads this font from from local for heading texts, you can change the font with the one that suits you best.</p>
+
+                <pre class="brush:html">                        
+					<!-- Fonts -->
+					<link rel="stylesheet" type="text/css" href="assets/fonts/font-awesome.min.css">
+                    </pre>
+
+
+                <p class="twenty">You can change fonts from <strong>main.css</strong></p>
+
+                <pre class="brush:css">
+                   	body{
+						font-size: 15px;	
+						font-family: 'Roboto', sans-serif;
+						font-weight: 400;
+						color: #999999;
+						margin: 0;
+						line-height: 25px;
+						background: #fff;
+						-webkit-box-sizing: box-sizing;
+					    -moz-box-sizing: box-sizing;
+					    box-sizing: box-sizing;
+					}
+					.selector-for-some-widget {
+					  -webkit-box-sizing: content-box;
+					     -moz-box-sizing: content-box;
+					          box-sizing: content-box;
+					}
+					img {
+						max-width: 100%;
+					}
+					h1, h2, h3, h4, h5, h6{
+						font-weight: 700;
+						color: #212121;
+						font-family: 'Montserrat', sans-serif;
+						font-size: 30px;
+						margin: 0;
+						padding: 12px 0;
+					}
+					p{
+						font-size: 15px;	
+						font-weight: 400;
+					}
+		            </pre>
+
+
+            </section>
+
+            <section id="javascript">
+                <h2 class="title">Javascript Files and Structure</h2>
+
+                <p class="fifteen">These are the list of Javascript files that are loaded into templates in end of the <strong>Body Section</strong>.
+
+                    <pre class="brush: html">
+
+						<!-- jQuery  -->
+					    <script type="text/javascript" src="assets/js/jquery.min.js"></script>
+					    <script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
+					    <script type="text/javascript" src="assets/js/color-switcher.js"></script>
+					    <script type="text/javascript" src="assets/js/jquery.mixitup.js"></script>
+					    <script type="text/javascript" src="assets/js/wow.js"></script>
+					    <script type="text/javascript" src="assets/js/nivo-lightbox.min.js"></script>
+					    <script type="text/javascript" src="assets/js/jquery.countdown.js"></script>  
+					    <script type="text/javascript" src="assets/js/jquery.counterup.min.js"></script>   
+					    <script type="text/javascript" src="assets/js/owl.carousel.min.js"></script> 
+					    <script type="text/javascript" src="assets/js/form-validator.min.js"></script>
+					    <script type="text/javascript" src="assets/js/contact-form-script.js"></script>  
+					    <script type="text/javascript" src="assets/js/jquery.themepunch.revolution.min.js"></script>
+					    <script type="text/javascript" src="assets/js/jquery.themepunch.tools.min.js"></script>    
+					    <script type="text/javascript" src="assets/js/jquery.slicknav.js"></script>
+					    <script src="assets/js/main.js"></script>
+
+		            </pre>
+
+            </section>
+
+            <section id="color-presets">
+                <h2 class="title"> Changing The Default Color Preset of Template </h2>
+
+                <p>Bright comes with multiple color presets you can check color preset files from assets->css->colors folder</p>
+                <p>You can change default color preset by adding color css file in head area like:</p>
+
+                <pre class="brush:html">
+                        <!-- Color CSS Styles  -->
+						<link rel="stylesheet" type="text/css" href="assets/css/colors/sky.css" media="screen" />	
+                    </pre>
+
+            </section>
+
+            <section id="contact-form">
+                <h2 class="title"> Configuring Contact Form </h2>
+
+                <p>open <b>form-process.php</b> file from <b>ASSETS->php</b> folder of template and configure mailer function parameters to get it worked</p>
+
+                <pre class="brush:html">
+                  <!-- Replace You Email Here -->
+                  $EmailTo = "email@gmail.com";
+                </pre>
+
+            </section>
+
+            <section id="google-map">
+                <h2 class="title">Google Map Settings</h2>
+                <p>open conact page goto JS library section and change the latitude/longitude values</p>
+                <pre class="brush:javascript">
+						var defult = new google.maps.LatLng(55.8638037, -4.2834354,13.67);
+		            </pre>
+            </section>
+
+            <section id="credit">
+                <h2 class="title">Source and Credit</h2>
+                <div class="script-source">
+                    <ul>
+                        <li><a target="_blank" href="http://unsplash.com/">Unsplash</a></li>
+                        <li><a target="_blank" href="http://jquery.com/">jQuery</a></li>
+                        <li><a target="_blank" href="http://getbootstrap.com">Bootstrap Framework</a></li>
+                        <li><a target="_blank" href="http://www.owlgraphic.com/owlcarousel">Owl Carousel</a></li>
+                        <li><a target="_blank" href="https://github.com/gilbitron/Nivo-Lightbox">Nivo-Lightbox</a></li>
+                        <li><a target="_blank" href="http://slicknav.com">SlickNav</a></li>
+                        <li><a target="_blank" href="http://mynameismatthieu.com/WOW/">Wow</a></li>
+                        <li><a target="_blank" href="http://fontawesome.io/">Font Awesome</a></li>
+                        <li><a target="_blank" href="http://daneden.github.io/animate.css/">Animate CSS</a></li>
+                    </ul>
+                </div>
+            </section>
+
+        </div>
+    </div>
+
+
+    <!-- Essential JavaScript Libraries
+		==============================================-->
+    <script src="js/jquery-1.11.0.min.js"></script>
+    <script src="js/jquery-ui.js"></script>
+    <script src="syntax-highlighter/scripts/shCore.js"></script>
+    <script src="syntax-highlighter/scripts/shBrushXml.js"></script>
+    <script src="syntax-highlighter/scripts/shBrushCss.js"></script>
+    <script src="syntax-highlighter/scripts/shBrushJScript.js"></script>
+    <script src="syntax-highlighter/scripts/shBrushPhp.js"></script>
+    <script>
+        SyntaxHighlighter.all()
+    </script>
+    <script src="js/custom.js"></script>
+
+</body>
+
+</html>

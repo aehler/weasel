@@ -1,223 +1,66 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Bright – Bootstrap HTML5 Education Template</title>
-    <!-- Bootstrap CSS -->    
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-    <!-- Main Style -->
-    <link rel="stylesheet" href="assets/css/main.css">
-    <!-- Normalize Style -->
-    <link rel="stylesheet" href="assets/css/normalize.css">
-    <!-- Fonts Awesome -->
-    <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
-    <!-- Color Switcher -->
-    <link rel="stylesheet" href="assets/css/color-switcher.css" type="text/css">
-    <!-- Animate CSS -->
-    <link rel="stylesheet" href="assets/extras/animate.css" type="text/css">
-    <!-- Owl Carousel -->
-    <link rel="stylesheet" href="assets/extras/owl.carousel.css" type="text/css">
-    <link rel="stylesheet" href="assets/extras/owl.theme.css" type="text/css">
-    <!-- Rev Slider Css -->
-    <link rel="stylesheet" href="assets/extras/settings.css" type="text/css">
-    <!-- Nivo Lightbox Css -->
-    <link rel="stylesheet" href="assets/extras/nivo-lightbox.css" type="text/css">
-    <!-- Slicknav Css -->
-    <link rel="stylesheet" href="assets/css/slicknav.css" type="text/css">
-    <!-- Responsive Style -->
-    <link rel="stylesheet" href="assets/css/responsive.css">
+{% extends "main.html" %}
 
-    <!-- Color CSS Styles  -->
-    <link rel="stylesheet" type="text/css" href="assets/css/colors/sky.css" media="screen" />
+{% block main %}
 
-  </head>
-  <body>
-    
-    <!-- Header area wrapper Starts -->
-    <header id="header-wrap">
-      <!-- Roof area Starts -->
-      <div id="roof" class="hidden-xs">
-          <div class="container">
-              <!-- Wellcome Starts -->
-              <div class="pull-left">
-                <i class="fa fa-map-o" aria-hidden="true"></i> Sydney NSW 2052, Australia
-              </div>
-              <!-- Wellcome End -->
-
-              <!-- Quick Contacts Starts -->
-              <div class="quick-contacts pull-right">
-                  {% if currentUser %}
-                  <span><i class="fa fa-envelope"></i><a href="mailto:{{ currentUser.Login }}">{{ currentUser.Login }}</a></span>
-                  <span>
-                  <a href="/logout/">Logout</a></span>
-                      {% else %}
-                  <span><a href="/login/"><i class="fa fa-user"></i> Login</a></span>
-                  {% endif %}
-
-              </div>
-              <!-- Quick Contacts End -->
-          </div>
-      </div>
-      <!-- Roof area End -->
-
-      <!-- Navbar Start -->
-      <nav class="navbar navbar-default main-navigation" role="navigation" data-spy="affix" data-offset-top="50">
-        <div class="container">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </button>
-              <a class="navbar-brand" href="index.html"><img src="assets/img/logo.png" alt=""></a>
-            </div>
-            <!-- Brand End -->
-
-            <!-- Search Icon -->
-            <div class="header-search pull-right">
-                <a class="open-search">
-                    <i class="fa fa-search"></i>
+    <!-- Main Carousel Section Start -->
+    <div id="carousel-area">
+      <div id="carousel-slider" class="carousel slide" data-interval="3000">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+          <li data-target="#carousel-slider" data-slide-to="0" class="active">
+          </li>
+          <li data-target="#carousel-slider" data-slide-to="1">
+          </li>
+          <li data-target="#carousel-slider" data-slide-to="2">
+          </li>
+        </ol>
+        <div class="carousel-inner">
+          <div class="item active" style="background-image: url(/assets/img/slider/bg-1.jpg);">
+            <div class="carousel-caption">
+                <p>Bright - Bootstrap HTML5 Education Template</p>
+                <h1>Excellent and Friendly<br> Faculty Members</h1>
+                <a class="btn btn-lg btn-common" href="single-teacher.html">
+                  <i class="fa fa-arrow-circle-right">
+                  </i>
+                  Learn More
                 </a>
-            </div>  
-            <!-- Collapse Navbar -->
-            <div class="collapse navbar-collapse" id="navbar">
-              <ul class="nav navbar-nav navbar-right">
-                <li class="dropdown dropdown-toggle">
-                  <a class="active" href="index.html" data-toggle="dropdown">Home <i class="fa fa-angle-down"></i></a>
-                  <ul class="dropdown-menu">
-                    <li><a class="active" href="index.html">Home Page 1</a></li>    
-                    <li><a href="index-1.html">Home Page 2</a></li>     
-                  </ul>                        
-                </li>
-                <li class="dropdown dropdown-toggle">
-                  <a href="#" data-toggle="dropdown">Courses <i class="fa fa-angle-down"></i></a>
-                  <ul class="dropdown-menu">
-                    <li><a href="courses-list.html">Courses List</a></li>    
-                    <li><a href="courses-grid.html">Courses Grid</a></li>  
-                    <li><a href="courses-single.html">Single Course</a></li>   
-                  </ul>                        
-                </li>
-                <li class="dropdown dropdown-toggle">
-                  <a href="#" data-toggle="dropdown">Pages <i class="fa fa-angle-down"></i></a>
-                  <ul class="dropdown-menu">
-                    <li><a href="about.html">About Page</a></li>                     
-                    <li><a href="gallery.html">Image Gallery</a></li>
-                    <li><a href="faq.html">FAQ</a></li>    
-                    <li><a href="login.html">Login Page</a></li> 
-                    <li><a href="single-teacher.html">Single Teacher</a></li> 
-                    <li><a href="registration.html">Registration Form</a></li> 
-                    <li><a href="contact.html">Contacts</a></li> 
-                    <li><a href="404.html">404</a></li> 
-                  </ul>                        
-                </li>
-                <li class="dropdown dropdown-toggle">
-                  <a href="#" data-toggle="dropdown">Events <i class="fa fa-angle-down"></i></a>
-                  <ul class="dropdown-menu">
-                    <li><a href="event-grid.html">Events Grid</a></li>                     
-                    <li><a href="event.html">Single Event</a></li>
-                  </ul>                        
-                </li> 
-                <li class="dropdown dropdown-toggle">
-                  <a href="#" data-toggle="dropdown">Blog <i class="fa fa-angle-down"></i></a>
-                  <ul class="dropdown-menu">
-                    <li><a href="blog.html">Blog - Right Sidebar</a></li>                     
-                    <li><a href="blog-left-sidebar.html">Blog - Left Sidebar</a></li>
-                    <li><a href="blog-full-width.html">Blog - Full Width</a></li>   
-                    <li><a href="single-post.html">Blog Single Post</a></li>   
-                  </ul>                        
-                </li>              
-                <li><a href="contact.html">Contact</a></li>
-                  <li>{{ lang }}</li>
-              </ul>
-            </div>  
-             <!-- Form for navbar search area -->
-            <form class="full-search">
-              <div class="container">
-                <div class="row">
-                  <input class="form-control" type="text" placeholder="Search">
-                  <a class="close-search">
-                  <span class="fa fa-times">
-                  </span>
-                  </a>
-                </div>
-              </div>
-            </form>
-            <!-- Search form ends -->   
-
-            <!-- Mobile Menu Start -->
-            <ul class="wpb-mobile-menu">
-              <li>
-                <a class="active" href="index.html">Home</a>
-                <ul>
-                  <li><a class="active" href="index.html">Home Page 1</a></li>    
-                  <li><a href="index-1.html">Home Page 2</a></li>     
-                </ul>                        
-              </li>
-              <li>
-                <a href="#">Courses</a>
-                <ul>
-                  <li><a href="courses-list.html">Courses List</a></li>    
-                  <li><a href="courses-grid.html">Courses Grid</a></li>  
-                  <li><a href="courses-single.html">Single Course</a></li>   
-                </ul>                        
-              </li>
-              <li>
-                <a href="#">Pages</a>
-                <ul>
-                  <li><a href="about.html">About Page</a></li>                     
-                  <li><a href="gallery.html">Image Gallery</a></li>
-                  <li><a href="faq.html">FAQ</a></li>    
-                  <li><a href="login.html">Login Page</a></li> 
-                  <li><a href="single-teacher.html">Single Teacher</a></li> 
-                  <li><a href="registration.html">Registration Form</a></li> 
-                  <li><a href="contact.html">Contacts</a></li> 
-                  <li><a href="404.html">404</a></li> 
-                </ul>                        
-              </li>
-              <li>
-                <a href="#">Events</a>
-                <ul>
-                  <li><a href="event-grid.html">Events Grid</a></li>                     
-                  <li><a href="event.html">Single Event</a></li>
-                </ul>                        
-              </li> 
-              <li>
-                <a href="#">Blog</a>
-                <ul>
-                  <li><a href="blog.html">Blog - Right Sidebar</a></li>                     
-                  <li><a href="blog-left-sidebar.html">Blog - Left Sidebar</a></li>
-                  <li><a href="blog-full-width.html">Blog - Full Width</a></li>   
-                  <li><a href="single-post.html">Blog Single Post</a></li>   
-                </ul>                        
-              </li>              
-              <li><a href="contact.html">Contact</a></li>
-            </ul>
-            <!-- Mobile Menu End -->
-
+            </div> 
+          </div>  
+          <div class="item" style="background-image: url(/assets/img/slider/bg-2.jpg);">
+            <div class="carousel-caption">
+                <p>Ready to Launch - School, College, University or Course Website</p>
+                <h1>Innovation paradise<br> for Students</h1>
+                <a class="btn btn-lg btn-common" href="contact.html">
+                  <i class="fa fa-check">
+                  </i>
+                  Apply Now
+                </a>
+                <a class="btn btn-lg btn-border" href="courses-grid.html">
+                  <i class="fa fa-envelope-open">
+                  </i>
+                  Contact Us
+                </a>
+            </div> 
           </div>
-      </nav>
-      <!-- Navbar End -->
-
-    </header>
-    <!-- Header area wrapper End -->
-
-    <!-- Start Content Section -->
-    <section id="content" class="error-bg">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-6 col-md-offset-3">
-            <div class="error-page">
-              <h3><a rel="nofollow" href="https://rebrand.ly/gg-bright-purchase">Please, Purchase full version to Get all <b>Pages</b> and <b>Features</b></a></h3>
-              <a rel="nofollow" href="https://rebrand.ly/gg-bright-purchase" class="btn btn-common">GET IT NOW!</a>
-            </div>
-          </div>
+          <div class="item" style="background-image: url(assets/img/slider/bg-3.jpg);">
+            <div class="carousel-caption">
+                <p>50+ Built-in Pages to Create any Kind of Education Site</p>
+                <h1>Your ideas will be <br>heard & supported</h1>
+                <a class="btn btn-lg btn-border" href="event-grid.html">
+                  <i class="fa fa-calendar">
+                  </i>
+                  Upcoming Events
+                </a>
+            </div> 
+          </div>     
         </div>
+        <a class="left carousel-control" href="#carousel-slider" role="button" data-slide="prev">          
+        </a>
+        <a class="right carousel-control" href="#carousel-slider" role="button" data-slide="next">          
+        </a>
       </div>
-    </section>
-    <!-- End Content Section  -->
+    </div>
+    <!-- Main Carousel Section End -->
 
     <!-- Activity Area Start -->
     <section class="activity-area section">
@@ -261,20 +104,69 @@
     </section>
     <!-- Activity Area End -->
 
-    <!-- Start Content Section -->
-    <section id="content" class="error-bg">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-6 col-md-offset-3">
-            <div class="error-page">
-              <h3><a rel="nofollow" href="https://rebrand.ly/gg-bright-purchase">Please, Purchase full version to Get all <b>Pages</b> and <b>Features</b></a></h3>
-              <a rel="nofollow" href="https://rebrand.ly/gg-bright-purchase" class="btn btn-common">GET IT NOW!</a>
+    <!-- Features Area Star -->
+    <section class="features">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="features-wrapper">
+                        <div class="col-md-7 col-sm-12 col-xs-12">
+                            <div class="features-main">
+                                <div class="features-header">
+                                    <h2>Welecome To Bright University</h2>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                                </div>
+                                <div class="row info">
+                                    <div class="col-sm-6">
+                                        <div class="icon">
+                                            <i class="fa fa-group"></i>
+                                        </div>
+                                        <div class="content">
+                                            <h3>Skilled Professors</h3>
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus, quaerat beatae.</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="icon">
+                                            <i class="fa fa-university"></i>
+                                        </div>
+                                        <div class="content">
+                                            <h3>Best Infrastructure</h3>
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus, quaerat beatae.</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="icon">
+                                            <i class="fa fa-cogs"></i>
+                                        </div>
+                                        <div class="content">
+                                            <h3>Well Equiped Labs</h3>
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus, quaerat beatae.</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="icon">
+                                            <i class="fa fa-book"></i>
+                                        </div>
+                                        <div class="content">
+                                            <h3>Big Library</h3>
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus, quaerat beatae.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-5 col-sm-12 col-xs-12">
+                            <div class="img-thumb">
+                                <img src="/assets/img/features/img1.png" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
     </section>
-    <!-- End Content Section  -->
+    <!-- Features Area End -->
 
     <!-- Courses Section Start -->
     <section class="courses section">
@@ -284,7 +176,7 @@
                 <div class="col-md-4 col-sm-6 col-xs-12">
                     <div class="courses-wrap">
                         <div class="thumb">
-                            <img src="assets/img/courses/img-1.jpg" alt="">
+                            <img src="/assets/img/courses/img-1.jpg" alt="">
                             <div class="courses-price">
                                 <p class="years">Duration: 3 Years</p>
                                 <span class="price">$20000</span>
@@ -293,7 +185,7 @@
                         <div class="course-detail-wrap">
                             <div class="teacher-wrap">
                                 <span class="course-instructor">by <a href="#">Maria Bella</a>, <a href="#">Jana Smith</a></span>
-                                <img src="assets/img/courses/thumb-teacher-1.jpg" alt="">
+                                <img src="/assets/img/courses/thumb-teacher-1.jpg" alt="">
                             </div>
                             <div class="course-content">
                                 <h3><a href="courses-single.html">Computer Science</a></h3>
@@ -306,7 +198,7 @@
                 <div class="col-md-4 col-sm-6 col-xs-12">
                     <div class="courses-wrap">
                         <div class="thumb">
-                            <img src="assets/img/courses/img-2.jpg" alt="">
+                            <img src="/assets/img/courses/img-2.jpg" alt="">
                             <div class="courses-price">
                                 <p class="years">Duration: 4 Years</p>
                                 <span class="price">$30000</span>
@@ -315,7 +207,7 @@
                         <div class="course-detail-wrap">
                             <div class="teacher-wrap">
                                 <span class="course-instructor">by <a href="#">Jana Smith</a>, <a href="#">Kiwhi Leonard</a></span>
-                                <img src="assets/img/courses/thumb-teacher-2.jpg" alt="">
+                                <img src="/assets/img/courses/thumb-teacher-2.jpg" alt="">
                             </div>
                             <div class="course-content">
                                 <h3><a href="courses-single.html">Micro Biology</a></h3>
@@ -328,7 +220,7 @@
                 <div class="col-md-4 col-sm-6 col-xs-12">
                     <div class="courses-wrap">
                         <div class="thumb">
-                            <img src="assets/img/courses/img-3.jpg" alt="">
+                            <img src="/assets/img/courses/img-3.jpg" alt="">
                             <div class="courses-price">
                                 <p class="years">Duration: 3 Years</p>
                                 <span class="price">$20000</span>
@@ -337,7 +229,7 @@
                         <div class="course-detail-wrap">
                             <div class="teacher-wrap">
                                 <span class="course-instructor">by <a href="#">jana Smith</a>, <a href="#">Maria Bella</a></span>
-                                <img src="assets/img/courses/thumb-teacher-3.jpg" alt="">
+                                <img src="/assets/img/courses/thumb-teacher-3.jpg" alt="">
                             </div>
                             <div class="course-content">
                                 <h3><a href="courses-single.html">Gobal Economic</a></h3>
@@ -350,7 +242,7 @@
                 <div class="col-md-4 col-sm-6 col-xs-12">
                     <div class="courses-wrap">
                         <div class="thumb">
-                            <img src="assets/img/courses/img-4.jpg" alt="">
+                            <img src="/assets/img/courses/img-4.jpg" alt="">
                             <div class="courses-price">
                                 <p class="years">Duration: 3 Years</p>
                                 <span class="price">$2900</span>
@@ -359,7 +251,7 @@
                         <div class="course-detail-wrap">
                             <div class="teacher-wrap">
                                 <span class="course-instructor">by <a href="#">Maria Bella</a>, <a href="#">Jana Smith</a></span>
-                                <img src="assets/img/courses/thumb-teacher-1.jpg" alt="">
+                                <img src="/assets/img/courses/thumb-teacher-1.jpg" alt="">
                             </div>
                             <div class="course-content">
                                 <h3><a href="courses-single.html">Crash Course on Android/iOS</a></h3>
@@ -372,7 +264,7 @@
                 <div class="col-md-4 col-sm-6 col-xs-12">
                     <div class="courses-wrap">
                         <div class="thumb">
-                            <img src="assets/img/courses/img-5.jpg" alt="">
+                            <img src="/assets/img/courses/img-5.jpg" alt="">
                             <div class="courses-price">
                                 <p class="years">Duration: 4 months</p>
                                 <span class="price">$3000</span>
@@ -381,7 +273,7 @@
                         <div class="course-detail-wrap">
                             <div class="teacher-wrap">
                                 <span class="course-instructor">by <a href="#">Jana Smith</a>, <a href="#">Kiwhi Leonard</a></span>
-                                <img src="assets/img/courses/thumb-teacher-2.jpg" alt="">
+                                <img src="/assets/img/courses/thumb-teacher-2.jpg" alt="">
                             </div>
                             <div class="course-content">
                                 <h3><a href="courses-single.html">Diving into Big Data</a></h3>
@@ -394,7 +286,7 @@
                 <div class="col-md-4 col-sm-6 col-xs-12">
                     <div class="courses-wrap">
                         <div class="thumb">
-                            <img src="assets/img/courses/img-6.jpg" alt="">
+                            <img src="/assets/img/courses/img-6.jpg" alt="">
                             <div class="courses-price">
                                 <p class="years">Duration: 6 Months</p>
                                 <span class="price">$6090</span>
@@ -403,7 +295,7 @@
                         <div class="course-detail-wrap">
                             <div class="teacher-wrap">
                                 <span class="course-instructor">by <a href="#">jana Smith</a>, <a href="#">Maria Bella</a></span>
-                                <img src="assets/img/courses/thumb-teacher-3.jpg" alt="">
+                                <img src="/assets/img/courses/thumb-teacher-3.jpg" alt="">
                             </div>
                             <div class="course-content">
                                 <h3><a href="courses-single.html">Getting Started with Java</a></h3>
@@ -419,20 +311,49 @@
     </section>
     <!-- Courses Section End -->
 
-    <!-- Start Content Section -->
-    <section id="content" class="error-bg">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-6 col-md-offset-3">
-            <div class="error-page">
-              <h3><a rel="nofollow" href="https://rebrand.ly/gg-bright-purchase">Please, Purchase full version to Get all <b>Pages</b> and <b>Features</b></a></h3>
-              <a rel="nofollow" href="https://rebrand.ly/gg-bright-purchase" class="btn btn-common">GET IT NOW!</a>
+    <!-- Coaching Area Start -->
+    <section class="coaching-courses section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-7 col-sm-6 col-xs-12 col-offset-2">              
+                    <div class="coaching-wrapper">
+                        <h3>Get <span>Free</span> Training on Business Development<br> By John Smith</h3>
+                        <p>It's limited seating! Hurry Up</p>
+                        <div class="timer">
+                            <div id="clock" class="time-count">
+                                <div class="time-entry days"><span>00</span> Days</div>
+                                <div class="time-entry hours"><span>00</span> Hours</div>
+                                <div class="time-entry minutes"><span>00</span> Minutes</div>
+                                <div class="time-entry seconds"><span>00</span> Seconds</div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="col-md-5 col-sm-6 col-xs-12">
+                    <div class="sign-up box">
+                        <div class="heading">
+                            <h2 class="heading-title">Sing Up Now</h2>
+                            <p class="desc">Get Free Courses</p>
+                        </div>
+                        <form role="form" class="login-form">
+                            <div class="form-group">
+                                <input type="text" id="sender-name" class="form-control" name="name" placeholder="Enter your Name">
+                            </div> 
+                            <div class="form-group">
+                                <input type="text" id="sender-email" class="form-control" name="email" placeholder="Enter your Email">
+                            </div> 
+                            <div class="form-group">
+                                <input type="text" id="sender-phone" class="form-control" placeholder="Enter your Phone">
+                            </div>   
+                            <button class="btn btn-common">Enroll Now</button>
+                          </form>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
     </section>
-    <!-- End Content Section  -->
+    <!-- Coaching Area End -->
 
     <!-- Why Choose section Start -->
     <div class="why-choose">
@@ -512,7 +433,7 @@
 
             <div class="col-md-5 col-sm-5 col-xl-12">
               <div class="featured-thumb">
-                <img src="assets/img/features/why.png" alt="">
+                <img src="/assets/img/features/why.png" alt="">
               </div>
             </div>
 
@@ -520,6 +441,287 @@
         </div>
     </div>
     <!-- Why Choose section End -->  
+
+    <!-- Counter Section Start -->
+    <section id="counter">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-3 col-sm-6 col-xs-12">
+            <div class="counting">              
+                <div class="icon-left">  
+                    <i class="fa fa-users"></i>                
+                </div> 
+                <div class="desc media-body">
+                    <h3>Enrolled Students</h3>
+                    <div class="counter" data-count="8565">0</div> 
+                </div>
+            </div>
+          </div>
+          <div class="col-md-3 col-sm-6 col-xs-12">
+            <div class="counting">              
+                <div class="icon-left">  
+                    <i class="fa fa-graduation-cap"></i>                
+                </div> 
+                <div class="desc media-body">
+                    <h3>Education Awards</h3>
+                    <div class="counter" data-count="120">0</div>
+                </div>
+            </div>
+          </div>
+          <div class="col-md-3 col-sm-6 col-xs-12">
+            <div class="counting">              
+                <div class="icon-left">  
+                    <i class="fa fa-diamond"></i>                
+                </div> 
+                <div class="desc media-body">
+                    <h3>Certified Teachers </h3>
+                    <div class="counter" data-count="193">0</div>
+                </div>
+            </div>
+          </div>
+          <div class="col-md-3 col-sm-6 col-xs-12">
+            <div class="counting">              
+                <div class="icon-left">  
+                    <i class="fa fa-flask"></i>                
+                </div> 
+                <div class="desc media-body">
+                    <h3>Library and Labs </h3>
+                    <div class="counter" data-count="150">0</div>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Counter Section End --> 
+
+    <!-- Teacher Section Start -->
+    <section class="teacher section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <h2 class="section-title" data-wow-delay="0s">Featured Faculty Members</h2>
+          </div> 
+          <div class="col-md-4 col-sm-6 col-xs-12">
+            <div class="teacher-item wow fadeIn" data-wow-delay="0.1s">
+              <div class="thumb-teacher">
+                <img src="/assets/img/teacher/img-1.png" alt="">
+              </div>
+              <div class="teacher-desc">
+                <h3><a href="single-teacher.html">Julia Benjama</a></h3>
+                <span>Head of Computer Science Dept.</span>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex ea qui, voluptas vitae pariatur nihil odit.</p>
+                <div class="social-icon">
+                  <a class="social" href="#"><i class="fa fa-twitter"></i></a>
+                  <a class="social" href="#"><i class="fa fa-facebook"></i></a>                  
+                  <a class="social" href="#"><i class="fa fa-google-plus"></i></a>
+                  <a class="social" href="#"><i class="fa fa-pinterest"></i></a>
+                </div>
+              </div>              
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-6 col-xs-12">
+            <div class="teacher-item wow fadeIn" data-wow-delay="0.3s">
+              <div class="thumb-teacher">
+                <img src="/assets/img/teacher/img-2.png" alt="">
+              </div>
+              <div class="teacher-desc">
+                <h3><a href="single-teacher.html">Jen Maroney</a></h3>
+                <span>Head of Business Dept.</span>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex ea qui, voluptas vitae pariatur nihil odit.</p>
+                <div class="social-icon">
+                  <a class="social" href="#"><i class="fa fa-twitter"></i></a>
+                  <a class="social" href="#"><i class="fa fa-facebook"></i></a>                  
+                  <a class="social" href="#"><i class="fa fa-google-plus"></i></a>
+                  <a class="social" href="#"><i class="fa fa-pinterest"></i></a>
+                </div>
+              </div>              
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-6 col-xs-12">
+            <div class="teacher-item wow fadeIn" data-wow-delay="0.5s">
+              <div class="thumb-teacher">
+                <img src="/assets/img/teacher/img-3.png" alt="">
+              </div>
+              <div class="teacher-desc">
+                <h3><a href="single-teacher.html">Sarah Robert</a></h3>
+                <span>Student Advisor</span>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex ea qui, voluptas vitae pariatur nihil odit.</p>
+                <div class="social-icon">
+                  <a class="social" href="#"><i class="fa fa-twitter"></i></a>
+                  <a class="social" href="#"><i class="fa fa-facebook"></i></a>                  
+                  <a class="social" href="#"><i class="fa fa-google-plus"></i></a>
+                  <a class="social" href="#"><i class="fa fa-pinterest"></i></a>
+                </div>
+              </div>              
+            </div>
+          </div>  
+        </div>
+      </div>
+    </section>
+    <!-- Teacher Section End -->
+
+    <!-- Start Testimonial Section  -->        
+    <div class="testimonial section">
+      <div class="container">
+        <div class="row">
+          <!-- Testimonial section  -->
+          <div class="testimonials-carousel owl-carousel">
+            <div class="item">
+              <div class="testimonial-item">
+                <div class="testimonial-inner">
+                  <p>When I commenced the programme. I gave myself one year to challenge my thinking. change my outlook and choose my next step. This could not have been achierved without the remarkable opportunities to me.</p>
+                </div>                
+                <div class="quote-author">
+                  <a href="#"><img src="/assets/img/testimonial/avatar1.jpg" alt=""></a>
+                  <div class="quote-footer">
+                    <h5 class="name">John Mathew</h5>
+                    <span> / Alumini</span>
+                  </div>
+                </div>                
+              </div>
+            </div>                
+            <div class="item">
+              <div class="testimonial-item">
+                <div class="testimonial-inner">
+                  <p>When I commenced the programme. I gave myself one year to challenge my thinking. change my outlook and choose my next step. This could not have been achierved without the remarkable opportunities to me.</p>
+                </div>                
+                <div class="quote-author">
+                  <a href="#"><img src="/assets/img/testimonial/avatar2.jpg" alt=""></a>
+                  <div class="quote-footer">
+                    <h5 class="name">Maria Ashe</h5>
+                    <span> / Parent</span>
+                  </div>
+                </div>                
+              </div>
+            </div>
+            <div class="item">
+              <div class="testimonial-item">
+                <div class="testimonial-inner">
+                  <p>When I commenced the programme. I gave myself one year to challenge my thinking. change my outlook and choose my next step. This could not have been achierved without the remarkable opportunities to me.</p>
+                </div>                
+                <div class="quote-author">
+                  <a href="#"><img src="/assets/img/testimonial/avatar3.jpg" alt=""></a>
+                  <div class="quote-footer">
+                    <h5 class="name">John Mathew</h5>
+                    <span> / Student</span>
+                  </div>
+                </div>                
+              </div>
+            </div>
+            <div class="item">
+              <div class="testimonial-item">
+                <div class="testimonial-inner">
+                  <p>When I commenced the programme. I gave myself one year to challenge my thinking. change my outlook and choose my next step. This could not have been achierved without the remarkable opportunities to me.</p>
+                </div>                
+                <div class="quote-author">
+                  <a href="#"><img src="/assets/img/testimonial/avatar4.jpg" alt=""></a>
+                  <div class="quote-footer">
+                    <h5 class="name">Julia Swales</h5>
+                    <span> / Parent</span>
+                  </div>
+                </div>                
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End Testimonial Section  -->
+
+    <!-- Latest New Section Start -->
+    <section class="latest-news section">
+        <div class="container">
+            <div class="row">
+                <h2 class="section-title">From The Blog</h2>  
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <div class="news-grid-item">
+                        <div class="row">
+                            <div class="col-md-6 col-sm-12 col-xs-12">
+                                <img src="/assets/img/news/img-1.jpg" alt="">
+                            </div>
+                            <div class="col-md-6 col-sm-12 col-xs-12">
+                                <div class="news-content">
+                                    <h3 class="news-title"><a href="blog.html">How to Improve Your Communication Skill</a></h3>
+                                    <div class="meta">                                      
+                                      <span class="meta-part"><a href="#"><i class="fa fa-calendar-o"></i> 29 Dec, 2016</a></span>
+                                      <span class="meta-part"><a href="#"><i class="fa fa-eye"></i> 59</a></span>
+                                      <span class="meta-part"><a href="#"><i class="fa fa-commenting-o"></i> 27</a></span>
+                                    </div>
+                                    <p class="desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
+                                    <a href="blog.html" class="btn btn-common btn-sm">Learn Now</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div> 
+                </div>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <div class="news-grid-item">
+                        <div class="row">
+                            <div class="col-md-6 col-sm-12 col-xs-12">
+                                <img src="/assets/img/news/img-2.jpg" alt="">
+                            </div>
+                            <div class="col-md-6 col-sm-12 col-xs-12">
+                                <div class="news-content">
+                                    <h3 class="news-title"><a href="blog.html">Is Big Data is New Big Career Path?</a></h3>
+                                    <div class="meta">                                      
+                                      <span class="meta-part"><a href="#"><i class="fa fa-calendar-o"></i> 29 Dec, 2016</a></span>
+                                      <span class="meta-part"><a href="#"><i class="fa fa-eye"></i> 59</a></span>
+                                      <span class="meta-part"><a href="#"><i class="fa fa-commenting-o"></i> 27</a></span>
+                                    </div>
+                                    <p class="desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
+                                    <a href="blog.html" class="btn btn-common btn-sm">Learn Now</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div> 
+                </div>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <div class="news-grid-item">
+                        <div class="row">
+                            <div class="col-md-6 col-sm-12 col-xs-12">
+                                <img src="/assets/img/news/img-3.jpg" alt="">
+                            </div>
+                            <div class="col-md-6 col-sm-12 col-xs-12">
+                                <div class="news-content">
+                                    <h3 class="news-title"><a href="blog.html">Top 10 Books You Must Read in 2017</a></h3>
+                                    <div class="meta">                                      
+                                      <span class="meta-part"><a href="#"><i class="fa fa-calendar-o"></i> 29 Dec, 2016</a></span>
+                                      <span class="meta-part"><a href="#"><i class="fa fa-eye"></i> 59</a></span>
+                                      <span class="meta-part"><a href="#"><i class="fa fa-commenting-o"></i> 27</a></span>
+                                    </div>
+                                    <p class="desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                                    <a href="blog.html" class="btn btn-common btn-sm">Learn Now</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div> 
+                </div>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <div class="news-grid-item">
+                        <div class="row">
+                            <div class="col-md-6 col-sm-12 col-xs-12">
+                                <img src="/assets/img/news/img-4.jpg" alt="">
+                            </div>
+                            <div class="col-md-6 col-sm-12 col-xs-12">
+                                <div class="news-content">
+                                    <h3 class="news-title"><a href="blog.html">How to Learn a Foreign Language in 3 Steps</a></h3>
+                                    <div class="meta">                                      
+                                      <span class="meta-part"><a href="#"><i class="fa fa-calendar-o"></i> 29 Dec, 2016</a></span>
+                                      <span class="meta-part"><a href="#"><i class="fa fa-eye"></i> 59</a></span>
+                                      <span class="meta-part"><a href="#"><i class="fa fa-commenting-o"></i> 27</a></span>
+                                    </div>
+                                    <p class="desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
+                                    <a href="blog.html" class="btn btn-common btn-sm">Learn Now</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div> 
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Latest New Section End -->
 
     <!-- NewsLetter Section Start -->
     <section class="newsletter">
@@ -542,128 +744,4 @@
     </section>
     <!-- NewsLetter Section End -->
 
-    <!-- Footer Section -->
-    <footer>
-      <!-- Container Starts -->
-      <div class="container">
-        <!-- Row Starts -->
-        <div class="row">
-          <!-- Footer Widget Starts -->
-          <div class="footer-widget col-md-3 col-sm-6 col-xs-12">
-            <h3 class="small-title">
-              Contact Info
-            </h3>
-            <p>
-              A powerhouse of cutting-edge education, research & teaching in The World
-            </p>  
-            <ul class="address">
-                <li><i class="fa fa-home"></i> Sydney NSW 2052, Australia</li>
-                <li><i class="fa fa-phone"></i> +61 2 9385 1000</li>
-                <li><i class="fa fa-envelope"></i> hello@brightuniversity.edu</li>
-            </ul>        
-          </div><!-- Footer Widget Ends -->
-          
-          <!-- Footer Widget Starts -->
-          <div class="footer-widget col-md-3 col-sm-6 col-xs-12">
-            <h3 class="small-title">
-              Latest News
-            </h3>
-            <ul class="recent-post">
-              <li class="post">
-                <a href="assets/img/flicker/img1.jpg" class="lightbox">
-                <img alt="" src="assets/img/flicker/img1.jpg">
-                </a>
-                <p class="text">Fightin'the system like true modern <br><span>Nov 05,2016</span></p>
-              </li>
-              <li class="post">
-                <a href="assets/img/flicker/img1.jpg" class="lightbox">
-                <img alt="" src="assets/img/flicker/img2.jpg">
-                </a>
-                <p class="text">Will we're movin' on up to the east side <br><span>Nov 09,2016</span></p>
-              </li>
-            </ul>
-          </div>
-          <!-- Footer Widget Ends -->        
-
-          <!-- Footer Widget Starts -->
-          <div class="footer-widget col-md-3 col-sm-6 col-xs-12">
-            <h3 class="small-title">
-              Our Courses
-            </h3>
-            <ul class="list">
-              <li><a href="#">Web design</a></li>
-              <li><a href="#">Android Developer</a></li>
-              <li><a href="#">PHP Tranning</a></li>
-              <li><a href="#">IOS Developer</a></li>
-              <li><a href="#">App Design Package</a></li>
-            </ul>
-          </div>
-          <!-- Footer Widget Ends -->
-
-          <!-- Footer Widget Starts -->
-          <div class="footer-widget col-md-3 col-sm-6 col-xs-12">
-            <h3 class="small-title">
-              College Gallery
-            </h3>
-            <div class="plain-flicker-gallery">
-              <a href="#" title="Pan Masala"><img src="assets/img/flicker/img1.jpg" alt=""></a>
-              <a href="#" title="Sports Template for Joomla"><img src="assets/img/flicker/img2.jpg" alt=""></a>
-              <a href="" title="Apple Keyboard"><img src="assets/img/flicker/img3.jpg" alt=""></a>
-              <a href="" title="Hard Working"><img src="assets/img/flicker/img4.jpg" alt=""></a>
-              <a href="" title="Smile"><img src="assets/img/flicker/img5.jpg" alt=""></a>
-              <a href="" title="Puzzle"><img src="assets/img/flicker/img6.jpg" alt=""></a>
-            </div>
-          </div><!-- Footer Widget Ends -->
-        </div><!-- Row Ends -->
-      </div><!-- Container Ends -->
-      
-      <!-- Copyright -->
-      <div id="copyright">
-        <div class="container">
-          <div class="row">
-            <div class="col-md-6  col-sm-6">
-              <p class="copyright-text">
-                © All rights reserved 2017 - Design &amp; Developed by <a rel="nofollow" href="http://graygrids.com">GrayGrids</a>
-              </p>
-            </div>
-            <div class="col-md-6  col-sm-6">                
-              <div class="bottom-social-icons pull-right">  
-                <a class="facebook" target="_blank" href="https://web.facebook.com/GrayGrids"><i class="fa fa-facebook"></i></a> 
-                <a class="twitter" target="_blank" href="https://twitter.com/GrayGrids"><i class="fa fa-twitter"></i></a>
-                <a class="google-plus" target="_blank" href="https://plus.google.com"><i class="fa fa-google-plus"></i></a>
-                <a class="linkedin" target="_blank" href="https://www.linkedin.com/"><i class="fa fa-linkedin"></i></a>
-              </div>            
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- Copyright  End-->
-      
-    </footer>
-    <!-- Footer Section End-->
-
-    <!-- Go To Top Link -->
-    <a href="#" class="back-to-top">
-      <i class="fa fa-arrow-up"></i>
-    </a>
-
- 
-
-    <!-- jQuery  -->
-    <script type="text/javascript" src="assets/js/jquery.min.js"></script>
-    <script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="assets/js/color-switcher.js"></script>
-    <script type="text/javascript" src="assets/js/jquery.mixitup.js"></script>
-    <script type="text/javascript" src="assets/js/wow.js"></script>
-    <script type="text/javascript" src="assets/js/nivo-lightbox.min.js"></script>
-    <script type="text/javascript" src="assets/js/jquery.countdown.js"></script>  
-    <script type="text/javascript" src="assets/js/jquery.counterup.min.js"></script>   
-    <script type="text/javascript" src="assets/js/owl.carousel.min.js"></script> 
-    <script type="text/javascript" src="assets/js/form-validator.min.js"></script>
-    <script type="text/javascript" src="assets/js/contact-form-script.js"></script>  
-    
-    <script type="text/javascript" src="assets/js/jquery.slicknav.js"></script>
-    <script src="assets/js/main.js"></script>
-
-  </body>
-</html>
+{% endblock %}

@@ -86,32 +86,33 @@ func (c *Context) RenderJSON(value interface {}) error {
 
 func (c *Context) RenderHTML(tmplName string, context map[string]interface {}) {
 
-	if Templates[tmplName] == nil {
+	if tn, ok := Templates[tmplName]; ok {
+
+		c.ResponseWriter.Header().Set("Content-Type", "text/html; charset=utf-8")
+		c.ResponseWriter.Header().Set("Cache-Control", "no-cache,no-store,must-revalidate")
+		c.ResponseWriter.Header().Set("Pragma", "no-cache")
+		c.ResponseWriter.Header().Set("Connection", "keep-alive")
+		c.ResponseWriter.Header().Set("Expires", "0")
+
+		context["currentUser"] = c.Get("user")
+		context["currentTime"] = time.Now()
+		context["lang"] = c.Get("lang")
+
+		if err := tn.ExecuteWriter(pongo2.Context(context), c.ResponseWriter); err != nil {
+
+			//c.RenderError(err.Error())
+
+			c.RenderHTML("/errors/500.html", map[string]interface {} {
+				"Error" : err.Error(),
+			})
+
+			c.Stop()
+
+			return
+		}
+
+	} else {
 		c.RenderHTML("/errors/404.html", map[string]interface {} {})
-
-		c.Stop()
-
-		return
-
-	}
-
-	c.ResponseWriter.Header().Set("Content-Type", "text/html; charset=utf-8")
-	c.ResponseWriter.Header().Set("Cache-Control", "no-cache,no-store,must-revalidate")
-	c.ResponseWriter.Header().Set("Pragma", "no-cache")
-	c.ResponseWriter.Header().Set("Connection", "keep-alive")
-	c.ResponseWriter.Header().Set("Expires", "0")
-
-	context["currentUser"] = c.Get("user")
-	context["currentTime"] = time.Now()
-	context["lang"] = c.Get("lang")
-
-	if err := Templates[tmplName].ExecuteWriter(pongo2.Context(context), c.ResponseWriter); err != nil {
-
-		//c.RenderError(err.Error())
-
-		c.RenderHTML("/errors/500.html", map[string]interface {} {
-			"Error" : err.Error(),
-		})
 
 		c.Stop()
 
