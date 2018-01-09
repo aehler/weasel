@@ -5,6 +5,7 @@ import (
 	"weasel/middleware/guest"
 	"fmt"
 	"weasel/middleware/auth"
+	"time"
 )
 
 func Route(ap *app.App) {
@@ -26,5 +27,13 @@ func Route(ap *app.App) {
 	})
 
 	ap.Get("/topics/", guest.GuestSettings, Topics)
+
+	ap.Get("/pong/", func(c *app.Context){
+
+		time.Sleep(time.Millisecond * 50)
+
+		c.RenderJSON(c.Params.ByName("v"))
+
+	})
 
 }

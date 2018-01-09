@@ -31,7 +31,7 @@ func New(config string) *App {
 
 	a.Router.ServeFiles(fmt.Sprintf("/%s/*filepath", pathes.HTTPStatic), http.Dir(pathes.Static))
 
-	a.Router.NotFound = Handler404{}.ServeHTTP
+	a.Router.NotFound = Handler404{}
 
 	a.Router.PanicHandler = func(rw http.ResponseWriter, _ *http.Request, err interface{}) {
 
